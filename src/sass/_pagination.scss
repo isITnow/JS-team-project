@@ -20,11 +20,11 @@
         width: 1280px;
     }
 }
-.pagination-list {
+.pagination__list {
     display: flex;
     justify-content: center;
-    
-    &__item {
+}
+.pagination__item {
         width: 40px;
         height: 40px;
         font-weight: 500;
@@ -45,5 +45,4 @@
         &--left,&--right{
             background-color: #F7F7F7;
         }
-    }
 }
