@@ -2,7 +2,9 @@
 <img class="card__image" src="{{backdrop_path}}" alt="{{name}}+' moviepic'"/>
 <h2 class="card__title">{{name}}</h2>
     {{#each genres}}
-       <span class="card__genres-item">{{this}}</span>
+    {{#if genres.length>2}}<span class="card__other">{{genres[0]}}, {{genres[1]}}, Other</span>
+    {{#if @last}}<span class="card__genres-item">{{this}}</span>
+       {{else}}<span class="card__genres-item">{{this}},</span>
     {{/each}}
     <span>|</span>
     <p class="card__release">{{release_date}}</p>
