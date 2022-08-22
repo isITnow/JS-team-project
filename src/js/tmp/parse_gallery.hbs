@@ -4,7 +4,7 @@
 <img class="gallery__image" src="{{backdrop_path}}" alt="{{name}}+' moviepic'"/>
 <h2 class="gallery__title">{{name}}</h2>
     {{#each genres}}
-    {{#if genres.length > 3}}<span class="gallery__other">{{genres[0]}}, {{genres[1]}}, Other</span>
+    {{!-- {{#if genres.length > 3}}<span class="gallery__other">{{genres[0]}}, {{genres[1]}}, Other</span> --}}
     {{#if @last}}<span class="gallery__genres-item">{{this}}</span>
     {{else}}<span class="gallery__genres-item">{{this}},</span>
     {{/if}}
