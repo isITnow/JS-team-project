@@ -1,0 +1,10 @@
+<li class="card__item">
+<img class="card__image" src="{{backdrop_path}}" alt="{{name}}+' moviepic'"/>
+<h2 class="card__title">{{name}}</h2>
+    {{#each genres}}
+       <span class="card__genres-item">{{this}}</span>
+    {{/each}}
+    <span>|</span>
+    <p class="card__release">{{release_date}}</p>
+    <span class="card__rating">{{vote_average}}</span>
+</li>
