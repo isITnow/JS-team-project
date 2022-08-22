@@ -7,38 +7,16 @@
     padding-top: 30px;
     padding-bottom: 30px;
   }
-  &__container {
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-left: auto;
-    margin-right: auto;
-
-    @media screen and (max-width: 319px) {
-      width: 320px;
-    }
-
-    @media screen and (min-width: 320px) {
-      width: 320px;
-    }
-
-    @media screen and (min-width: 768px) {
-      width: 768px;
-      padding-left: 32px;
-      padding-right: 32px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    @media screen and (min-width: 1280px) {
-      width: 1280px;
-    }
-  }
 
   &__wrapper {
-    display: block;
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
-    // display: flex;
-    // flex-direction: column;
+    max-width: 250px;
+
+    @media screen and (min-width: 768px) {
+      max-width: 500px;
+    }
   }
   &__text {
     font-family: inherit;
@@ -46,20 +24,20 @@
     font-size: 14px;
     line-height: 1.14;
     color: $footer-text-color;
-    // max-width: 187px;
+
+    @media screen and (min-width: 768px) {
+      font-size: 16px;
+      line-height: 1.19;
+    }
   }
-  &__disc {
-    font-family: inherit;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 1.14;
-    color: $footer-text-color;
-    // max-width: 236px;
-    margin-top: 10px;
-  }
+
   &__icon {
     margin-left: 10px;
     margin-right: 10px;
     margin-top: 10px;
+  }
+  &__link {
+    text-decoration: underline;
+    color: $footer-text-color;
   }
 }
