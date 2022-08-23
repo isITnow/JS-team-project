@@ -1,7 +1,7 @@
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = 'api_key=d70849b39c7b399ded2dffef6ee1baa4';
 
-export function fetchTrending(page = 1) {
+export function fetchTrending(page) {
   return fetch(`${BASE_URL}/trending/movie/week?&${API_KEY}&page=${page}`)
     .then(resp => {
       if (!resp.ok) {
@@ -13,10 +13,10 @@ export function fetchTrending(page = 1) {
 }
 
 export function fetchGenres() {
-  fetch(`${BASE_URL}/genre/movie/list?${API_KEY}&language=en-US`)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(response.status);
+  return fetch(`${BASE_URL}/genre/movie/list?${API_KEY}&language=en-US`)
+    .then(resp => {
+      if (!resp.ok) {
+        throw new Error(resp.status);
       }
       return resp.json();
     })
