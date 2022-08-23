@@ -1,8 +1,8 @@
 
 const galleryItem = document.querySelector('.gallery__list');
 
-export function renderGalleryMarkup(arr) {
-    const markup = arr.reduce(
+export function renderGalleryMarkup(results, page) {
+    const markup = results.reduce(
       (
         acc,
         { id, poster_path, name, title, release_date, vote_average, genre_ids }
@@ -32,4 +32,5 @@ export function renderGalleryMarkup(arr) {
       ''
     );
     galleryItem.innerHTML = markup;
+      return {results, page}
   }
