@@ -18,13 +18,13 @@ function onSearchSubmit(evt) {
     return;
   }
   fetсhByQuery(query, page).then(data => {
-    // if ((data.results = [])) {
-    //   warningEl.classList.remove('visually-hidden');
-    //   setTimeout(() => {
-    //     warningEl.classList.add('visually-hidden');
-    //   }, 5000);
-    //   return;
-    // }
+    if (data.results.length === 0) {
+      warningEl.classList.remove('visually-hidden');
+      setTimeout(() => {
+        warningEl.classList.add('visually-hidden');
+      }, 5000);
+      return;
+    }
     renderGalleryMarkup(data.results);
   });
 }
