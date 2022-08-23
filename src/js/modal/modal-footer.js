@@ -1,4 +1,5 @@
 import { fetchByID } from '../api/fetch';
+import { renderMovieMarkup } from '../renderModal';
 
 (() => {
   const refs = {
@@ -30,6 +31,7 @@ function onOpenCardModal(event) {
   if (event.currentTarget.nodeName !== 'UL') {
     return;
   }
+  fetchByID(id).then(data => renderMovieMarkup(data));
   fetchByID(id).then(console.log);
   refs.cardModal.classList.remove('is-hidden');
 }
