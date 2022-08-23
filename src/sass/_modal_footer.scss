@@ -19,8 +19,8 @@
   left: 50%;
   padding: 40px;
   width: 95%;
-  max-width: 450px;
-  height: auto;
+  max-width: 280px;
+  height: 885px;
   background-color: tomato;
   // background-image: url(../images/desktop/header/ice-cream-desktop-x1.png);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
@@ -30,6 +30,14 @@
   transform: translate(-50%, -50%) scale(1);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+@media screen and (min-width: 768px) {
+  .backdrop__modal {
+    max-width: 704px;
+    height: 550px;
+    top: 50%;
+  }
+}
+
 .backdrop.is-hidden {
   opacity: 0;
   visibility: hidden;
@@ -40,4 +48,24 @@
   opacity: 0;
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1), opacity 250ms,
     visibility 250ms;
+}
+.backdrop__button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  // border: 1px solid rgba(0, 0, 0, 0.1);
+  // border-radius: 50%;
+  // box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin-top: 8px;
+  margin-right: 8px;
+}
+.backdrop__icon {
+  color: black;
 }
