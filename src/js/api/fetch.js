@@ -34,3 +34,14 @@ const API_KEY = 'api_key=d70849b39c7b399ded2dffef6ee1baa4';
       });
     }
 // отдаст массив фильмов в порядке убьівания по рейтингу
+
+export const fetchTrending = function (page = 1) {
+  return fetch(`${BASE_URL}/trending/movie/week?&${API_KEY}&page=${page}`).then(
+    resp => {
+      if (!resp.ok) {
+        throw new Error(resp.status);
+      }
+      return resp.json();
+    }
+  );
+};
