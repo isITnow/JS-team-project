@@ -1,13 +1,30 @@
 import { fetсhByQuery } from '../api/fetch';
-const inputEl = document.querySelector('.search__input');
+import { renderGalleryMarkup } from './renderGalleryMarkup';
+const warningEl = document.querySelector('.warning-notify');
+const formEl = document.querySelector('#form-search');
 
-inputEl.addEventListener('submit', onSearchSubmit);
+formEl.addEventListener('submit', onSearchSubmit);
 let page = 1;
 let query = '';
 
-console.log('SEARCH BY QUERY');
-
 function onSearchSubmit(evt) {
   evt.preventDefault();
-  console.log(evt);
+  query = evt.target.elements[0].value;
+  if (!query) {
+    warningEl.classList.remove('visually-hidden');
+    setTimeout(() => {
+      warningEl.classList.add('visually-hidden');
+    }, 5000);
+    return;
+  }
+  fetсhByQuery(query, page).then(data => {
+    // if ((data.results = [])) {
+    //   warningEl.classList.remove('visually-hidden');
+    //   setTimeout(() => {
+    //     warningEl.classList.add('visually-hidden');
+    //   }, 5000);
+    //   return;
+    // }
+    renderGalleryMarkup(data.results);
+  });
 }
