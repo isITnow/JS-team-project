@@ -32,9 +32,10 @@ export function renderGalleryMarkup(arr) {
                   )}</span>
            </a>
               </li>`
-      );
-    },
-    ''
-  );
-  galleryItem.innerHTML = markup;
-}
+        );
+      },
+      ''
+    );
+    galleryItem.innerHTML = markup;
+      return {results, page}
+  }

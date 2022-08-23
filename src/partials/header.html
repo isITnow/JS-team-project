@@ -1,35 +1,33 @@
-<header class="header">
-  <div class="nav-container container-header">
-    <a href="./index.html" class="logo">
-      <svg class="logo__svg icon-film">
-        <use href="./images/sprite.svg#icon-film"></use>
-      </svg>
-      <span class="logo__text">Filmoteka</span>
-    </a>
+<header class="section-header header">
+  <div class="container-header">
     <nav class="nav">
+      <a href="./index.html" class="nav__link">
+        <svg class="logo-svg icon-film">
+          <use href="./images/sprite.svg#icon-film"></use>
+        </svg>
+        <span class="logo-text">Filmoteka</span>
+      </a>
+
       <ul class="menu">
-        <li class="menu__items">
-          <a href="./index.html" class="menu__link current menu__link-home link"
-            >Home</a
-          >
+        <li class="menu__items current">
+          <a href="./index.html" class="menu__link">Home</a>
         </li>
         <li class="menu__items">
-          <a href="./library.html" class="menu__link menu__link-library link"
-            >My library</a
-          >
+          <a href="./library.html" class="menu__link">My library</a>
         </li>
       </ul>
     </nav>
+    <form id="form-search" class="search" type="submit">
+      <input class="search__input" type="text" placeholder="Movie search" />
+      <button class="search__button" type="submit" title="Search">
+        <svg class="search__icon icon-search">
+          <use href="./images/sprite.svg#icon-search"></use>
+        </svg>
+      </button>
+    </form>
+
+    <p class="warning-notify visually-hidden">
+      Search result not successful. Enter the correct movie name and try again
+    </p>
   </div>
-
-  <form action="" id="form-search" class="search">
-    <input class="search__input" type="text" placeholder="Movie search" />
-    <button class="search__button" type="submit" title="Search">
-      <svg class="search__icon icon-search">
-        <use href="./images/sprite.svg#icon-search"></use>
-      </svg>
-    </button>
-  </form>
-
-  <p class="warning-notify"></p>
 </header>
