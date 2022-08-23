@@ -74,13 +74,16 @@
   </div>
 </div>
 
-<!-- <div data-card-modal class="card-modal visually-hidden">
-  <button data-film-modal-close class="film-modal__btn--close">
-    <svg class="backdrop__icon js-btn-close" width="30" height="30">
-      <use
-        class="js-btn-close"
-        href="./images/symbol-defs.svg#icon-close-window"
-      ></use>
-    </svg>
-  </button>
-</div> -->
+<div data-card-modal class="backdrop is-hidden" data-backdrop-card>
+  <div class="backdrop__modal" data-card-modal>
+    <button
+      data-card-modal-close
+      class="backdrop__button"
+      data-close-card-modal
+    >
+      <svg class="backdrop__icon" width="30" height="30">
+        <use href="./images/sprite.svg#icon-close"></use>
+      </svg>
+    </button>
+  </div>
+</div>
