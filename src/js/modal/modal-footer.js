@@ -32,20 +32,18 @@ function onOpenCardModal(event) {
     return;
   }
   fetchByID(id).then(data => renderMovieMarkup(data));
-  fetchByID(id).then(console.log);
   refs.cardModal.classList.remove('is-hidden');
 }
 
-function onCloseCardModal(event) {
+function onCloseCardModal() {
   refs.cardModal.classList.add('is-hidden');
-
-  onEscapeCloseModal();
+  // onEscapeCloseModal();
 }
 
-function onEscapeCloseModal(event) {
-  if (event.code === 'Escape') {
-    refs.cardModal.classList.remove('is-hidden');
-    refs.modal.classList.remove('is-hidden');
-    window.removeEventListener('keydown', onEscapeCloseModal);
-  }
-}
+// function onEscapeCloseModal(event) {
+//   if (event.code === 'Escape') {
+//     refs.cardModal.classList.remove('is-hidden');
+//     refs.modal.classList.remove('is-hidden');
+//     window.removeEventListener('keydown', onEscapeCloseModal);
+//   }
+// }
