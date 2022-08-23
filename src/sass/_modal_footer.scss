@@ -20,8 +20,8 @@
   padding: 40px;
   width: 95%;
   max-width: 280px;
-  height: 885px;
-  background-color: tomato;
+  height: auto;
+  background-color: white;
   // background-image: url(../images/desktop/header/ice-cream-desktop-x1.png);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
@@ -56,6 +56,7 @@
   width: 30px;
   height: 30px;
   background-color: transparent;
+  border: none;
   // border: 1px solid rgba(0, 0, 0, 0.1);
   // border-radius: 50%;
   // box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
@@ -63,9 +64,86 @@
   justify-content: center;
   align-items: center;
   padding: 0;
-  margin-top: 8px;
-  margin-right: 8px;
+  margin-top: 15px;
+  margin-right: 15px;
 }
 .backdrop__icon {
-  color: black;
+  stroke: black;
+}
+// .container {
+//   margin-left: auto;
+//   margin-right: auto;
+//   width: 100%;
+//   padding-left: 20px;
+//   padding-right: 20px;
+// }
+.wrapper {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  &__title {
+    text-align: center;
+    margin-bottom: 70px;
+    color: $footer-text-color;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.14;
+  }
+}
+.command__list {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+// .command__item {
+//   width: 100%;
+//   margin-bottom: 10px;
+//   background-color: #fff;
+//   box-shadow: 0px 1px 3px rgb(0 0 0 / 12%), 0px 1px 1px rgb(0 0 0 / 14%),
+//     0px 2px 1px rgb(0 0 0 / 20%);
+//   border-radius: 0px 0px 4px 4px;
+//   @media screen and (min-width: 768px) {
+//     margin-bottom: 0;
+//     margin-right: 10px;
+//   }
+// }
+// .inner__info {
+//   padding-top: 30px;
+//   padding-bottom: 24px;
+//   text-align: center;
+// }
+
+.command__image {
+  display: block;
+  width: 115px;
+  height: 140px;
+  object-fit: cover;
+  margin-bottom: 10px;
+
+  object-position: center;
+}
+.command__role {
+  color: $footer-text-color;
+  font-family: inherit;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.14;
+  text-align: center;
+}
+.command__name {
+  margin-top: 10px;
+  color: $accent-color;
+  font-family: inherit;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.14;
+  text-align: center;
 }

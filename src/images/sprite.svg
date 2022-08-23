@@ -29,5 +29,11 @@
 <path fill="none"   stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M22.667 22.667h6.667"></path>
 <path fill="none"   stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M22.667 9.333h6.667"></path>
 </symbol>
+<symbol id="icon-Vector-1" viewBox="0 0 32 32">
+<path stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="4" d="M2 2l28 28"></path>
+</symbol>
+<symbol id="icon-Vector-2" viewBox="0 0 32 32">
+<path stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="4" d="M2 30l28-28"></path>
+</symbol>
 </defs>
 </svg>
