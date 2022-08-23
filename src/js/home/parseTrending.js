@@ -6,5 +6,6 @@ let page;
 fetchTrending(page).then(data => createMarkup(data));
 
 function createMarkup(data) {
+  console.log(data.results);
   galleryListEl.innerHTML = parseGallery(data.results);
 }
