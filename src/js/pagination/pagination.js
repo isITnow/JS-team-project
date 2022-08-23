@@ -1,20 +1,24 @@
 export { renderPagination };
 import { fetchTrending } from '../api/fetch';
+import { renderGalleryMarkup } from '../home/renderGalleryMarkup';
+import { fetсhByQuery } from '../api/fetch';
 
 const paginationList = document.querySelector('.pagination__list');
 const btnLeft = document.querySelector('.pagination__btn--left');
 const btnRight = document.querySelector('.pagination__btn--rigth');
-
+const myInput = document.querySelector('.search__input')
+let query = myInput.value
+console.log(query)
 btnLeft.addEventListener('click', onClickBtnLeft);
 btnRight.addEventListener('click', onClickBtnRight);
 paginationList.addEventListener('click', onClickMyPagination);
-
-fetchTrending().then(({page, results}) => renderPagination(page, results))
+ 
+// fetchTrending(1).then(({page, results}) => renderPagination(page, results))
 
 function renderPagination(page,results) {
    
     let html = '';
-    console.log(results)
+    
    let [startPageNumber,endPageNumber] =  getStartedAndPages(page)
 
     for (let i = startPageNumber; i <= endPageNumber; i += 1) {
@@ -39,7 +43,10 @@ function onClickMyPagination(e) {
   }
   page = e.target.dataset.page;
 
-  fetchTrending(page).then(({page, results}) => renderPagination(page, results))
+  fetchTrending(page)
+.then(({page, results} )=> renderGalleryMarkup( results, page))
+.then(({page, results}) => renderPagination(page, results));
+
   makeActive(page);
   
 }
@@ -48,12 +55,20 @@ function onClickBtnRight() {
     let page = btnRight.dataset.page 
     
     
-    fetchTrending(page).then(({page, results}) => renderPagination(page, results))
+    fetchTrending(page)
+.then(({page, results} )=> renderGalleryMarkup( results, page))
+.then(({page, results}) => renderPagination(page, results));
+
+
 }
 
 function onClickBtnLeft() {
     let page = btnLeft.dataset.page 
-    fetchTrending(page).then(({page, results}) => renderPagination(page, results))
+  fetchTrending(page)
+.then(({page, results} )=> renderGalleryMarkup( results, page))
+.then(({page, results}) => renderPagination(page, results));
+
+
     
 }
 
@@ -98,4 +113,5 @@ function disabledBtn(page, results) {
         btnRight.disabled = false
     }
 }
+
 
