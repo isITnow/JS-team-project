@@ -9,7 +9,7 @@ let query = '';
 
 function onSearchSubmit(evt) {
   evt.preventDefault();
-  query = evt.target.elements[0].value;
+  query = evt.target.elements[0].value.trim();
   if (!query) {
     warningEl.classList.remove('visually-hidden');
     setTimeout(() => {
