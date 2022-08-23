@@ -13,6 +13,14 @@ import { renderMovieMarkup } from '../renderModal';
 
   function toggleModal() {
     refs.modal.classList.toggle('is-hidden');
+    window.addEventListener('keydown', onEscapeCloseCardModal);
+  }
+
+  function onEscapeCloseCardModal(event) {
+    if (event.code === 'Escape') {
+      refs.modal.classList.add('is-hidden');
+      window.removeEventListener('keydown', onEscapeCloseCardModal);
+    }
   }
 })();
 
@@ -20,6 +28,7 @@ const refs = {
   openCardModal: document.querySelector('[data-card-modal-open]'),
   closeCardModal: document.querySelector('[data-card-modal-close]'),
   cardModal: document.querySelector('[data-card-modal]'),
+  modalContainer: document.querySelector('.modal__container'),
 };
 
 refs.openCardModal.addEventListener('click', onOpenCardModal);
@@ -33,17 +42,26 @@ function onOpenCardModal(event) {
   }
   fetchByID(id).then(data => renderMovieMarkup(data));
   refs.cardModal.classList.remove('is-hidden');
+  const modal = {
+    onShow: () => {
+      window.addEventListener('keydown', onEscapeCloseModal);
+    },
+    onClose: () => {
+      window.removeEventListener('keydown', onEscapeCloseModal);
+    },
+  };
+  // window.addEventListener('keydown', onEscapeCloseModal);
+  modal.onShow();
 }
 
 function onCloseCardModal() {
   refs.cardModal.classList.add('is-hidden');
-  // onEscapeCloseModal();
+  refs.modalContainer.innerHTML = '';
 }
 
-// function onEscapeCloseModal(event) {
-//   if (event.code === 'Escape') {
-//     refs.cardModal.classList.remove('is-hidden');
-//     refs.modal.classList.remove('is-hidden');
-//     window.removeEventListener('keydown', onEscapeCloseModal);
-//   }
-// }
+function onEscapeCloseModal(event) {
+  if (event.code === 'Escape') {
+    refs.cardModal.classList.add('is-hidden');
+    window.removeEventListener('keydown', onEscapeCloseModal);
+  }
+}
