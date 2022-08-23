@@ -1,33 +1,33 @@
-<header class="header section-header">
+<header class="section-header header">
   <div class="container-header">
-    <nav class="nav"></nav>
-    <a href="./index.html" class="nav__link">
-      <svg class="logo-svg icon-film">
-        <use href="./images/sprite.svg#icon-film"></use>
-      </svg>
-      <span class="logo-text">Filmoteka</span>
-    </a>
-    
+    <nav class="nav">
+      <a href="./index.html" class="nav__link">
+        <svg class="logo-svg icon-film">
+          <use href="./images/sprite.svg#icon-film"></use>
+        </svg>
+        <span class="logo-text">Filmoteka</span>
+      </a>
+
       <ul class="menu">
         <li class="menu__items current">
-          <a href="./index.html">Home</a>
+          <a href="./index.html" class="menu__link">Home</a>
         </li>
         <li class="menu__items">
-          <a href="./library.html">My library</a>
+          <a href="./library.html" class="menu__link">My library</a>
         </li>
       </ul>
     </nav>
-  
+    <form id="form-search" class="search" type="submit>
+      <input class="search__input" type="text" placeholder="Movie search" />
+      <button class="search__button" type="submit" title="Search">
+        <svg class="search__icon icon-search">
+          <use href="./images/sprite.svg#icon-search"></use>
+        </svg>
+      </button>
+    </form>
 
-  <form id="form-search" class="search" type="submit">
-    <input class="search__input" type="text" placeholder="Movie search" />
-    <button class="search__button" type="submit" title="Search">
-      <svg class="search__icon icon-search">
-        <use href="./images/sprite.svg#icon-search"></use>
-      </svg>
-    </button>
-  </form>
-
-  <p class="warning-notify visually-hidden">Search result not successful. Enter the correct movie name and</p>
+    <p class="warning-notify visually-hidden"">
+      Search result not successful. Enter the correct movie name and
+    </p>
   </div>
 </header>
