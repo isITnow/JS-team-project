@@ -23,7 +23,7 @@ export function fetchGenres() {
     .catch(error => console.log(error));
 }
 
-export function fethByQuery(query, page) {
+export function fetсhByQuery(query, page) {
   return fetch(
     `${BASE_URL}/search/movie?${API_KEY}&language=en-US&page=${page}&include_adult=false&query=${query}`
   )
