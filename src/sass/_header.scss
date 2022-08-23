@@ -139,11 +139,13 @@
 
 .search {
     position: relative;
+
     @media screen and (min-width: 768px) {
         width: 336px;
         margin-left: auto;
         margin-right: auto;
     }
+
     @media screen and (min-width: 1280px) {
         width: 394px;
     }
@@ -191,6 +193,7 @@
 
     width: 20px;
     height: 20px;
+
     &:hover {
         cursor: pointer;
     }
@@ -224,18 +227,19 @@
 }
 
 .warning-notify {
+    position: absolute;
     margin-top: 15px;
     font-size: 14px;
     line-height: 1.17;
     font-weight: 400;
     color: #ff001b;
-    opacity: 0;
+    // opacity: 0;
 
     @media screen and (min-width: 768px) {
         text-align: center;
     }
 }
 
-.warning-notify.is-visible {
-    opacity: 1;
-}
+// .warning-notify.is-visible {
+//     opacity: 1;
+// }
