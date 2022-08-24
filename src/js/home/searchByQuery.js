@@ -18,15 +18,18 @@ function onSearchSubmit(evt) {
     }, 5000);
     return;
   }
-  fetсhByQuery(query, page).then(data => {
-    if (!data.results.length) {
-      warningEl.classList.remove('visually-hidden');
-      setTimeout(() => {
-        warningEl.classList.add('visually-hidden');
-      }, 5000);
-      return;
-    }
-    renderGalleryMarkup(data.results);
-    return { page, data}
-  }).then(({page, data}) => renderPagination( page, data.results))
+  fetсhByQuery(query, page)
+    .then(data => {
+      if (!data.results.length) {
+        warningEl.classList.remove('visually-hidden');
+        setTimeout(() => {
+          warningEl.classList.add('visually-hidden');
+        }, 5000);
+        return;
+      }
+      renderGalleryMarkup(data.results);
+      localStorage.setItem('queryFilms', JSON.stringify(data.results));
+      return { page, data };
+    })
+    .then(({ page, data }) => renderPagination(page, data.results));
 }
