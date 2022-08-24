@@ -1,5 +1,4 @@
 const modalForm = document.querySelector('.modal__container');
-console.log(modalForm);
 
 export function renderMovieMarkup({
   poster_path,

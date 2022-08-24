@@ -1,7 +1,6 @@
 const galleryItem = document.querySelector('.gallery__list');
 
 export function renderGalleryMarkup(results, page) {
-  console.log(results)
   const markup = results.reduce(
     (
       acc,
@@ -33,10 +32,10 @@ export function renderGalleryMarkup(results, page) {
                   )}</span>
            </a>
               </li>`
-        );
-      },
-      ''
-    );
-    galleryItem.innerHTML = markup;
-      return {results, page}
-  }
+      );
+    },
+    ''
+  );
+  galleryItem.innerHTML = markup;
+  return { results, page };
+}
