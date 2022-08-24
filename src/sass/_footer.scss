@@ -37,6 +37,10 @@
     margin-left: 10px;
     margin-right: 10px;
     margin-top: 10px;
+
+    animation: heartBeat;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
   }
   &__link {
     text-decoration: underline;

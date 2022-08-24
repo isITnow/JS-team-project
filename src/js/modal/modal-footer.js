@@ -59,11 +59,21 @@ refs.btnAddToQueue.addEventListener('click', onAddToQueue);
 
 function onOpenCardModal(event) {
   event.preventDefault();
-  const id = event.target.closest('.gallery__item').id;
+  const movieId = Number(event.target.closest('.gallery__item').id);
   if (event.currentTarget.nodeName !== 'UL') {
     return;
   }
-  fetchByID(id).then(data => renderMovieMarkup(data));
+  if (event.target.closest('[data-trending]')) {
+    const trendingArr = JSON.parse(localStorage.getItem('popularFilms'));
+    const trendingObj = trendingArr.find(item => item.id === movieId);
+    renderMovieMarkup(trendingObj);
+  }
+  if (event.target.closest('[data-query]')) {
+    const querygArr = JSON.parse(localStorage.getItem('queryFilms'));
+    const querygObj = querygArr.find(item => item.id === movieId);
+    renderMovieMarkup(querygObj);
+  }
+
   refs.cardModal.classList.remove('is-hidden');
   addEventListener();
   // window.addEventListener('keydown', onEscapeCloseModal);
