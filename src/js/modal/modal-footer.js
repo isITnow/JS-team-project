@@ -56,8 +56,8 @@ const refs = {
 refs.openCardModal.addEventListener('click', onOpenCardModal);
 refs.closeCardModal.addEventListener('click', onCloseCardModal);
 refs.backdrop.addEventListener('click', onBackdropClickCloseModal);
-refs.btnAddToWatched.addEventListener('click', onAddToWatched);
-refs.btnAddToQueue.addEventListener('click', onAddToQueue);
+// refs.btnAddToWatched.addEventListener('click', onAddToWatched);
+// refs.btnAddToQueue.addEventListener('click', onAddToQueue);
 
 ////////MODAL OPEN//////////////////
 
