@@ -16,10 +16,12 @@ export function renderGalleryMarkup(arr) {
       return (
         acc +
         `<li class="gallery__item" id=${id}>
-          <a class="gallery__link" href="#">
+          <div class="gallery__link">
               <img class="gallery__image" src="https://image.tmdb.org/t/p/original${poster_path}" alt="${
           title || name
-        }" width="100"/>
+        }" width="394" height ="335"/> 
+        </div>
+        <div class="gallery__info">
               <h2 class="gallery__title">${title || name}</h2>
               <p>${
                 currentGenres.length > 3
@@ -27,15 +29,30 @@ export function renderGalleryMarkup(arr) {
                   : currentGenres.join(', ')
               }</p>
                   <p class="gallery__release">${release_date.slice(0, 4)}</p>
-                  <span class="gallery__rating">${vote_average.toFixed(
-                    1
-                  )}</span>
-           </a>
-              </li>`
-        );
-      },
-      ''
-    );
-    galleryItem.innerHTML = markup;
-      return {results, page}
-  }
+          </div>
+        </li>`
+      );
+    },
+    ''
+  );
+  galleryItem.innerHTML = markup;
+  return { results, page };
+}
+
+// `<li class="gallery__item" id=${id}>
+//           <a class="gallery__link" href="#">
+//               <img class="gallery__image" src="https://image.tmdb.org/t/p/original${poster_path}" alt="${
+//   title || name
+// }" width="394" height ="335"/>
+//               <h2 class="gallery__title">${title || name}</h2>
+//               <p>${
+//                 currentGenres.length > 3
+//                   ? currentGenres.splice(0, 2).join(', ') + ', Others'
+//                   : currentGenres.join(', ')
+//               }</p>
+//                   <p class="gallery__release">${release_date.slice(0, 4)}</p>
+//                   <span class="gallery__rating">${vote_average.toFixed(
+//                     1
+//                   )}</span>
+//            </a>
+//               </li>`;
