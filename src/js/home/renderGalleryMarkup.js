@@ -6,11 +6,11 @@ export function renderGalleryMarkup(results, page) {
       acc,
       { id, poster_path, name, title, release_date, vote_average, genre_ids }
     ) => {
-      const currentGenres = [];
+      const filmGenres = [];
       const genres = JSON.parse(localStorage.getItem('genresData'));
       genres.forEach(item => {
         if (genre_ids.includes(item.id)) {
-          currentGenres.push(item.name);
+          filmGenres.push(item.name);
         }
       });
       return (
@@ -22,9 +22,9 @@ export function renderGalleryMarkup(results, page) {
         }" width="100"/>
               <h2 class="gallery__title">${title || name}</h2>
               <p>${
-                currentGenres.length > 3
-                  ? currentGenres.splice(0, 2).join(', ') + ', Others'
-                  : currentGenres.join(', ')
+                filmGenres.length > 3
+                  ? filmGenres.splice(0, 2).join(', ') + ', Others'
+                  : filmGenres.join(', ')
               }</p>
                   <p class="gallery__release">${release_date.slice(0, 4)}</p>
                   <span class="gallery__rating">${vote_average.toFixed(
