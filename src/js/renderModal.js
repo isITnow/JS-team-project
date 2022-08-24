@@ -28,9 +28,6 @@ export function renderMovieMarkup({
               <span class="card-modal__genres-result">${genres
                 .map(elem => elem.name)
                 .join(', ')}</span>
-
           <p class="card-modal__overview">${overview}</p>
-          <button class="card-modal__button-add" type="button">ADD TO WATCHED</button>
-          <button class="card-modal__button-queue" type="button">ADD TO QUEUE</button>
           </div>`;
 }
