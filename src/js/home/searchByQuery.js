@@ -18,7 +18,7 @@ function onSearchSubmit(evt) {
     return;
   }
   fetсhByQuery(query, page).then(data => {
-    if (data.results.length === 0) {
+    if (!data.results.length) {
       warningEl.classList.remove('visually-hidden');
       setTimeout(() => {
         warningEl.classList.add('visually-hidden');
