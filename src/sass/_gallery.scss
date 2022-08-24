@@ -29,8 +29,8 @@
 
 .gallery {
     &__list {
-        animation: zoomIn;
-        animation-duration: 2s;
+        // animation: zoomIn;
+        // animation-duration: 2s;
         @media screen and(min-width: 768px) {
             display: flex;
             flex-wrap: wrap;
@@ -78,11 +78,11 @@
         &:hover {
             animation: pulse;
             animation-duration: 2s;
-            outline: thick double #e12525;
+            outline: thick double #e16725;
             cursor: pointer;
             transform: scale(1.02);
             transition: all 0.3s;
-            box-shadow: 0 0 4px 7px rgba(184, 15, 15, 0.927);
+            box-shadow: 0 0 4px 7px rgb(214, 57, 57);
         }
     }
     &__item:last-child {

@@ -10,4 +10,9 @@
     cursor: pointer;
     background-image: url(../images/icons8-3d-очки-45.png);
     background-color: inherit;
+
+    &:hover {
+        animation: hinge;
+        animation-duration: 2s;
+    }
 }
