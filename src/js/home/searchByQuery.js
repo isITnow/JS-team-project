@@ -1,5 +1,6 @@
 import { fetсhByQuery } from '../api/fetch';
 import { renderGalleryMarkup } from './renderGalleryMarkup';
+import { renderPagination } from '../pagination/pagination';
 const warningEl = document.querySelector('.warning-notify');
 const formEl = document.querySelector('#form-search');
 
@@ -26,5 +27,6 @@ function onSearchSubmit(evt) {
       return;
     }
     renderGalleryMarkup(data.results);
-  });
+    return { page, data}
+  }).then(({page, data}) => renderPagination( page, data.results))
 }

@@ -7,29 +7,38 @@ const paginationList = document.querySelector('.pagination__list');
 const btnLeft = document.querySelector('.pagination__btn--left');
 const btnRight = document.querySelector('.pagination__btn--rigth');
 const myInput = document.querySelector('.search__input');
-let query = myInput.value;
-console.log(query);
-btnLeft.addEventListener('click', onClickBtnLeft);
-btnRight.addEventListener('click', onClickBtnRight);
+const myBtns = document.querySelectorAll('.pagination__btn')
+let query = '';
+
 paginationList.addEventListener('click', onClickMyPagination);
+
+myBtns.forEach((btn) => {
+  btn.addEventListener('click', onClickMyBtn)
+})
 
 // fetchTrending(1).then(({page, results}) => renderPagination(page, results))
 
-function renderPagination(page, results) {
+function renderPagination(page, results, total_pages) {
+
   let html = '';
 
   let [startPageNumber, endPageNumber] = getStartedAndPages(page);
 
   for (let i = startPageNumber; i <= endPageNumber; i += 1) {
-    html += `
-        <li class ="pagination__item" data-page="${i}" >
-          ${i}
-        </li>`;
+    
+      html += `
+      <li class ="pagination__item" data-page="${i}" >
+        ${i}
+      </li>  
+      
+      `
+      
   }
-
+ 
   paginationList.innerHTML = html;
   btnRight.dataset.page = page + 1;
   btnLeft.dataset.page = page - 1;
+  
 
   disabledBtn(page, results);
   makeActive(page);
@@ -41,27 +50,34 @@ function onClickMyPagination(e) {
     return;
   }
   let page = e.target.dataset.page;
-
-  fetchTrending(page)
-    .then(({ page, results }) => renderGalleryMarkup(results, page))
-    .then(({ page, results }) => renderPagination(page, results));
+query = myInput.value
+if(query !== '') {
+  fetсhByQuery(query,page)
+  .then(({ page, results }) => renderGalleryMarkup(results, page))
+  .then(({ page, results }) => renderPagination(page, results));
+  return
+ }
+ fetchTrending(page)
+ .then(({ page, results }) => renderGalleryMarkup(results, page))
+ .then(({ page, results }) => renderPagination(page, results));
 
   makeActive(page);
 }
 
-function onClickBtnRight() {
-  let page = btnRight.dataset.page;
-
-  fetchTrending(page)
+function onClickMyBtn(e) {
+  let page = e.currentTarget.dataset.page
+  console.log(page)
+  query = myInput.value
+  if(query !== '') {
+    fetсhByQuery(query,page)
     .then(({ page, results }) => renderGalleryMarkup(results, page))
     .then(({ page, results }) => renderPagination(page, results));
-}
-
-function onClickBtnLeft() {
-  let page = btnLeft.dataset.page;
-  fetchTrending(page)
-    .then(({ page, results }) => renderGalleryMarkup(results, page))
-    .then(({ page, results }) => renderPagination(page, results));
+    return
+   }
+   fetchTrending(page)
+   .then(({ page, results }) => renderGalleryMarkup(results, page))
+   .then(({ page, results }) => renderPagination(page, results));
+   makeActive(page);
 }
 
 function makeActive(page) {
@@ -102,3 +118,5 @@ function disabledBtn(page, results) {
     btnRight.disabled = false;
   }
 }
+
+

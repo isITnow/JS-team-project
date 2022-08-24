@@ -15,6 +15,7 @@ export function renderGalleryMarkup(results, page) {
           filmGenres.push(item.name);
         }
       });
+      
       return (
         acc +
         `<li class="gallery__item" id=${id}>
@@ -30,7 +31,7 @@ export function renderGalleryMarkup(results, page) {
                   ? filmGenres.splice(0, 2).join(', ') + ', Others'
                   : filmGenres.join(', ')
               }</p>
-                  <p class="gallery__release">${release_date.slice(0, 4)}</p>
+                  <p class="gallery__release">${release_date ? release_date.slice(0, 4) : ''}</p>
           </div>
         </li>`
       );
