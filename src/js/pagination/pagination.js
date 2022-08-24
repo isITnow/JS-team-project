@@ -1,6 +1,7 @@
 export { renderPagination };
 import { fetchTrending } from '../api/fetch';
 import { renderGalleryMarkup } from '../home/renderGalleryMarkup';
+import { renderQueryMarkup } from '../home/renderGalleryMarkup';
 import { fetсhByQuery } from '../api/fetch';
 
 const paginationList = document.querySelector('.pagination__list');
@@ -50,7 +51,7 @@ function onClickMyPagination(e) {
   if (query !== '') {
     fetсhByQuery(query, page)
       .then(({ page, results }) => {
-        renderGalleryMarkup(results, page);
+        renderQueryMarkup(results, page);
         localStorage.setItem('queryFilms', JSON.stringify(results));
         return { page, results };
       })
@@ -75,7 +76,7 @@ function onClickMyBtn(e) {
   if (query !== '') {
     fetсhByQuery(query, page)
       .then(({ page, results }) => {
-        renderGalleryMarkup(results, page);
+        renderQueryMarkup(results, page);
         localStorage.setItem('queryFilms', JSON.stringify(results));
         return { page, results };
       })

@@ -1,5 +1,5 @@
 import { fetсhByQuery } from '../api/fetch';
-import { renderGalleryMarkup } from './renderGalleryMarkup';
+import { renderQueryMarkup } from './renderGalleryMarkup';
 import { renderPagination } from '../pagination/pagination';
 const warningEl = document.querySelector('.warning-notify');
 const formEl = document.querySelector('#form-search');
@@ -27,7 +27,7 @@ function onSearchSubmit(evt) {
         }, 5000);
         return;
       }
-      renderGalleryMarkup(data.results);
+      renderQueryMarkup(data.results);
       localStorage.setItem('queryFilms', JSON.stringify(data.results));
       return { page, data };
     })
