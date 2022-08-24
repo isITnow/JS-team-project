@@ -1,7 +1,7 @@
 import { fetchByID } from '../api/fetch';
 import { renderMovieMarkup } from '../renderModal';
-import { onAddToWatched } from '../modal/modalBtnFunction';
-import { onAddToQueue } from '../modal/modalBtnFunction';
+// import { onAddToWatched } from '../modal/modalBtnFunction';
+// import { onAddToQueue } from '../modal/modalBtnFunction';
 
 // Логіка що працює на модалку команди;
 
