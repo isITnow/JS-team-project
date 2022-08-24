@@ -29,6 +29,8 @@
 
 .gallery {
     &__list {
+        animation: zoomIn;
+        animation-duration: 2s;
         @media screen and(min-width: 768px) {
             display: flex;
             flex-wrap: wrap;
@@ -74,11 +76,13 @@
         }
 
         &:hover {
+            animation: rotateIn;
+            animation-duration: 2s;
             outline: thick double #e12525;
-
             cursor: pointer;
-            transform: scale(0.9);
-            box-shadow: (0px 8px 43px rgba(227, 28, 28, 0.6));
+            transform: scale(1.1);
+            transition: all 0.3s;
+            box-shadow: 0 0 4px 7px rgba(184, 15, 15, 0.927);
         }
     }
     &__item:last-child {
@@ -124,5 +128,25 @@
         line-height: inherit;
         text-transform: uppercase;
         color: #000000;
+    }
+
+    &__genres {
+        display: flex;
+        justify-content: flex-start;
+        font-size: inherit;
+        line-height: inherit;
+        color: #ff6b08;
+    }
+
+    &__genr {
+        margin-right: 5px;
+    }
+
+    &__release {
+        margin-left: 5px;
+    }
+
+    &__rating {
+        display: none;
     }
 }
