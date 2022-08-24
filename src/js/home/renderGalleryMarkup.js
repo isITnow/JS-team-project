@@ -31,7 +31,7 @@ export function renderGalleryMarkup(results, page) {
                   : currentGenres.join(', ')
               }</span> | 
                   <span class="gallery__release">${
-                    release_date ? release_date.slice(0, 4) : ' '
+                    release_date ? release_date.slice(0, 4) : 'no data'
                   }</span>
                   <span class="gallery__rating">${vote_average.toFixed(1)}
               </span>
@@ -76,10 +76,9 @@ export function renderQueryMarkup(results, page) {
                   ? currentGenres.splice(0, 2).join(', ') + ', Others'
                   : currentGenres.join(', ')
               }</span> | 
-                  <span class="gallery__release">${release_date.slice(
-                    0,
-                    4
-                  )}</span>
+                  <span class="gallery__release">${
+                    release_date ? release_date.slice(0, 4) : 'no data'
+                  }</span>
                   <span class="gallery__rating">${vote_average.toFixed(1)}
               </span>
               </p>
