@@ -34,8 +34,6 @@ import { renderMovieMarkup } from '../renderModal';
 
   function onBackdropClickCloseModal(event) {
     if (event.currentTarget === event.target) {
-      console.log('кликнули именно в бекдроп');
-
       onCloseModal();
     }
   }

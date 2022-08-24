@@ -46,6 +46,15 @@
     top: 50%;
   }
 }
+.test {
+  top: 55%;
+}
+
+@media screen and (min-width: 768px) {
+  .test {
+    top: 50%;
+  }
+}
 
 .backdrop.is-hidden {
   opacity: 0;
@@ -179,7 +188,3 @@
   line-height: 1.14;
   text-align: center;
 }
-
-// .card-modal__item {
-//   outline: 1px solid red
-// }
