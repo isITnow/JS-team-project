@@ -1,5 +1,7 @@
 import { fetchByID } from '../api/fetch';
 import { renderMovieMarkup } from '../renderModal';
+import { onAddToWatched } from '../modal/modalBtnFunction';
+import { onAddToQueue } from '../modal/modalBtnFunction';
 
 // Логіка що працює на модалку команди;
 
@@ -57,6 +59,8 @@ refs.backdrop.addEventListener('click', onBackdropClickCloseModal);
 refs.btnAddToWatched.addEventListener('click', onAddToWatched);
 refs.btnAddToQueue.addEventListener('click', onAddToQueue);
 
+////////MODAL OPEN//////////////////
+
 function onOpenCardModal(event) {
   event.preventDefault();
   const movieId = Number(event.target.closest('.gallery__item').id);
@@ -82,6 +86,8 @@ function onOpenCardModal(event) {
   // window.addEventListener('click', onAddToQueue);
 }
 
+///////////////MODAL CLOSE//////////////
+
 function onCloseCardModal() {
   refs.cardModal.classList.add('is-hidden');
   refs.modalContainer.innerHTML = '';
@@ -104,28 +110,29 @@ function onBackdropClickCloseModal(event) {
     onCloseCardModal();
   }
 }
-function onAddToWatched(event) {
-  if (event.currentTarget === event.target) {
-    console.log('ok1');
-    event.target.textContent = 'REMOVE';
-  }
-}
+// function onAddToWatched(event) {
+//   if (event.currentTarget === event.target) {
+//     console.log('ok1');
+//     event.target.textContent = 'REMOVE';
+//   }
+// }
 
-function onAddToQueue(event) {
-  if (event.currentTarget === event.target) {
-    console.log('ok2');
-    event.target.textContent = 'REMOVE';
-  }
-}
+// function onAddToQueue(event) {
+//   if (event.currentTarget === event.target) {
+//     console.log('ok2');
+//     event.target.textContent = 'REMOVE';
+//   }
+// }
+
 function addEventListener() {
   window.addEventListener('keydown', onEscapeCloseModal);
   window.addEventListener('click', onBackdropClickCloseModal);
-  window.addEventListener('click', onAddToWatched);
-  window.addEventListener('click', onAddToQueue);
+  // window.addEventListener('click', onAddToWatched);
+  // window.addEventListener('click', onAddToQueue);
 }
 function removeEventListener() {
   window.removeEventListener('keydown', onEscapeCloseModal);
   window.removeEventListener('click', onBackdropClickCloseModal);
-  window.removeEventListener('click', onAddToWatched);
-  window.removeEventListener('click', onAddToQueue);
+  // window.removeEventListener('click', onAddToWatched);
+  // window.removeEventListener('click', onAddToQueue);
 }
