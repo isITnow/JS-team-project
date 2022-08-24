@@ -8,6 +8,8 @@ export function renderGalleryMarkup(results, page) {
     ) => {
       const filmGenres = [];
       const genres = JSON.parse(localStorage.getItem('genresData'));
+
+      // переделать на фильтр
       genres.forEach(item => {
         if (genre_ids.includes(item.id)) {
           filmGenres.push(item.name);

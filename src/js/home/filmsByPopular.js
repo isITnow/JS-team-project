@@ -19,3 +19,5 @@ checkGenresLocalStorage();
 fetchTrending(page)
   .then(({ page, results }) => renderGalleryMarkup(results, page))
   .then(({ page, results }) => renderPagination(page, results));
+
+// добавить дату в лс

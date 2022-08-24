@@ -61,6 +61,7 @@ function onOpenCardModal(event) {
   if (event.currentTarget.nodeName !== 'UL') {
     return;
   }
+  // из лс берем нужный объект
   fetchByID(id).then(data => renderMovieMarkup(data));
   refs.cardModal.classList.remove('is-hidden');
   window.addEventListener('keydown', onEscapeCloseModal);
