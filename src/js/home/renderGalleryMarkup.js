@@ -13,6 +13,7 @@ export function renderGalleryMarkup(arr) {
           currentGenres.push(item.name);
         }
       });
+      
       return (
         acc +
         `<li class="gallery__item" id=${id}>
