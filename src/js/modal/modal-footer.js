@@ -42,16 +42,16 @@ function onOpenCardModal(event) {
   }
   fetchByID(id).then(data => renderMovieMarkup(data));
   refs.cardModal.classList.remove('is-hidden');
-  const modal = {
-    onShow: () => {
-      window.addEventListener('keydown', onEscapeCloseModal);
-    },
-    onClose: () => {
-      window.removeEventListener('keydown', onEscapeCloseModal);
-    },
-  };
-  // window.addEventListener('keydown', onEscapeCloseModal);
-  modal.onShow();
+  // const modal = {
+  //   onShow: () => {
+  //     window.addEventListener('keydown', onEscapeCloseModal);
+  //   },
+  //   onClose: () => {
+  //     window.removeEventListener('keydown', onEscapeCloseModal);
+  //   },
+  // };
+  window.addEventListener('keydown', onEscapeCloseModal);
+  // modal.onShow();
 }
 
 function onCloseCardModal() {
