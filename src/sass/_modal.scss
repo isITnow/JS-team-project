@@ -1,0 +1,65 @@
+
+.card-modal__item {
+    display: flex;
+}
+
+.card-modal__image {
+    width: 375px;
+    height: 426px;
+}
+.card-modal__overview{
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 20px;
+color: #000000;
+}
+
+.card-modal__rating-multiply,
+.card-modal__popularity-result,
+.card-modal__popularity-result,
+.card-modal__origin-title-result,
+.card-modal__genres-result,
+.card-modal__rating-result {
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 14px;
+color: #000000;
+}
+.card-modal__genres-result{
+    line-height: 16px;
+}
+.card-modal__title{
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 500;
+font-size: 30px;
+line-height: 35px;
+
+color: #000000;
+}
+
+.card-modal__genres,
+.card-modal__origin-title,
+.card-modal__rating,
+.card-modal__popularity {
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 16px;
+color: #8C8C8C;
+}
+
+.card-modal__button-queue,
+.card-modal__button-add {
+    background: #FF6B01;
+    color: #FFFFFF;
+border-radius: 5px;
+    width: 136px;
+    height: 44px;
+}
+
