@@ -15,8 +15,7 @@ export function renderMovieMarkup({
   <h2 class="card-modal__title">${title}</h2>
         <img width="50" class="card-modal__image" src="https://image.tmdb.org/t/p/original${poster_path}" alt="${
     title || name
-  }"/>
-          <p class="card-modal__rating">Vote/Votes</p><span class="card-modal__rating-result">${vote_average.toFixed(
+  }"/><p class="card-modal__rating">Vote/Votes</p><span class="card-modal__rating-result">${vote_average.toFixed(
             1
           )}/</span>
           <span class="card-modal__rating-multiply">${vote_count}</span>
