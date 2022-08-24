@@ -1,18 +1,16 @@
 const galleryItem = document.querySelector('.gallery__list');
 
-export function renderGalleryMarkup(results, page) {
-  const markup = results.reduce(
+export function renderGalleryMarkup(arr) {
+  const markup = arr.reduce(
     (
       acc,
       { id, poster_path, name, title, release_date, vote_average, genre_ids }
     ) => {
-      const filmGenres = [];
+      const currentGenres = [];
       const genres = JSON.parse(localStorage.getItem('genresData'));
-
-      // переделать на фильтр
       genres.forEach(item => {
         if (genre_ids.includes(item.id)) {
-          filmGenres.push(item.name);
+          currentGenres.push(item.name);
         }
       });
       
@@ -26,12 +24,19 @@ export function renderGalleryMarkup(results, page) {
         </div>
         <div class="gallery__info">
               <h2 class="gallery__title">${title || name}</h2>
-              <p>${
-                filmGenres.length > 3
-                  ? filmGenres.splice(0, 2).join(', ') + ', Others'
-                  : filmGenres.join(', ')
-              }</p>
-                  <p class="gallery__release">${release_date ? release_date.slice(0, 4) : ''}</p>
+              <p class="gallery__genres">
+              <span class="gallery__genr"> ${
+                currentGenres.length > 3
+                  ? currentGenres.splice(0, 2).join(', ') + ', Others'
+                  : currentGenres.join(', ')
+              }</span> | 
+                  <span class="gallery__release">${release_date.slice(
+                    0,
+                    4
+                  )}</span>
+                  <span class="gallery__rating">${vote_average.toFixed(1)}
+              </span>
+              </p>
           </div>
         </li>`
       );
@@ -59,4 +64,3 @@ export function renderGalleryMarkup(results, page) {
 //                   )}</span>
 //            </a>
 //               </li>`;
-
