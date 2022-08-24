@@ -76,11 +76,11 @@
         }
 
         &:hover {
-            animation: rotateIn;
+            animation: pulse;
             animation-duration: 2s;
             outline: thick double #e12525;
             cursor: pointer;
-            transform: scale(1.1);
+            transform: scale(1.02);
             transition: all 0.3s;
             box-shadow: 0 0 4px 7px rgba(184, 15, 15, 0.927);
         }
