@@ -3,6 +3,7 @@ import { renderGalleryMarkup } from './renderGalleryMarkup';
 import { renderPagination } from '../pagination/pagination';
 const warningEl = document.querySelector('.warning-notify');
 const formEl = document.querySelector('#form-search');
+const paginationEl = document.querySelector('.pagination__container');
 
 formEl.addEventListener('submit', onSearchSubmit);
 let page = 1;
@@ -25,8 +26,10 @@ function onSearchSubmit(evt) {
         setTimeout(() => {
           warningEl.classList.add('visually-hidden');
         }, 5000);
+        paginationEl.classList.add('visually-hidden');
         return;
       }
+      paginationEl.classList.remove('visually-hidden');
       renderGalleryMarkup(page, results, total_pages, 'data-query');
       localStorage.setItem('queryFilms', JSON.stringify(results));
       return { page, results, total_pages };
