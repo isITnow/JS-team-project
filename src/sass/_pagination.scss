@@ -1,14 +1,12 @@
 .pagination {
-    outline: 1px solid red;
     margin: 0 auto;
     padding-bottom: 40px;
-    
-    @media screen and (min-width: 768px){
+
+    @media screen and (min-width: 768px) {
         padding-bottom: 60px;
     }
 }
 .pagination__container {
-    outline: 1px solid green;
     margin: 0 auto;
     padding: 0 20px;
     width: 320px;
@@ -17,7 +15,7 @@
     justify-content: center;
     @media screen and (min-width: 768px) {
         width: 768px;
-        padding: 0 32px; 
+        padding: 0 32px;
     }
     @media screen and (min-width: 1280px) {
         width: 1280px;
@@ -30,28 +28,29 @@
     max-width: 300px;
 }
 .pagination__item {
-        width: 40px;
-        height: 40px;
-        font-weight: 500;
-        font-size: 12px;
-        line-height: 16px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 5px;
+    width: 40px;
+    height: 40px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    transition: 250ms;
+    &:hover {
+        color: white;
+        background-color: $accent-color;
+    }
+    &--active {
+        color: white;
+        background-color: $accent-color;
+    }
+    &--left,
+    &--right {
         transition: 250ms;
-        &:hover {
-            color: white;
-            background-color: $accent-color;
-        }
-        &--active {
-            color: white;
-            background-color: $accent-color;
-        }
-        &--left,&--right{
-            transition: 250ms;
-            background-color: #F7F7F7;
-        }
+        background-color: #f7f7f7;
+    }
 }
 .hide {
     display: none;
@@ -71,7 +70,7 @@
     transition: 250ms;
     &:hover {
         fill: white;
-            background-color: $accent-color;
+        background-color: $accent-color;
     }
 }
 .pagination__icon {
