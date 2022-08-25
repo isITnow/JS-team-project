@@ -58,8 +58,8 @@ export function renderMovieMarkup({
               <h3 class="card-modal__overwiew-title">ABOUT</h3>
           <p class="card-modal__overview">${overview}</p>
           <div class="card-modal__buttons">
-          <button class="card-modal__button-add" type="button">ADD TO WATCHED</button>
-          <button class="card-modal__button-queue" type="button">ADD TO QUEUE</button>
+          <button class="card-modal__button-add js-addToWatched" type="button">ADD TO WATCHED</button>
+          <button class="card-modal__button-queue js-addToQueue" type="button">ADD TO QUEUE</button>
         </div>
         </div>
         </div>
