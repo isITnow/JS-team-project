@@ -26,7 +26,7 @@ function renderPagination(page, results, total_pages) {
 
   let lastel = total_pages - 3
 
-  if(page >= 4 ) {
+  if(page >= 5 ) {
     html += `
     <li class ="pagination__item" data-page="1">1</li>`
     html += `
@@ -42,13 +42,31 @@ function renderPagination(page, results, total_pages) {
       `;
     
   }
-  if(page >= 3) {
+  if(page >= 1) {
     html += `
     <li class ="pagination__item">...</li>`
     html += `
     <li class ="pagination__item" data-page="${total_pages}">${total_pages}</li>`
   }
-
+  if(page >= lastel) {
+    html = `
+    <li class ="pagination__item" data-page="1">1</li>
+    <li class ="pagination__item">...</li>
+    <li class ="pagination__item" data-page="${total_pages - 4}">${total_pages - 4}</li>
+    <li class ="pagination__item" data-page="${total_pages - 3}">${total_pages - 3}</li>
+    <li class ="pagination__item" data-page="${total_pages - 2}">${total_pages - 2}</li>
+    <li class ="pagination__item" data-page="${total_pages - 1}">${total_pages - 1}</li>
+    <li class ="pagination__item" data-page="${total_pages}">${total_pages}</li>
+    `
+  }
+  if (page === total_pages) {
+    btnRight.disabled = true;
+    btnRight.classList.add('disabled')
+  } else {
+    btnRight.disabled = false;
+    btnRight.classList.remove('disabled')
+  }
+  
   paginationList.innerHTML = html;
   btnRight.dataset.page = page + 1;
   btnLeft.dataset.page = page - 1;
@@ -144,9 +162,5 @@ function disabledBtn(page, results) {
     btnLeft.disabled = false;
     btnLeft.classList.remove('disabled');
   }
-  if (results.length < 20) {
-    btnRight.disabled = true;
-  } else {
-    btnRight.disabled = false;
-  }
+  
 }
