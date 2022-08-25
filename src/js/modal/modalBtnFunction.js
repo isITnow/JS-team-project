@@ -9,6 +9,10 @@ export function onAddToQueue(data, storageKey) {
   setToLocalStorage(data, storageKey);
 }
 
+export function setToLibrary(data, storageKey) {
+  setToLocalStorage(data, storageKey);
+}
+
 function setToLocalStorage(data, storageKey) {
   if (!localStorage.getItem(storageKey)) {
     const arr = [];
@@ -20,20 +24,6 @@ function setToLocalStorage(data, storageKey) {
   if (!arr.some(item => item.id === data.id)) {
     arr.push(data);
     localStorage.setItem(storageKey, JSON.stringify(arr));
-  }
-}
-
-export function setToLibrary(data) {
-  if (!localStorage.getItem('library')) {
-    const arr = [];
-    arr.push(data);
-    localStorage.setItem('library', JSON.stringify(arr));
-    return;
-  }
-  const arr = JSON.parse(localStorage.getItem('library'));
-  if (!arr.some(item => item.id === data.id)) {
-    arr.push(data);
-    localStorage.setItem('library', JSON.stringify(arr));
   }
 }
 

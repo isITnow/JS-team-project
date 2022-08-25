@@ -91,11 +91,11 @@ function onOpenCardModal(event) {
 function onModalBtnClick(evt) {
   if (evt.target.classList.contains('js-addToWatched')) {
     onAddToWatched(currentMovie, 'watchedMovies');
-    setToLibrary(currentMovie);
+    setToLibrary(currentMovie, 'library');
   }
   if (evt.target.classList.contains('js-addToQueue')) {
     onAddToQueue(currentMovie, 'queueMovies');
-    setToLibrary(currentMovie);
+    setToLibrary(currentMovie, 'library');
   }
 }
 
