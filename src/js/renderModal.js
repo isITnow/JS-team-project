@@ -49,17 +49,20 @@ export function renderMovieMarkup({
           </tr>
           <tr>
           <td class="card-modal__genres">Genre</td>
-              <td class="card-modal__genres-result">${currentGenres.join(
-                ', '
-              )}</td>
+              <td class="card-modal__genres-result">${currentGenres.join(', ')}</td>
+
               </tr>
               </tbody>
               </table>
-              <h3 class="card-modal__overwiew-title">ABOUT</h3>
+              <p class="card-modal__overwiew-title">ABOUT</p>
           <p class="card-modal__overview">${overview}</p>
-          <div class="card-modal__buttons">
+          <ul class="card-modal__buttons">
+<li class="card-modal__button-item">
           <button class="card-modal__button-add js-addToWatched" type="button">ADD TO WATCHED</button>
+</li>
+<li class="card-modal__button-item">
           <button class="card-modal__button-queue js-addToQueue" type="button">ADD TO QUEUE</button>
+          </li>
         </div>
         </div>
         </div>
