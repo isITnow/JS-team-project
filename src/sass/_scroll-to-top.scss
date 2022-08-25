@@ -2,7 +2,6 @@
     position: fixed;
     bottom: 50px;
     right: 39px;
-    padding: 10px;
     display: none;
     width: 45px;
     height: 45px;
@@ -10,6 +9,7 @@
     cursor: pointer;
     background-image: url(../images/icons8-3d-очки-45.png);
     background-color: inherit;
+    background-repeat: no-repeat;
 
     &:hover {
         animation: hinge;
