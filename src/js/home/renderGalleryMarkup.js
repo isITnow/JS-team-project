@@ -1,8 +1,6 @@
 const galleryItem = document.querySelector('.gallery__list');
 
 export function renderGalleryMarkup(page, results, total_pages, dataAttribute) {
-  console.log(page);
-  console.log(results);
   const markup = results.reduce(
     (
       acc,
