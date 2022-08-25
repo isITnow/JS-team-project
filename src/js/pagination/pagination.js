@@ -24,6 +24,15 @@ function renderPagination(page, results, total_pages) {
 
   let [startPageNumber, endPageNumber] = getStartedAndPages(page);
 
+  let lastel = total_pages - 3
+
+  if(page >= 4 ) {
+    html += `
+    <li class ="pagination__item" data-page="1">1</li>`
+    html += `
+    <li class ="pagination__item">...</li>`
+    
+  }
   for (let i = startPageNumber; i <= endPageNumber; i += 1) {
     html += `
       <li class ="pagination__item" data-page="${i}" >
@@ -31,6 +40,13 @@ function renderPagination(page, results, total_pages) {
       </li>  
       
       `;
+    
+  }
+  if(page >= 3) {
+    html += `
+    <li class ="pagination__item">...</li>`
+    html += `
+    <li class ="pagination__item" data-page="${total_pages}">${total_pages}</li>`
   }
 
   paginationList.innerHTML = html;
@@ -50,46 +66,49 @@ function onClickMyPagination(e) {
   query = myInput.value;
   if (query !== '') {
     fetсhByQuery(query, page)
-      .then(({ page, results }) => {
+      .then(({ page, results, total_pages}) => {
         renderQueryMarkup(results, page);
         localStorage.setItem('queryFilms', JSON.stringify(results));
-        return { page, results };
+        return { page, results, total_pages };
       })
-      .then(({ page, results }) => renderPagination(page, results));
+      .then(({ page, results, total_pages }) => renderPagination(page, results, total_pages));
     return;
   }
   fetchTrending(page)
-    .then(({ page, results }) => {
-      renderGalleryMarkup(results, page);
+    .then(({ page, results, total_pages }) => {
+      renderGalleryMarkup(results, page, total_pages);
       localStorage.setItem('popularFilms', JSON.stringify(results));
-      return { page, results };
+      return { page, results, total_pages };
+      
     })
-    .then(({ page, results }) => renderPagination(page, results));
+    .then(({ page, results, total_pages }) => renderPagination(page, results, total_pages));
 
   makeActive(page);
 }
 
 function onClickMyBtn(e) {
   let page = e.currentTarget.dataset.page;
-  console.log(page);
   query = myInput.value;
   if (query !== '') {
     fetсhByQuery(query, page)
-      .then(({ page, results }) => {
-        renderQueryMarkup(results, page);
-        localStorage.setItem('queryFilms', JSON.stringify(results));
-        return { page, results };
-      })
-      .then(({ page, results }) => renderPagination(page, results));
+    .then(({ page, results, total_pages }) => {
+      
+      renderGalleryMarkup(results, page, total_pages);
+      localStorage.setItem('popularFilms', JSON.stringify(results));
+      return { page, results, total_pages };
+      
+    })
+    .then(({ page, results, total_pages }) => renderPagination(page, results, total_pages));
     return;
   }
   fetchTrending(page)
-    .then(({ page, results }) => {
-      renderGalleryMarkup(results, page);
+    .then(({ page, results, total_pages }) => {
+      renderGalleryMarkup(results, page, total_pages);
       localStorage.setItem('popularFilms', JSON.stringify(results));
-      return { page, results };
+      return { page, results, total_pages };
+      
     })
-    .then(({ page, results }) => renderPagination(page, results));
+    .then(({ page, results, total_pages }) => renderPagination(page, results, total_pages));
   makeActive(page);
 }
 
