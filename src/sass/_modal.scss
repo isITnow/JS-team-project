@@ -1,7 +1,11 @@
+//  *{
+//     outline: 1px solid teal;
+//  }
+
 table {
     table-layout: fixed;
     width: 100%;
-    padding-bottom: 20px;
+   
 }
 
 tr {
@@ -11,36 +15,37 @@ tr {
 }
 
 .modal__container {
-    // position: relative;
+    max-height: 100%;
     display: flex;
-    margin: 0 auto;
-    width: 100%;
-    // padding: 0 20px;
 }
 
 // 1div
 .card-modal__item {
-    // padding: 40px 72px 40px 36px;
+    max-height: 100%;
     display: flex;
-    // flex-direction: row;
-
+    overflow-y: scroll;
 }
 
 // div-img
 .card-modal__image-wrap {
-    // position: relative;
-
-    width: 100%;
-    // margin-bottom: 20px;
+    margin-top: auto;
+    max-height: 100%;
+    margin-bottom: 0;
 }
-
+@media screen and (max-width: 767px) {
+    .card-modal__image-wrap {
+      max-width: 704px;
+      height: 940px;
+      top: 50%;
+      margin-bottom: 20px;
+    }
+  }
 // img
 .card-modal__image {
+    max-height: 100%;
     margin-left: auto;
     margin-right: auto;
-    display: block;
     width: 375px;
-    height: auto;
     border-radius: 5px;
 }
 
@@ -48,7 +53,6 @@ tr {
 .card-modal__film-info {
     table-layout: fixed;
     width: 100%;
-    // padding-bottom: 20px;
 }
 
 .card-modal__title {
@@ -59,25 +63,20 @@ tr {
     text-transform: uppercase;
     margin-bottom: 20px;
     font-weight: bold;
-
     color: #000000;
 }
 
 .card-modal__wrapper {
-    position: relative;
+   max-height: 100%;
     margin-left: 20px;
     margin-right: 16px;
-    width: 100%;
-    // display: inline-flex;    
-    // flex-wrap: wrap;
-    // flex-direction: row;
-    // justify-content: left;
+ max-width: 450px;
 }
 
 .card-modal__film-info {
     table-layout: fixed;
     width: 100%;
-    padding-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .tbody {
@@ -85,7 +84,16 @@ tr {
     vertical-align: middle;
     border-color: inherit;
 }
-
+.card-modal__overwiew-title{
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 16px;
+/* identical to box height, or 133% */
+align-items: center;
+text-transform: uppercase;
+}
 .card-modal__overview {
     font-family: 'Roboto';
     font-style: normal;
@@ -139,17 +147,28 @@ tr {
 
 .card-modal__buttons {
     visibility: visible;
-    // position: absolute;
-    // right: 50px;
     display: flex;
-    z-index: 1;
-}
 
+margin-top: 20px;
+}
+.card-modal__button-item{
+
+}
 .card-modal__button-queue,
 .card-modal__button-add {
+font-family: 'Roboto';
+font-weight: 500;
+font-size: 12px;
+line-height: 16px;
+align-items: center;
+text-align: center;
+text-transform: uppercase;
+    margin-right: 15px;
     background: #FF6B01;
     color: #FFFFFF;
     border-radius: 5px;
     width: 136px;
     height: 44px;
+    border: none;
+    
 }
