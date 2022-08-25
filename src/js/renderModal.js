@@ -49,7 +49,9 @@ export function renderMovieMarkup({
           </tr>
           <tr>
           <td class="card-modal__genres">Genre</td>
-              <td class="card-modal__genres-result">${currentGenres.join(', ')}</td>
+              <td class="card-modal__genres-result">${currentGenres.join(
+                ', '
+              )}</td>
 
               </tr>
               </tbody>
