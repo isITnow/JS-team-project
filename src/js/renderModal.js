@@ -55,7 +55,6 @@ export function renderMovieMarkup({
               <td class="card-modal__genres-result">${
                 currentGenres.join(', ') || 'genre information missing'
               }</td>
-
               </tr>
               </tbody>
               </table>
