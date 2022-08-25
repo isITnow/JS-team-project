@@ -55,8 +55,8 @@ const refs = {
   btnAddToQueue: document.querySelector('.card-modal__button-queue'),
 };
 
-// refs.openCardModal.addEventListener('click', onOpenCardModal);
-// refs.closeCardModal.addEventListener('click', onCloseCardModal);
+refs.openCardModal.addEventListener('click', onOpenCardModal);
+refs.closeCardModal.addEventListener('click', onCloseCardModal);
 refs.backdrop.addEventListener('click', onBackdropClickCloseModal);
 // refs.btnAddToWatched.addEventListener('click', onAddToWatched);
 // refs.btnAddToQueue.addEventListener('click', onAddToQueue);
