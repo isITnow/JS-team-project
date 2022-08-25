@@ -1,11 +1,15 @@
-import { addWatchedToLocalStorage } from '../library/localStorage';
-import { addQueueToLocalStorage } from '../library/localStorage';
+// import { addWatchedToLocalStorage } from '../library/localStorage';
+// import { addQueueToLocalStorage } from '../library/localStorage';
 
 export function onAddToWatched(data, storageKey) {
   setToLocalStorage(data, storageKey);
 }
 
 export function onAddToQueue(data, storageKey) {
+  setToLocalStorage(data, storageKey);
+}
+
+export function setToLibrary(data, storageKey) {
   setToLocalStorage(data, storageKey);
 }
 

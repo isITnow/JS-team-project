@@ -2,6 +2,7 @@ import { fetchByID } from '../api/fetch';
 import { renderMovieMarkup } from '../renderModal';
 import { onAddToWatched } from '../modal/modalBtnFunction';
 import { onAddToQueue } from '../modal/modalBtnFunction';
+import { setToLibrary } from '../modal/modalBtnFunction';
 
 // Логіка що працює на модалку команди;
 
@@ -82,7 +83,6 @@ function onOpenCardModal(event) {
     currentMovie = querygArr.find(item => item.id === movieId);
     renderMovieMarkup(currentMovie);
   }
-  console.log(refs.cardModal);
 
   const modalBtns = document.querySelector('.card-modal__buttons');
   modalBtns.addEventListener('click', onModalBtnClick);
@@ -91,9 +91,11 @@ function onOpenCardModal(event) {
 function onModalBtnClick(evt) {
   if (evt.target.classList.contains('js-addToWatched')) {
     onAddToWatched(currentMovie, 'watchedMovies');
+    setToLibrary(currentMovie, 'library');
   }
   if (evt.target.classList.contains('js-addToQueue')) {
     onAddToQueue(currentMovie, 'queueMovies');
+    setToLibrary(currentMovie, 'library');
   }
 }
 

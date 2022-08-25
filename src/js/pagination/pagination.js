@@ -1,7 +1,7 @@
 export { renderPagination };
 import { fetchTrending } from '../api/fetch';
 import { renderGalleryMarkup } from '../home/renderGalleryMarkup';
-import { renderQueryMarkup } from '../home/renderGalleryMarkup';
+// import { renderQueryMarkup } from '../home/renderGalleryMarkup';
 import { fetсhByQuery } from '../api/fetch';
 
 const paginationList = document.querySelector('.pagination__list');
@@ -27,14 +27,13 @@ function renderPagination(page, results, total_pages) {
 
   let [startPageNumber, endPageNumber] = getStartedAndPages(page);
 
-  let lastel = total_pages - 3
+  let lastel = total_pages - 3;
 
-  if(window.innerWidth >= 768 && page >= 5 ) {
+  if (window.innerWidth >= 768 && page >= 5) {
     html += `
-    <li class ="pagination__item" data-page="1">1</li>`
+    <li class ="pagination__item" data-page="1">1</li>`;
     html += `
-    <li class ="pagination__item">...</li>`
-    
+    <li class ="pagination__item">...</li>`;
   }
   for (let i = startPageNumber; i <= endPageNumber; i += 1) {
     html += `
@@ -43,33 +42,40 @@ function renderPagination(page, results, total_pages) {
       </li>  
       
       `;
-    
   }
-  if(window.innerWidth >= 768 && page >= 1) {
+  if (window.innerWidth >= 768 && page >= 1) {
     html += `
-    <li class ="pagination__item">...</li>`
+    <li class ="pagination__item">...</li>`;
     html += `
-    <li class ="pagination__item" data-page="${total_pages}">${total_pages}</li>`
+    <li class ="pagination__item" data-page="${total_pages}">${total_pages}</li>`;
   }
-  if( window.innerWidth >= 768 && page >= lastel) {
+  if (window.innerWidth >= 768 && page >= lastel) {
     html = `
     <li class ="pagination__item" data-page="1">1</li>
     <li class ="pagination__item">...</li>
-    <li class ="pagination__item" data-page="${total_pages - 4}">${total_pages - 4}</li>
-    <li class ="pagination__item" data-page="${total_pages - 3}">${total_pages - 3}</li>
-    <li class ="pagination__item" data-page="${total_pages - 2}">${total_pages - 2}</li>
-    <li class ="pagination__item" data-page="${total_pages - 1}">${total_pages - 1}</li>
+    <li class ="pagination__item" data-page="${total_pages - 4}">${
+      total_pages - 4
+    }</li>
+    <li class ="pagination__item" data-page="${total_pages - 3}">${
+      total_pages - 3
+    }</li>
+    <li class ="pagination__item" data-page="${total_pages - 2}">${
+      total_pages - 2
+    }</li>
+    <li class ="pagination__item" data-page="${total_pages - 1}">${
+      total_pages - 1
+    }</li>
     <li class ="pagination__item" data-page="${total_pages}">${total_pages}</li>
-    `
+    `;
   }
   if (page === total_pages) {
     btnRight.disabled = true;
-    btnRight.classList.add('disabled')
+    btnRight.classList.add('disabled');
   } else {
     btnRight.disabled = false;
-    btnRight.classList.remove('disabled')
+    btnRight.classList.remove('disabled');
   }
-  
+
   paginationList.innerHTML = html;
   btnRight.dataset.page = page + 1;
   btnLeft.dataset.page = page - 1;
@@ -80,7 +86,7 @@ function renderPagination(page, results, total_pages) {
 
 function onClickMyPagination(e) {
   e.preventDefault();
-  scrollToTop()
+  scrollToTop();
   if (e.target.nodeName !== 'LI') {
     return;
   }
@@ -88,47 +94,54 @@ function onClickMyPagination(e) {
   query = myInput.value;
   if (query !== '') {
     fetсhByQuery(query, page)
-      .then(({ page, results, total_pages}) => {
-        renderQueryMarkup(results, page);
+      .then(({ page, results, total_pages }) => {
+        renderGalleryMarkup(page, results, total_pages, 'data-query');
         localStorage.setItem('queryFilms', JSON.stringify(results));
         return { page, results, total_pages };
       })
-      .then(({ page, results, total_pages }) => renderPagination(page, results, total_pages));
+      .then(({ page, results, total_pages }) =>
+        renderPagination(page, results, total_pages)
+      );
     return;
   }
   fetchTrending(page)
     .then(({ page, results, total_pages }) => {
-      renderGalleryMarkup(results, page, total_pages);
+      renderGalleryMarkup(page, results, total_pages, 'data-trending');
       localStorage.setItem('popularFilms', JSON.stringify(results));
       return { page, results, total_pages };
-      
     })
-    .then(({ page, results, total_pages }) => renderPagination(page, results, total_pages));
+    .then(({ page, results, total_pages }) =>
+      renderPagination(page, results, total_pages)
+    );
 
   makeActive(page);
 }
 
 function onClickMyBtn(e) {
-  scrollToTop()
+  scrollToTop();
   let page = e.currentTarget.dataset.page;
   query = myInput.value;
   if (query !== '') {
     fetсhByQuery(query, page)
-    .then(({ page, results, total_pages }) => {
-      renderGalleryMarkup(results, page, total_pages);
-      localStorage.setItem('popularFilms', JSON.stringify(results));
-      return { page, results, total_pages };
-    })
-    .then(({ page, results, total_pages }) => renderPagination(page, results, total_pages));
+      .then(({ page, results, total_pages }) => {
+        renderGalleryMarkup(page, results, total_pages, 'data-query');
+        localStorage.setItem('queryFilms', JSON.stringify(results));
+        return { page, results, total_pages };
+      })
+      .then(({ page, results, total_pages }) =>
+        renderPagination(page, results, total_pages)
+      );
     return;
   }
   fetchTrending(page)
     .then(({ page, results, total_pages }) => {
-      renderGalleryMarkup(results, page, total_pages);
+      renderGalleryMarkup(page, results, total_pages, 'data-trending');
       localStorage.setItem('popularFilms', JSON.stringify(results));
-      return { page, results, total_pages }; 
+      return { page, results, total_pages };
     })
-    .then(({ page, results, total_pages }) => renderPagination(page, results, total_pages));
+    .then(({ page, results, total_pages }) =>
+      renderPagination(page, results, total_pages)
+    );
   makeActive(page);
 }
 
@@ -147,11 +160,11 @@ function makeActive(page) {
 
 function getStartedAndPages(page) {
   if (window.innerWidth >= 320 && page < 3) {
-     startPageNumber = 1;
-     endPageNumber = 5;
+    startPageNumber = 1;
+    endPageNumber = 5;
   } else {
-     startPageNumber = page - 2;
-     endPageNumber = page + 2;
+    startPageNumber = page - 2;
+    endPageNumber = page + 2;
   }
   return [startPageNumber, endPageNumber];
 }
@@ -164,7 +177,6 @@ function disabledBtn(page) {
     btnLeft.disabled = false;
     btnLeft.classList.remove('disabled');
   }
-  
 }
 
 function scrollToTop() {
