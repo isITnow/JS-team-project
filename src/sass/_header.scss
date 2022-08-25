@@ -77,7 +77,8 @@
 .menu__items {
     margin-right: 39px;
 
-    &:hover {
+    &:hover,
+    &:focus {
         animation: rubberBand;
         animation-duration: 2s;
     }
@@ -93,7 +94,8 @@
         color: #ffffff;
     }
 
-    &:hover {
+    &:hover,
+    &:focus {
         color: #ff001b;
 
         transition-property: color;
@@ -126,7 +128,8 @@
 .logo-text {
     display: none;
 
-    &:hover {
+    &:hover,
+    &:focus {
         animation: rubberBand;
         animation-duration: 2s;
     }

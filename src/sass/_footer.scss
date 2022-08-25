@@ -1,13 +1,32 @@
 .page-footer {
   background-color: rgba(247, 247, 247, 1);
-  padding-top: 29px;
-  padding-bottom: 29px;
-  // position: fixed;
-  // bottom: 0;
+  height: 100px;
+  display: flex;
+  align-items: center;
 
   @media screen and (min-width: 768px) {
-    padding-top: 30px;
-    padding-bottom: 30px;
+    height: 79px;
+  }
+  @media screen and (min-width: 1280px) {
+    height: 77px;
+  }
+
+  &__container {
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 20px;
+    @media screen and (min-width: 320px) {
+      max-width: 320px;
+    }
+
+    @media screen and (min-width: 768px) {
+      max-width: 768px;
+      padding: 0 32px;
+    }
+
+    @media screen and (min-width: 1280px) {
+      max-width: 1280px;
+    }
   }
 
   &__wrapper {
@@ -20,6 +39,7 @@
       max-width: 500px;
     }
   }
+
   &__text {
     font-family: inherit;
     font-weight: 400;
@@ -42,8 +62,10 @@
     animation-duration: 3s;
     animation-iteration-count: infinite;
   }
+
   &__link {
     text-decoration: underline;
     color: $footer-text-color;
+    text-decoration-color: #ff6b08;
   }
 }
