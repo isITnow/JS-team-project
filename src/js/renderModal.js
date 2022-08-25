@@ -18,24 +18,52 @@ export function renderMovieMarkup({
       currentGenres.push(item.name);
     }
   });
-  modalForm.innerHTML = `<div class="card-modal__item">
-  <h2 class="card-modal__title">${title}</h2>
-        <img width="50" class="card-modal__image" src="https://image.tmdb.org/t/p/original${poster_path}" alt="${
-    title || name
-  }"/><p class="card-modal__rating">Vote/Votes</p><span class="card-modal__rating-result">${vote_average.toFixed(
+  modalForm.innerHTML = `
+  <div class="card-modal__item">
+  <div class="card-modal__image-wrap">
+  
+        <img width="50" class="card-modal__image" src="https://image.tmdb.org/t/p/original${poster_path}" alt="${title || name}"/>
+        </div>
+        <div class="card-modal__wrapper">
+        <h2 class="card-modal__title">${title}</h2>
+        <table class="card-modal__film-info">
+        <tbody>
+  <tr>
+  <td class="card-modal__rating">Vote/Votes</td>
+  <td class="card-modal__rating-result"><span class="card-modal__rating-result-span">${vote_average.toFixed(
     1
-  )}/</span>
-          <span class="card-modal__rating-multiply">${vote_count}</span>
-          <p class="card-modal__popularity">Popularity</p><span class="card-modal__popularity-result">${popularity.toFixed(
+  )}</span>  / ${vote_count}</td>
+          </tr>
+          <tr>
+          <td class="card-modal__popularity">Popularity</td>
+         
+          <td class="card-modal__popularity-result">${popularity.toFixed(
             1
-          )}</span>
-          <p class="card-modal__origin-title">Original Title</p><span class="card-modal__origin-title-result">${original_title}</span>
-          <p class="card-modal__genres">Genre</p>
-              <span class="card-modal__genres-result">${
+          )}</td>
+          </tr>
+          <tr>
+          <td class="card-modal__origin-title">Original Title</td>
+          <td class="card-modal__origin-title-result">${original_title}</td>
+          </tr>
+          <tr>
+          <td class="card-modal__genres">Genre</td>
+              <td class="card-modal__genres-result">${
                 currentGenres.length > 3
                   ? currentGenres.splice(0, 2).join(', ') + ', Others'
                   : currentGenres.join(', ')
-              }</span>
+              }</td>
+              </tr>
+              </tbody>
+              </table>
+              <h3 class="card-modal__overwiew-title">ABOUT</h3>
           <p class="card-modal__overview">${overview}</p>
-          </div>`;
+          <div class="card-modal__buttons">
+          <button class="card-modal__button-add" type="button">ADD TO WATCHED</button>
+          <button class="card-modal__button-queue" type="button">ADD TO QUEUE</button>
+        </div>
+        </div>
+        </div>
+          </div>
+          
+          `;
 }

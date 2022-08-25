@@ -1,12 +1,84 @@
-
+*{
+    outline: 1px solid teal;
+}
+table {
+    table-layout: fixed;
+    width: 100%;
+    padding-bottom: 20px;
+}
+tr{
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+.modal__container{
+    // position: relative;
+ display: flex;
+    margin: 0 auto;
+    width: 100%;
+    // padding: 0 20px;
+}
+// 1div
 .card-modal__item {
+    // padding: 40px 72px 40px 36px;
     display: flex;
+    // flex-direction: row;
+
+}
+// div-img
+.card-modal__image-wrap{
+// position: relative;
+
+    width: 100%;
+    // margin-bottom: 20px;
+}
+// img
+.card-modal__image {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 375px;
+    height: auto;
+    border-radius: 5px;
+}
+// div with table and other writed info
+.card-modal__film-info{
+    table-layout: fixed;
+    width: 100%;
+    // padding-bottom: 20px;
+}
+.card-modal__title{
+    font-size: 30px;
+    line-height: 1.16;
+    display: block;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-weight: bold;
+
+color: #000000;
+}
+.card-modal__wrapper{
+    position: relative;
+    margin-left: 20px;
+    margin-right: 16px;
+    width: 100%;
+    // display: inline-flex;    
+    // flex-wrap: wrap;
+    // flex-direction: row;
+    // justify-content: left;
+   }
+.card-modal__film-info{
+    table-layout: fixed;
+    width: 100%;
+    padding-bottom: 20px;
+}
+.tbody{
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
 }
 
-.card-modal__image {
-    width: 375px;
-    height: 426px;
-}
 .card-modal__overview{
 font-family: 'Roboto';
 font-style: normal;
@@ -15,9 +87,8 @@ font-size: 12px;
 line-height: 20px;
 color: #000000;
 }
-
+.card-modal__rating-result-span,
 .card-modal__rating-multiply,
-.card-modal__popularity-result,
 .card-modal__popularity-result,
 .card-modal__origin-title-result,
 .card-modal__genres-result,
@@ -29,23 +100,25 @@ font-size: 12px;
 line-height: 14px;
 color: #000000;
 }
+.card-modal__rating-result-span{
+   background-color:  #ff6b08;
+   color: #FFFFFF;
+   border-radius: 5px;
+   padding-right: 5px;
+   padding-left: 5px;
+   align-items: center;
+text-align: center;
+}
 .card-modal__genres-result{
     line-height: 16px;
 }
-.card-modal__title{
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 500;
-font-size: 30px;
-line-height: 35px;
 
-color: #000000;
-}
 
 .card-modal__genres,
 .card-modal__origin-title,
 .card-modal__rating,
 .card-modal__popularity {
+width: 100px;
 font-family: 'Roboto';
 font-style: normal;
 font-weight: 500;
@@ -53,7 +126,13 @@ font-size: 12px;
 line-height: 16px;
 color: #8C8C8C;
 }
-
+.card-modal__buttons{
+    visibility: visible;
+    // position: absolute;
+    // right: 50px;
+    display: flex;
+    z-index: 1;
+}
 .card-modal__button-queue,
 .card-modal__button-add {
     background: #FF6B01;
