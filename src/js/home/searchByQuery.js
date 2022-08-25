@@ -29,7 +29,7 @@ function onSearchSubmit(evt) {
       }
       renderQueryMarkup(data.results);
       localStorage.setItem('queryFilms', JSON.stringify(data.results));
-      return { page, data };
+      return { page, data};
     })
-    .then(({ page, data }) => renderPagination(page, data.results));
+    .then(({ page, data }) => renderPagination(page, data.results, data.total_pages));
 }
