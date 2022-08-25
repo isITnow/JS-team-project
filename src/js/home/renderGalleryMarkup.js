@@ -14,11 +14,14 @@ export function renderGalleryMarkup(results, page, total_pages) {
         }
       });
 
+      poster_path = poster_path
+        ? 'https://image.tmdb.org/t/p/original' + poster_path
+        : 'https://i.ibb.co/SwmHkLf/zaglushka.jpg';
       return (
         acc +
         `<li class="gallery__item" id=${id} data-trending>
           <div class="gallery__link">
-              <img class="gallery__image" src="https://image.tmdb.org/t/p/original${poster_path}" alt="${
+              <img class="gallery__image" src="${poster_path}" alt="${
           title || name
         }" width="394" height ="335"/> 
         </div>
@@ -59,12 +62,14 @@ export function renderQueryMarkup(results, page, total_pages) {
           currentGenres.push(item.name);
         }
       });
-
+      poster_path = poster_path
+        ? 'https://image.tmdb.org/t/p/original' + poster_path
+        : 'https://i.ibb.co/SwmHkLf/zaglushka.jpg';
       return (
         acc +
         `<li class="gallery__item" id=${id} data-query>
           <div class="gallery__link">
-              <img class="gallery__image" src="https://image.tmdb.org/t/p/original${poster_path}" alt="${
+              <img class="gallery__image" src="${poster_path}" alt="${
           title || name
         }" width="394" height ="335"/> 
         </div>
