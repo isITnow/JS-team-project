@@ -65,6 +65,9 @@ refs.backdrop.addEventListener('click', onBackdropClickCloseModal);
 
 function onOpenCardModal(event) {
   event.preventDefault();
+  refs.cardModal.classList.remove('is-hidden');
+  window.addEventListener('keydown', onEscapeCloseModal);
+  window.addEventListener('click', onBackdropClickCloseModal);
   const movieId = Number(event.target.closest('.gallery__item').id);
   if (event.currentTarget.nodeName !== 'UL') {
     return;
@@ -79,11 +82,6 @@ function onOpenCardModal(event) {
     const querygObj = querygArr.find(item => item.id === movieId);
     renderMovieMarkup(querygObj);
   }
-
-  refs.cardModal.classList.remove('is-hidden');
-
-  window.addEventListener('keydown', onEscapeCloseModal);
-  window.addEventListener('click', onBackdropClickCloseModal);
 }
 
 ///////////////MODAL CLOSE//////////////

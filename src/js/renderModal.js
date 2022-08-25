@@ -22,7 +22,9 @@ export function renderMovieMarkup({
   <div class="card-modal__item">
   <div class="card-modal__image-wrap">
   
-        <img width="50" class="card-modal__image" src="https://image.tmdb.org/t/p/original${poster_path}" alt="${title || name}"/>
+        <img width="50" class="card-modal__image" src="https://image.tmdb.org/t/p/original${poster_path}" alt="${
+    title || name
+  }"/>
         </div>
         <div class="card-modal__wrapper">
         <h2 class="card-modal__title">${title}</h2>
@@ -47,11 +49,9 @@ export function renderMovieMarkup({
           </tr>
           <tr>
           <td class="card-modal__genres">Genre</td>
-              <td class="card-modal__genres-result">${
-                currentGenres.length > 3
-                  ? currentGenres.splice(0, 2).join(', ') + ', Others'
-                  : currentGenres.join(', ')
-              }</td>
+              <td class="card-modal__genres-result">${currentGenres.join(
+                ', '
+              )}</td>
               </tr>
               </tbody>
               </table>
