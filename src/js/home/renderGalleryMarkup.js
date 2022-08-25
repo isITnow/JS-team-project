@@ -28,8 +28,8 @@ export function renderGalleryMarkup(results, page, total_pages) {
               <span class="gallery__genr"> ${
                 currentGenres.length > 3
                   ? currentGenres.splice(0, 2).join(', ') + ', Others'
-                  : currentGenres.join(', ')
-              }</span> | 
+                  : currentGenres.join(', ') || 'No information'
+              } ${genre_ids ? '|' : 'no information'}</span> | 
                   <span class="gallery__release">${
                     release_date ? release_date.slice(0, 4) : 'no data'
                   }</span>
@@ -74,8 +74,8 @@ export function renderQueryMarkup(results, page, total_pages) {
               <span class="gallery__genr"> ${
                 currentGenres.length > 3
                   ? currentGenres.splice(0, 2).join(', ') + ', Others'
-                  : currentGenres.join(', ')
-              } </span> | 
+                  : currentGenres.join(', ') || 'No information'
+              } </span> |
                   <span class="gallery__release">${
                     release_date ? release_date.slice(0, 4) : 'no data'
                   }</span>
