@@ -23,12 +23,27 @@ body.dark-theme {
         color: #837070;
     }
 }
+.theme-container {
+    margin: 0 auto;
+    width: 320px;
+    padding: 0 20px;
+
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+        width: 768px;
+        padding: 0 20px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        width: 1280px;
+        padding: 0 20px;
+    }
+}
 
 .theme {
     position: absolute;
     display: flex;
     justify-content: flex-end;
-    padding: 16px 24px;
+    padding: 16px 50px;
     right: 0;
     top: 150px;
 }
@@ -40,8 +55,8 @@ body.dark-theme {
 
 .theme-switch__img {
     color: currentColor;
-    margin-right: 8px;
-    margin-left: 8px;
+    margin-right: 10px;
+    margin-left: 15px;
 }
 
 .theme-switch__hand {
@@ -70,12 +85,12 @@ body.dark-theme {
 .theme-switch__label {
     position: absolute;
     left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
+    top: -4px;
+    width: 40px;
+    height: 25px;
     color: transparent;
     user-select: none;
-    background-color: #ff6b08;
+    background-color: #af481fcb;
     border-radius: inherit;
     z-index: 1;
     cursor: pointer;
@@ -84,8 +99,8 @@ body.dark-theme {
 .theme-switch__mark {
     position: relative;
     background-color: #fff;
-    width: 13px;
-    height: 13px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
     z-index: 2;
     pointer-events: none;

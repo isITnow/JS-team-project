@@ -1,6 +1,6 @@
 const galleryItem = document.querySelector('.gallery__list');
 
-export function renderGalleryMarkup(results, page,  total_pages) {
+export function renderGalleryMarkup(results, page, total_pages) {
   const markup = results.reduce(
     (
       acc,
@@ -43,7 +43,7 @@ export function renderGalleryMarkup(results, page,  total_pages) {
     ''
   );
   galleryItem.innerHTML = markup;
-  return { results, page,total_pages };
+  return { results, page, total_pages };
 }
 
 export function renderQueryMarkup(results, page, total_pages) {
@@ -75,7 +75,7 @@ export function renderQueryMarkup(results, page, total_pages) {
                 currentGenres.length > 3
                   ? currentGenres.splice(0, 2).join(', ') + ', Others'
                   : currentGenres.join(', ')
-              }</span> | 
+              } </span> | 
                   <span class="gallery__release">${
                     release_date ? release_date.slice(0, 4) : 'no data'
                   }</span>

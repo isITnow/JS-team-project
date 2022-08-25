@@ -3,30 +3,13 @@
   height: 100px;
   display: flex;
   align-items: center;
+  justify-content: center;
 
   @media screen and (min-width: 768px) {
     height: 79px;
   }
   @media screen and (min-width: 1280px) {
     height: 77px;
-  }
-
-  &__container {
-    margin: 0 auto;
-    width: 100%;
-    padding: 0 20px;
-    @media screen and (min-width: 320px) {
-      max-width: 320px;
-    }
-
-    @media screen and (min-width: 768px) {
-      max-width: 768px;
-      padding: 0 32px;
-    }
-
-    @media screen and (min-width: 1280px) {
-      max-width: 1280px;
-    }
   }
 
   &__wrapper {
