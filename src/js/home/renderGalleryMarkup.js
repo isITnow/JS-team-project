@@ -46,7 +46,6 @@ export function renderGalleryMarkup(page, results, total_pages, dataAttribute) {
     ''
   );
   galleryItem.innerHTML = markup;
-  console.log(dataAttribute);
   return { page, results, total_pages, dataAttribute };
 }
 
