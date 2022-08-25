@@ -9,6 +9,9 @@ const btnLeft = document.querySelector('.pagination__btn--left');
 const btnRight = document.querySelector('.pagination__btn--rigth');
 const myInput = document.querySelector('.search__input');
 const myBtns = document.querySelectorAll('.pagination__btn');
+
+let startPageNumber;
+let endPageNumber;
 let query = '';
 
 paginationList.addEventListener('click', onClickMyPagination);
@@ -26,7 +29,7 @@ function renderPagination(page, results, total_pages) {
 
   let lastel = total_pages - 3
 
-  if(page >= 5 ) {
+  if(window.innerWidth >= 768 && page >= 5 ) {
     html += `
     <li class ="pagination__item" data-page="1">1</li>`
     html += `
@@ -42,13 +45,13 @@ function renderPagination(page, results, total_pages) {
       `;
     
   }
-  if(page >= 1) {
+  if(window.innerWidth >= 768 && page >= 1) {
     html += `
     <li class ="pagination__item">...</li>`
     html += `
     <li class ="pagination__item" data-page="${total_pages}">${total_pages}</li>`
   }
-  if(page >= lastel) {
+  if( window.innerWidth >= 768 && page >= lastel) {
     html = `
     <li class ="pagination__item" data-page="1">1</li>
     <li class ="pagination__item">...</li>
@@ -77,6 +80,7 @@ function renderPagination(page, results, total_pages) {
 
 function onClickMyPagination(e) {
   e.preventDefault();
+  scrollToTop()
   if (e.target.nodeName !== 'LI') {
     return;
   }
@@ -105,16 +109,15 @@ function onClickMyPagination(e) {
 }
 
 function onClickMyBtn(e) {
+  scrollToTop()
   let page = e.currentTarget.dataset.page;
   query = myInput.value;
   if (query !== '') {
     fetсhByQuery(query, page)
     .then(({ page, results, total_pages }) => {
-      
       renderGalleryMarkup(results, page, total_pages);
       localStorage.setItem('popularFilms', JSON.stringify(results));
       return { page, results, total_pages };
-      
     })
     .then(({ page, results, total_pages }) => renderPagination(page, results, total_pages));
     return;
@@ -123,8 +126,7 @@ function onClickMyBtn(e) {
     .then(({ page, results, total_pages }) => {
       renderGalleryMarkup(results, page, total_pages);
       localStorage.setItem('popularFilms', JSON.stringify(results));
-      return { page, results, total_pages };
-      
+      return { page, results, total_pages }; 
     })
     .then(({ page, results, total_pages }) => renderPagination(page, results, total_pages));
   makeActive(page);
@@ -145,16 +147,16 @@ function makeActive(page) {
 
 function getStartedAndPages(page) {
   if (window.innerWidth >= 320 && page < 3) {
-    var startPageNumber = 1;
-    var endPageNumber = 5;
+     startPageNumber = 1;
+     endPageNumber = 5;
   } else {
-    var startPageNumber = page - 2;
-    var endPageNumber = page + 2;
+     startPageNumber = page - 2;
+     endPageNumber = page + 2;
   }
   return [startPageNumber, endPageNumber];
 }
 
-function disabledBtn(page, results) {
+function disabledBtn(page) {
   if (page === 1) {
     btnLeft.disabled = true;
     btnLeft.classList.add('disabled');
@@ -163,4 +165,11 @@ function disabledBtn(page, results) {
     btnLeft.classList.remove('disabled');
   }
   
+}
+
+function scrollToTop() {
+  window.scrollTo({
+    top: 220,
+    behavior: 'smooth',
+  });
 }
