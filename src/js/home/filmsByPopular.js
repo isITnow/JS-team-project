@@ -21,7 +21,7 @@ checkGenresLocalStorage();
 fetchTrending(page)
   .then(({ page, results, total_pages }) => {
     loaderToggle();
-    renderGalleryMarkup(results, page, total_pages);
+    renderGalleryMarkup(page, results, total_pages, 'data-trending');
     localStorage.setItem('popularFilms', JSON.stringify(results));
     return { page, results, total_pages };
   })
