@@ -1,5 +1,7 @@
 import { fetchByID } from '../api/fetch';
 import { renderMovieMarkup } from '../renderModal';
+// import { onAddToWatched } from '../modal/modalBtnFunction';
+// import { onAddToQueue } from '../modal/modalBtnFunction';
 
 // Логіка що працює на модалку команди;
 
@@ -56,21 +58,35 @@ const refs = {
 refs.openCardModal.addEventListener('click', onOpenCardModal);
 refs.closeCardModal.addEventListener('click', onCloseCardModal);
 refs.backdrop.addEventListener('click', onBackdropClickCloseModal);
-refs.btnAddToWatched.addEventListener('click', onAddToWatched);
-refs.btnAddToQueue.addEventListener('click', onAddToQueue);
+// refs.btnAddToWatched.addEventListener('click', onAddToWatched);
+// refs.btnAddToQueue.addEventListener('click', onAddToQueue);
+
+////////MODAL OPEN//////////////////
 
 function onOpenCardModal(event) {
   event.preventDefault();
-  const id = event.target.closest('.gallery__item').id;
+  const movieId = Number(event.target.closest('.gallery__item').id);
   if (event.currentTarget.nodeName !== 'UL') {
     return;
   }
-  fetchByID(id).then(data => renderMovieMarkup(data));
+  if (event.target.closest('[data-trending]')) {
+    const trendingArr = JSON.parse(localStorage.getItem('popularFilms'));
+    const trendingObj = trendingArr.find(item => item.id === movieId);
+    renderMovieMarkup(trendingObj);
+  }
+  if (event.target.closest('[data-query]')) {
+    const querygArr = JSON.parse(localStorage.getItem('queryFilms'));
+    const querygObj = querygArr.find(item => item.id === movieId);
+    renderMovieMarkup(querygObj);
+  }
+
   refs.cardModal.classList.remove('is-hidden');
 
   window.addEventListener('keydown', onEscapeCloseModal);
   window.addEventListener('click', onBackdropClickCloseModal);
 }
+
+///////////////MODAL CLOSE//////////////
 
 function onCloseCardModal() {
   refs.cardModal.classList.add('is-hidden');
@@ -91,33 +107,7 @@ function onBackdropClickCloseModal(event) {
     onCloseCardModal();
   }
 }
-<<<<<<< Updated upstream
-function onAddToWatched(event) {
-  if (event.currentTarget === event.target) {
-    console.log('ok1');
-    event.target.textContent = 'REMOVE';
-  }
-}
 
-function onAddToQueue(event) {
-  if (event.currentTarget === event.target) {
-    console.log('ok2');
-    event.target.textContent = 'REMOVE';
-  }
-}
-function addEventListener() {
-  window.addEventListener('keydown', onEscapeCloseModal);
-  window.addEventListener('click', onBackdropClickCloseModal);
-  window.addEventListener('click', onAddToWatched);
-  window.addEventListener('click', onAddToQueue);
-}
-function removeEventListener() {
-  window.removeEventListener('keydown', onEscapeCloseModal);
-  window.removeEventListener('click', onBackdropClickCloseModal);
-  window.removeEventListener('click', onAddToWatched);
-  window.removeEventListener('click', onAddToQueue);
-}
-=======
 // function onAddToWatched(event) {
 //   if (event.currentTarget === event.target) {
 //     console.log('ok1');
@@ -131,4 +121,3 @@ function removeEventListener() {
 //     event.target.textContent = 'REMOVE';
 //   }
 // }
->>>>>>> Stashed changes

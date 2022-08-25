@@ -2,8 +2,12 @@ html {
   scroll-behavior: smooth;
 }
 
+main {
+  min-height: 450px;
+}
+
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   overflow-x: hidden;
 }
 
@@ -21,10 +25,10 @@ ul {
   margin-top: 0;
   margin-bottom: 0;
   padding-left: 0;
+}
 
-  li {
-    list-style: none;
-  }
+li {
+  list-style: none;
 }
 
 a {
@@ -45,4 +49,10 @@ a {
   clip-path: inset(100%);
   clip: rect(0 0 0 0);
   overflow: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
