@@ -48,14 +48,3 @@ export function fetсhByQuery(query, page) {
       }, 500)
     );
 }
-
-// export function fetchByID(id) {
-//   return fetch(`${BASE_URL}/movie/${id}?${API_KEY}&language=en-US`)
-//     .then(resp => {
-//       if (!resp.ok) {
-//         throw new Error(resp.status);
-//       }
-//       return resp.json();
-//     })
-//     .catch(error => console.log(error));
-// }

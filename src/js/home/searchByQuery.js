@@ -1,8 +1,9 @@
 import { fetсhByQuery } from '../api/fetch';
-import { renderQueryMarkup } from './renderGalleryMarkup';
+import { renderGalleryMarkup } from './renderGalleryMarkup';
 import { renderPagination } from '../pagination/pagination';
 const warningEl = document.querySelector('.warning-notify');
 const formEl = document.querySelector('#form-search');
+const paginationEl = document.querySelector('.pagination__container');
 
 formEl.addEventListener('submit', onSearchSubmit);
 let page = 1;
@@ -19,17 +20,21 @@ function onSearchSubmit(evt) {
     return;
   }
   fetсhByQuery(query, page)
-    .then(data => {
-      if (!data.results.length) {
+    .then(({ page, results, total_pages }) => {
+      if (!results.length) {
         warningEl.classList.remove('visually-hidden');
         setTimeout(() => {
           warningEl.classList.add('visually-hidden');
         }, 5000);
+        paginationEl.classList.add('visually-hidden');
         return;
       }
-      renderQueryMarkup(data.results);
-      localStorage.setItem('queryFilms', JSON.stringify(data.results));
-      return { page, data};
+      paginationEl.classList.remove('visually-hidden');
+      renderGalleryMarkup(page, results, total_pages, 'data-query');
+      localStorage.setItem('queryFilms', JSON.stringify(results));
+      return { page, results, total_pages };
     })
-    .then(({ page, data }) => renderPagination(page, data.results, data.total_pages));
+    .then(({ page, results, total_pages }) =>
+      renderPagination(page, results, total_pages)
+    );
 }

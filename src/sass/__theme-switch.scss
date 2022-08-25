@@ -22,6 +22,27 @@ body.dark-theme {
     & .page-footer__link {
         color: #837070;
     }
+
+    & .cinema-bcg {
+        background-image: url(https://i.gifer.com/PmUK.gif);
+        background-size: cover;
+    }
+
+    // & .command__item {
+    //     background-color: black;
+    // }
+
+    & .command__role {
+        color: #fff;
+    }
+
+    & .inner__info {
+        background-color: #000000;
+    }
+
+    & .wrapper__title {
+        color: #fff;
+    }
 }
 .theme-container {
     margin: 0 auto;
