@@ -17,10 +17,10 @@ function checkGenresLocalStorage() {
 checkGenresLocalStorage();
 
 fetchTrending(page)
-  .then(({ page, results }) => {
-    renderGalleryMarkup(results, page);
+  .then(({ page, results, total_pages }) => {
+    renderGalleryMarkup(results, page, total_pages);
     localStorage.setItem('popularFilms', JSON.stringify(results));
-    return { page, results };
+    return { page, results, total_pages };
   })
-  .then(({ page, results }) => renderPagination(page, results));
+  .then(({ page, results, total_pages }) => renderPagination(page, results, total_pages));
 // добавить дату в лс

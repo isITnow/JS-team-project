@@ -1,6 +1,6 @@
 const galleryItem = document.querySelector('.gallery__list');
 
-export function renderGalleryMarkup(results, page) {
+export function renderGalleryMarkup(results, page,  total_pages) {
   const markup = results.reduce(
     (
       acc,
@@ -43,10 +43,10 @@ export function renderGalleryMarkup(results, page) {
     ''
   );
   galleryItem.innerHTML = markup;
-  return { results, page };
+  return { results, page,total_pages };
 }
 
-export function renderQueryMarkup(results, page) {
+export function renderQueryMarkup(results, page, total_pages) {
   const markup = results.reduce(
     (
       acc,
@@ -89,5 +89,5 @@ export function renderQueryMarkup(results, page) {
     ''
   );
   galleryItem.innerHTML = markup;
-  return { results, page };
+  return { results, page, total_pages };
 }
