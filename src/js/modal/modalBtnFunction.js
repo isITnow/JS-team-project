@@ -23,6 +23,20 @@ function setToLocalStorage(data, storageKey) {
   }
 }
 
+export function setToLibrary(data) {
+  if (!localStorage.getItem('library')) {
+    const arr = [];
+    arr.push(data);
+    localStorage.setItem('library', JSON.stringify(arr));
+    return;
+  }
+  const arr = JSON.parse(localStorage.getItem('library'));
+  if (!arr.some(item => item.id === data.id)) {
+    arr.push(data);
+    localStorage.setItem('library', JSON.stringify(arr));
+  }
+}
+
 // export function onAddToWatched(data) {
 //   console.log('Click');
 

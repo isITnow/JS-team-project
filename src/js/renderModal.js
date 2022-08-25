@@ -11,6 +11,9 @@ export function renderMovieMarkup({
   popularity,
   genre_ids,
 }) {
+  poster_path = poster_path
+    ? 'https://image.tmdb.org/t/p/original' + poster_path
+    : 'https://i.ibb.co/SwmHkLf/zaglushka.jpg';
   const currentGenres = [];
   const genres = JSON.parse(localStorage.getItem('genresData'));
   genres.forEach(item => {
@@ -22,7 +25,7 @@ export function renderMovieMarkup({
   <div class="card-modal__item">
   <div class="card-modal__image-wrap">
   
-        <img width="50" class="card-modal__image" src="https://image.tmdb.org/t/p/original${poster_path}" alt="${
+        <img width="50" class="card-modal__image" src="${poster_path}" alt="${
     title || name
   }"/>
         </div>
@@ -49,7 +52,9 @@ export function renderMovieMarkup({
           </tr>
           <tr>
           <td class="card-modal__genres">Genre</td>
-              <td class="card-modal__genres-result">${currentGenres.join(', ')}</td>
+              <td class="card-modal__genres-result">${
+                currentGenres.join(', ') || 'genre information missing'
+              }</td>
 
               </tr>
               </tbody>
