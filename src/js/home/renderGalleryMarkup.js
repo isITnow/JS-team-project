@@ -28,10 +28,10 @@ export function renderGalleryMarkup(results, page, total_pages) {
               <span class="gallery__genr"> ${
                 currentGenres.length > 3
                   ? currentGenres.splice(0, 2).join(', ') + ', Others'
-                  : currentGenres.join(', ') || 'No information'
-              } ${genre_ids ? '|' : 'no information'}</span> | 
+                  : currentGenres.join(', ') || 'genre information missing'
+              }</span> | 
                   <span class="gallery__release">${
-                    release_date ? release_date.slice(0, 4) : 'no data'
+                    release_date ? release_date.slice(0, 4) : 'no release date'
                   }</span>
                   <span class="gallery__rating">${vote_average.toFixed(1)}
               </span>
@@ -74,10 +74,10 @@ export function renderQueryMarkup(results, page, total_pages) {
               <span class="gallery__genr"> ${
                 currentGenres.length > 3
                   ? currentGenres.splice(0, 2).join(', ') + ', Others'
-                  : currentGenres.join(', ') || 'No information'
+                  : currentGenres.join(', ') || 'genre information missing'
               } </span> |
                   <span class="gallery__release">${
-                    release_date ? release_date.slice(0, 4) : 'no data'
+                    release_date ? release_date.slice(0, 4) : 'no release date'
                   }</span>
                   <span class="gallery__rating">${vote_average.toFixed(1)}
               </span>
