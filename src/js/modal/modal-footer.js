@@ -1,7 +1,7 @@
 import { fetchByID } from '../api/fetch';
 import { renderMovieMarkup } from '../renderModal';
-// import { onAddToWatched } from '../modal/modalBtnFunction';
-// import { onAddToQueue } from '../modal/modalBtnFunction';
+import { onAddToWatched } from '../modal/modalBtnFunction';
+import { onAddToQueue } from '../modal/modalBtnFunction';
 
 // Логіка що працює на модалку команди;
 
@@ -51,8 +51,6 @@ const refs = {
   cardModal: document.querySelector('[data-card-modal]'),
   modalContainer: document.querySelector('.modal__container'),
   backdrop: document.querySelector('[data-backdrop-card]'),
-  btnAddToWatched: document.querySelector('.card-modal__button-add'),
-  btnAddToQueue: document.querySelector('.card-modal__button-queue'),
 };
 
 refs.openCardModal.addEventListener('click', onOpenCardModal);
@@ -62,28 +60,41 @@ refs.backdrop.addEventListener('click', onBackdropClickCloseModal);
 // refs.btnAddToQueue.addEventListener('click', onAddToQueue);
 
 ////////MODAL OPEN//////////////////
+let currentMovie = null;
+let movieId;
 
 function onOpenCardModal(event) {
   event.preventDefault();
-  const movieId = Number(event.target.closest('.gallery__item').id);
+  refs.cardModal.classList.remove('is-hidden');
+  window.addEventListener('keydown', onEscapeCloseModal);
+  window.addEventListener('click', onBackdropClickCloseModal);
+  movieId = Number(event.target.closest('.gallery__item').id);
   if (event.currentTarget.nodeName !== 'UL') {
     return;
   }
   if (event.target.closest('[data-trending]')) {
     const trendingArr = JSON.parse(localStorage.getItem('popularFilms'));
-    const trendingObj = trendingArr.find(item => item.id === movieId);
-    renderMovieMarkup(trendingObj);
+    currentMovie = trendingArr.find(item => item.id === movieId);
+    renderMovieMarkup(currentMovie);
   }
   if (event.target.closest('[data-query]')) {
     const querygArr = JSON.parse(localStorage.getItem('queryFilms'));
-    const querygObj = querygArr.find(item => item.id === movieId);
-    renderMovieMarkup(querygObj);
+    currentMovie = querygArr.find(item => item.id === movieId);
+    renderMovieMarkup(currentMovie);
   }
+  console.log(refs.cardModal);
 
-  refs.cardModal.classList.remove('is-hidden');
+  const modalBtns = document.querySelector('.card-modal__buttons');
+  modalBtns.addEventListener('click', onModalBtnClick);
+}
 
-  window.addEventListener('keydown', onEscapeCloseModal);
-  window.addEventListener('click', onBackdropClickCloseModal);
+function onModalBtnClick(evt) {
+  if (evt.target.classList.contains('js-addToWatched')) {
+    onAddToWatched(currentMovie, 'watchedMovies');
+  }
+  if (evt.target.classList.contains('js-addToQueue')) {
+    onAddToQueue(currentMovie, 'queueMovies');
+  }
 }
 
 ///////////////MODAL CLOSE//////////////

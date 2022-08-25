@@ -22,7 +22,9 @@ export function renderMovieMarkup({
   <div class="card-modal__item">
   <div class="card-modal__image-wrap">
   
-        <img width="50" class="card-modal__image" src="https://image.tmdb.org/t/p/original${poster_path}" alt="${title || name}"/>
+        <img width="50" class="card-modal__image" src="https://image.tmdb.org/t/p/original${poster_path}" alt="${
+    title || name
+  }"/>
         </div>
         <div class="card-modal__wrapper">
         <h2 class="card-modal__title">${title}</h2>
@@ -48,6 +50,7 @@ export function renderMovieMarkup({
           <tr>
           <td class="card-modal__genres">Genre</td>
               <td class="card-modal__genres-result">${currentGenres.join(', ')}</td>
+
               </tr>
               </tbody>
               </table>
@@ -55,10 +58,10 @@ export function renderMovieMarkup({
           <p class="card-modal__overview">${overview}</p>
           <ul class="card-modal__buttons">
 <li class="card-modal__button-item">
-          <button class="card-modal__button-add" type="button">ADD TO WATCHED</button>
+          <button class="card-modal__button-add js-addToWatched" type="button">ADD TO WATCHED</button>
 </li>
 <li class="card-modal__button-item">
-          <button class="card-modal__button-queue" type="button">ADD TO QUEUE</button>
+          <button class="card-modal__button-queue js-addToQueue" type="button">ADD TO QUEUE</button>
           </li>
         </div>
         </div>
