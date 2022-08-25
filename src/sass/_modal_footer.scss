@@ -95,8 +95,6 @@
 
   &:hover {
     stroke: #ff6b08;
-    animation: bounceIn;
-    animation-duration: 2s;
   }
 }
 
@@ -171,8 +169,7 @@
   border-radius: 0px 0px 4px 4px;
 
   &:hover {
-    transform: scale(1.02);
-    outline: 8px ridge rgb(196, 128, 60);
+    transform: scale(1.05);
     border-radius: 0.5rem;
   }
 
