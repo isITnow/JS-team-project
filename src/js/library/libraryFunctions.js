@@ -53,9 +53,6 @@ function onLibBtnClick(e) {
     if (!e.target.classList.contains('js-activeBtn')) {
       e.target.classList.add('js-activeBtn');
       QUEUE_BTN.classList.remove('js-activeBtn');
-    } else {
-      e.target.classList.remove('js-activeBtn');
-      QUEUE_BTN.classList.add('js-activeBtn');
     }
   }
 
@@ -71,9 +68,6 @@ function onLibBtnClick(e) {
   if (!e.target.classList.contains('js-activeBtn')) {
     e.target.classList.add('js-activeBtn');
     WATCHED_BTN.classList.remove('js-activeBtn');
-  } else {
-    e.target.classList.remove('js-activeBtn');
-    WATCHED_BTN.classList.add('js-activeBtn');
   }
 }
 

@@ -2,11 +2,7 @@
 import './js/library/local-storage-theme';
 import './js/spinner';
 import './js/modal/modal-footer';
-import {libraryMovieCreator} from './js/library/libraryFunctions';
+import './js/library/libraryFunctions';
+import { libraryMovieCreator } from './js/library/libraryFunctions';
 
-
-
-libraryMovieCreator()
-
-
-
+libraryMovieCreator();
