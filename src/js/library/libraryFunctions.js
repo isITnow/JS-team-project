@@ -16,7 +16,6 @@ myBtns.forEach(btn => {btn.addEventListener('click', onClickMyBtn)});
 export function libraryMovieCreator(page = 1) {
   if (!localStorage.getItem('watchedMovies')) {
     return;
-    // заглушка
   }
   const allItemsFromLocaleStorage = JSON.parse(localStorage.getItem('watchedMovies'));
   let total_pages =  Math.ceil(allItemsFromLocaleStorage.length / 9)
@@ -33,8 +32,6 @@ function onLibBtnClick(e) {
     if (localStorage.getItem('watchedMovies')) {
       const parsedWatched = JSON.parse(localStorage.getItem('watchedMovies'));
       renderGalleryMarkup(parsedWatched, 'data-watched');
-    } else {
-      galleryList.innerHTML = 'EMPTY';
     }
   }
 
@@ -42,8 +39,6 @@ function onLibBtnClick(e) {
     if (localStorage.getItem('queueMovies')) {
       const parsedQueue = JSON.parse(localStorage.getItem('queueMovies'));
       renderGalleryMarkup(parsedQueue, 'data-queue');
-    } else {
-      galleryList.innerHTML = 'EMPTY!';
     }
   }
 }

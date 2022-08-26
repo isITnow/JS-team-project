@@ -1,9 +1,8 @@
-import { fetchByID } from '../api/fetch';
 import { renderMovieMarkup } from '../renderModal';
 import { onAddToWatched } from '../modal/modalBtnFunction';
 import { onAddToQueue } from '../modal/modalBtnFunction';
-import { setToLibrary } from '../modal/modalBtnFunction';
 import { modalBtnsStatusCheck } from '../modal/modalBtnFunction';
+import { renderGalleryMarkup } from '../home/renderGalleryMarkup';
 
 // Логіка що працює на модалку команди;
 
@@ -58,91 +57,98 @@ const refs = {
 refs.openCardModal.addEventListener('click', onOpenCardModal);
 refs.closeCardModal.addEventListener('click', onCloseCardModal);
 refs.backdrop.addEventListener('click', onBackdropClickCloseModal);
-// refs.btnAddToWatched.addEventListener('click', onAddToWatched);
-// refs.btnAddToQueue.addEventListener('click', onAddToQueue);
 
-////////MODAL OPEN//////////////////
+//////// MODAL OPEN //////////////////
+
 let currentMovie = null;
 let movieId;
 
 function onOpenCardModal(event) {
-  event.preventDefault();
-  refs.cardModal.classList.remove('is-hidden');
-  window.addEventListener('keydown', onEscapeCloseModal);
-  window.addEventListener('click', onBackdropClickCloseModal);
-  movieId = Number(event.target.closest('.gallery__item').id);
-  if (
-    event.currentTarget.nodeName !== 'UL' &&
-    event.target.firstElementChild.classList.contains('gallery__item')
-  ) {
+  console.log(event.target);
+  if (!event.target.classList.contains('gallery__image')) {
     return;
   }
-  if (event.target.closest('[data-trending]')) {
-    const arr = JSON.parse(localStorage.getItem('popularFilms'));
-    currentMovie = arr.find(item => item.id === movieId);
-    renderMovieMarkup(currentMovie);
+  movieId = Number(event.target.closest('.gallery__item').id);
+  console.log(movieId);
+  if (event.currentTarget.nodeName === 'UL') {
+    refs.cardModal.classList.remove('is-hidden');
+    window.addEventListener('keydown', onEscapeCloseModal);
+    window.addEventListener('click', onBackdropClickCloseModal);
+    if (event.target.closest('[data-trending]')) {
+      const arr = JSON.parse(localStorage.getItem('popularFilms'));
+      currentMovie = arr.find(item => item.id === movieId);
+      renderMovieMarkup(currentMovie);
+    }
+    if (event.target.closest('[data-query]')) {
+      const arr = JSON.parse(localStorage.getItem('queryFilms'));
+      currentMovie = arr.find(item => item.id === movieId);
+      renderMovieMarkup(currentMovie);
+    }
+    if (event.target.closest('[data-watched]')) {
+      const arr = JSON.parse(localStorage.getItem('watchedMovies'));
+      currentMovie = arr.find(item => item.id === movieId);
+      renderMovieMarkup(currentMovie);
+    }
+    if (event.target.closest('[data-queue]')) {
+      const arr = JSON.parse(localStorage.getItem('queueMovies'));
+      currentMovie = arr.find(item => item.id === movieId);
+      renderMovieMarkup(currentMovie);
+    }
   }
-  if (event.target.closest('[data-query]')) {
-    const arr = JSON.parse(localStorage.getItem('queryFilms'));
-    currentMovie = arr.find(item => item.id === movieId);
-    renderMovieMarkup(currentMovie);
-  }
-  if (event.target.closest('[data-watched]')) {
-    const arr = JSON.parse(localStorage.getItem('watchedMovies'));
-    currentMovie = arr.find(item => item.id === movieId);
-    renderMovieMarkup(currentMovie);
-  }
-  if (event.target.closest('[data-queue]')) {
-    const arr = JSON.parse(localStorage.getItem('queueMovies'));
-    currentMovie = arr.find(item => item.id === movieId);
-    renderMovieMarkup(currentMovie);
-  }
-  // if (event.target.closest('[data-library]')) {
-  //   const arr = JSON.parse(localStorage.getItem('library'));
-  //   currentMovie = arr.find(item => item.id === movieId);
-  //   renderMovieMarkup(currentMovie);
-  // }
-
   modalBtnsStatusCheck(currentMovie);
 
   const modalBtns = document.querySelector('.card-modal__buttons');
   modalBtns.addEventListener('click', onModalBtnClick);
 }
 
+///////////// ADD/REMOVE TO/FROM LIBRARY ////////////////////////////
+
 function onModalBtnClick(evt) {
   if (evt.target.classList.contains('js-addToWatched')) {
-    onAddToWatched(currentMovie, 'watchedMovies');
-    // setToLibrary(currentMovie, 'library');
-    // evt.target.textContent = 'REMOVE FROM WATCHED';
+    if (evt.target.textContent === 'ADD TO WATCHED') {
+      onAddToWatched(currentMovie, 'watchedMovies');
+      evt.target.textContent = 'REMOVE FROM WATCHED';
+      return;
+    }
+
     if (evt.target.textContent === 'REMOVE FROM WATCHED') {
       const arr = JSON.parse(localStorage.getItem('watchedMovies'));
       const currentIdx = arr.findIndex(item => item.id === movieId);
       arr.splice(currentIdx, 1);
+      if (!arr.length) {
+        localStorage.removeItem('watchedMovies');
+        evt.target.textContent = 'ADD TO WATCHED';
+        return;
+      }
       localStorage.setItem('watchedMovies', JSON.stringify(arr));
       evt.target.textContent = 'ADD TO WATCHED';
-
-      // const arrLib = JSON.parse(localStorage.getItem('library'));
-      // const currentIdxLib = arr.findIndex(item => item.id === movieId);
-      // arrLib.splice(currentIdxLib, 1);
-      // localStorage.setItem('library', JSON.stringify(arrLib));
+      renderGalleryMarkup(arr, 'data-watched');
+      return;
     }
   }
+
+  ////////////////////// QUEUE BTN //////////////////////////////////////
+
   if (evt.target.classList.contains('js-addToQueue')) {
-    onAddToQueue(currentMovie, 'queueMovies');
-    // setToLibrary(currentMovie, 'library');
-    evt.target.textContent = 'REMOVE FROM QUEUE';
+    if (evt.target.textContent === 'ADD TO QUEUE') {
+      onAddToQueue(currentMovie, 'queueMovies');
+      evt.target.textContent = 'REMOVE FROM QUEUE';
+      return;
+    }
+
     if (evt.target.textContent === 'REMOVE FROM QUEUE') {
       const arr = JSON.parse(localStorage.getItem('queueMovies'));
       const currentIdx = arr.findIndex(item => item.id === movieId);
       arr.splice(currentIdx, 1);
+      if (!arr.length) {
+        localStorage.removeItem('queueMovies');
+        evt.target.textContent = 'ADD TO QUEUE';
+        return;
+      }
       localStorage.setItem('queueMovies', JSON.stringify(arr));
       evt.target.textContent = 'ADD TO QUEUE';
-
-      //   const arrLib = JSON.parse(localStorage.getItem('library'));
-      //   const currentIdxLib = arr.findIndex(item => item.id === movieId);
-      //   arrLib.splice(currentIdxLib, 1);
-      //   localStorage.setItem('library', JSON.stringify(arrLib));
-      // }
+      renderGalleryMarkup(arr, 'data-queue');
+      return;
     }
   }
 }
@@ -168,17 +174,3 @@ function onBackdropClickCloseModal(event) {
     onCloseCardModal();
   }
 }
-
-// function onAddToWatched(event) {
-//   if (event.currentTarget === event.target) {
-//     console.log('ok1');
-//     event.target.textContent = 'REMOVE';
-//   }
-// }
-
-// function onAddToQueue(event) {
-//   if (event.currentTarget === event.target) {
-//     console.log('ok2');
-//     event.target.textContent = 'REMOVE';
-//   }
-// }

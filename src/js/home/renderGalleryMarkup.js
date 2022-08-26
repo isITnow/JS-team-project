@@ -1,7 +1,6 @@
 const galleryItem = document.querySelector('.gallery__list');
 
 export function renderGalleryMarkup(data, dataAttribute) {
-
   const markup = data.reduce(
     (
       acc,
@@ -47,6 +46,20 @@ export function renderGalleryMarkup(data, dataAttribute) {
     ''
   );
   galleryItem.innerHTML = markup;
-  return {data, dataAttribute};
+  return { data, dataAttribute };
 }
 
+export function renderDefaulMarkup() {
+  galleryItem.innerHTML = `<li class="item">
+        <img
+          class="image"
+          src="./images/kinanebyde.jpg"
+          alt=""
+          width="280"
+          height="150"
+        />
+      </li>
+      <li class="item">
+        <p class="text">Sorry but no movies</p>
+      </li>`;
+}
