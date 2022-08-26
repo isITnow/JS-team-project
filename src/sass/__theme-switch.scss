@@ -44,6 +44,7 @@ body.dark-theme {
         color: #fff;
     }
 }
+
 .theme-container {
     margin: 0 auto;
     width: 320px;
@@ -65,8 +66,13 @@ body.dark-theme {
     display: flex;
     justify-content: flex-end;
     padding: 16px 50px;
-    right: 0;
-    top: 150px;
+    right: -30;
+    top: 170px;
+
+    @media screen and (min-width: 768px) {
+        right: 0;
+        top: 150px;
+    }
 }
 
 .theme-switch {
@@ -129,18 +135,19 @@ body.dark-theme {
     transform: translateX(3px);
 }
 
-.theme-switch__input:checked + .theme-switch__label {
+.theme-switch__input:checked+.theme-switch__label {
     background-color: #ff6b08;
 }
 
-.theme-switch__input:checked ~ .theme-switch__mark {
+.theme-switch__input:checked~.theme-switch__mark {
     transform: translateX(17px);
 }
 
-.theme-switch__input:focus + .theme-switch__label,
-.theme-switch__input:active + .theme-switch__label {
+.theme-switch__input:focus+.theme-switch__label,
+.theme-switch__input:active+.theme-switch__label {
     box-shadow: 0 0 0 3px #ff6b08;
 }
+
 .dark-theme {
     color: lightgrey;
     background-color: #222;
