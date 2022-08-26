@@ -1,6 +1,4 @@
 import { renderGalleryMarkup } from '../home/renderGalleryMarkup';
-import { renderMovieMarkup } from '../renderModal';
-const galleryList = document.querySelector('.gallery__list');
 
 const btnsLib = document.querySelector('.buttons-list');
 btnsLib.addEventListener('click', onLibBtnClick);
@@ -8,7 +6,6 @@ btnsLib.addEventListener('click', onLibBtnClick);
 export function libraryMovieCreator() {
   if (!localStorage.getItem('watchedMovies')) {
     return;
-    // заглушка
   }
   const parsedLib = JSON.parse(localStorage.getItem('watchedMovies'));
   renderGalleryMarkup(parsedLib, 'data-watched');
@@ -19,8 +16,6 @@ function onLibBtnClick(e) {
     if (localStorage.getItem('watchedMovies')) {
       const parsedWatched = JSON.parse(localStorage.getItem('watchedMovies'));
       renderGalleryMarkup(parsedWatched, 'data-watched');
-    } else {
-      galleryList.innerHTML = 'EMPTY';
     }
   }
 
@@ -28,8 +23,6 @@ function onLibBtnClick(e) {
     if (localStorage.getItem('queueMovies')) {
       const parsedQueue = JSON.parse(localStorage.getItem('queueMovies'));
       renderGalleryMarkup(parsedQueue, 'data-queue');
-    } else {
-      galleryList.innerHTML = 'EMPTY!';
     }
   }
 }
