@@ -111,14 +111,21 @@ function onModalBtnClick(evt) {
     if (evt.target.textContent === 'ADD TO WATCHED') {
       onAddToWatched(currentMovie, 'watchedMovies');
       evt.target.textContent = 'REMOVE FROM WATCHED';
+      return;
     }
 
     if (evt.target.textContent === 'REMOVE FROM WATCHED') {
       const arr = JSON.parse(localStorage.getItem('watchedMovies'));
       const currentIdx = arr.findIndex(item => item.id === movieId);
       arr.splice(currentIdx, 1);
+      if (!arr.length) {
+        localStorage.removeItem('watchedMovies');
+        evt.target.textContent = 'ADD TO WATCHED';
+        return;
+      }
       localStorage.setItem('watchedMovies', JSON.stringify(arr));
       evt.target.textContent = 'ADD TO WATCHED';
+      return;
     }
   }
 
@@ -126,14 +133,21 @@ function onModalBtnClick(evt) {
     if (evt.target.textContent === 'ADD TO QUEUE') {
       onAddToQueue(currentMovie, 'queueMovies');
       evt.target.textContent = 'REMOVE FROM QUEUE';
+      return;
     }
 
     if (evt.target.textContent === 'REMOVE FROM QUEUE') {
       const arr = JSON.parse(localStorage.getItem('queueMovies'));
       const currentIdx = arr.findIndex(item => item.id === movieId);
       arr.splice(currentIdx, 1);
+      if (!arr.length) {
+        localStorage.removeItem('queueMovies');
+        evt.target.textContent = 'ADD TO QUEUE';
+        return;
+      }
       localStorage.setItem('queueMovies', JSON.stringify(arr));
       evt.target.textContent = 'ADD TO QUEUE';
+      return;
     }
   }
 }
