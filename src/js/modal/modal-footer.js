@@ -3,6 +3,7 @@ import { onAddToWatched } from '../modal/modalBtnFunction';
 import { onAddToQueue } from '../modal/modalBtnFunction';
 import { modalBtnsStatusCheck } from '../modal/modalBtnFunction';
 import { renderGalleryMarkup } from '../home/renderGalleryMarkup';
+import { renderDefaulMarkup } from '../home/renderGalleryMarkup';
 
 // Логіка що працює на модалку команди;
 
@@ -117,6 +118,7 @@ function onModalBtnClick(evt) {
       arr.splice(currentIdx, 1);
       if (!arr.length) {
         localStorage.removeItem('watchedMovies');
+        renderDefaulMarkup();
         evt.target.textContent = 'ADD TO WATCHED';
         return;
       }
@@ -142,6 +144,7 @@ function onModalBtnClick(evt) {
       arr.splice(currentIdx, 1);
       if (!arr.length) {
         localStorage.removeItem('queueMovies');
+        renderDefaulMarkup();
         evt.target.textContent = 'ADD TO QUEUE';
         return;
       }

@@ -53,13 +53,13 @@ export function renderDefaulMarkup() {
   galleryItem.innerHTML = `<li class="item">
         <img
           class="image"
-          src="./images/kinanebyde.jpg"
-          alt=""
+          src="https://cases.media/image/wide/54ce0f4a-2dbd-4745-acf9-cc9a8c349cfd.jpg"
+          alt="Kina ne bude"
           width="280"
           height="150"
         />
       </li>
       <li class="item">
-        <p class="text">Sorry but no movies</p>
+        <p class="text">Шо сидиш? Іди шукай кіно!</p>
       </li>`;
 }
