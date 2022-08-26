@@ -13,13 +13,14 @@ btnsLib.addEventListener('click', onLibBtnClick);
 myBtns.forEach(btn => {btn.addEventListener('click', onClickMyBtn)});
 
 
-export function libraryMovieCreator(page = 1) {
+export function libraryMovieCreator(page = 1 ) {
+  
   if (!localStorage.getItem('watchedMovies')) {
     return;
   }
   const allItemsFromLocaleStorage = JSON.parse(localStorage.getItem('watchedMovies'));
   let total_pages =  Math.ceil(allItemsFromLocaleStorage.length / 9)
-  console.log(typeof total_pages)
+  
   let itemsFromLocaleStorage = getItemsByPage(page,total_pages,allItemsFromLocaleStorage)
   console.log(itemsFromLocaleStorage)
   renderGalleryMarkup(itemsFromLocaleStorage, 'data-watched');
@@ -44,32 +45,37 @@ function onLibBtnClick(e) {
 }
 
 function onClickMyBtn(e) {
-  page = Number(e.currentTarget.dataset.page)
+  let page = Number(e.currentTarget.dataset.page)
   libraryMovieCreator(page)
 }
 function onClickMyPagination(e) {
-  e.preventDefault();
-  // scrollToTop();
   if (e.target.nodeName !== 'LI') {
     return;
   }
-  
+  let page = e.target.dataset.page
+  console.log(e.target.dataset.page)
   libraryMovieCreator(page)
 }
 
 function getItemsByPage(page,total_pages,allItemsFromLocaleStorage) {
- console.log(allItemsFromLocaleStorage)
- let end = 9
+ let end = allItemsFromLocaleStorage.length < 9 ?  allItemsFromLocaleStorage.length : 9
  let start = 0
  if(page === total_pages && page !== 1) {
-    start = start + end
-    end = allItemsFromLocaleStorage.length % 9 + end
- }
+    start = 9 * (page - 1)
+    end = allItemsFromLocaleStorage.length % 9 + start
+    console.log(end,allItemsFromLocaleStorage.length % 9, start)
+ } else if(page > 1) {
+  start = 9 * (page - 1)
+  end = start + 9
+ } 
+
   let arr = []
-  console.log(start,end, allItemsFromLocaleStorage.length)
+  
     for(let i = start; i < end; i++){
       arr.push(allItemsFromLocaleStorage[i])
       }
+      console.log(start,end, allItemsFromLocaleStorage.length)
+      console.log(page, total_pages)
   return arr
 }
 
