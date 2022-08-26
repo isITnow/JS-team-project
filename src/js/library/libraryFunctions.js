@@ -11,14 +11,14 @@ export function libraryMovieCreator() {
     // заглушка
   }
   const parsedLib = JSON.parse(localStorage.getItem('library'));
-  renderGalleryMarkup('', parsedLib, '', 'data-library');
+  renderGalleryMarkup(parsedLib, 'data-library');
 }
 
 function onLibBtnClick(e) {
   if (e.target.classList.contains('js-watchedBtn')) {
     if (localStorage.getItem('watchedMovies')) {
       const parsedWatched = JSON.parse(localStorage.getItem('watchedMovies'));
-      renderGalleryMarkup('', parsedWatched, '', 'data-watched');
+      renderGalleryMarkup(parsedWatched, 'data-watched');
     } else {
       galleryList.innerHTML = 'ХЕР ВАМ!';
     }
@@ -27,7 +27,7 @@ function onLibBtnClick(e) {
   if (e.target.classList.contains('js-queueBtn')) {
     if (localStorage.getItem('queueMovies')) {
       const parsedQueue = JSON.parse(localStorage.getItem('queueMovies'));
-      renderGalleryMarkup('', parsedQueue, '', 'data-queue');
+      renderGalleryMarkup(parsedQueue, 'data-queue');
     } else {
       galleryList.innerHTML = 'ХЕР ВАМ!';
     }
