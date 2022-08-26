@@ -195,6 +195,7 @@ tr {
     font-size: 12px;
     line-height: 20px;
     color: #000000;
+    overflow-y: scroll;
 }
 
 .card-modal__rating-result-span,
@@ -255,9 +256,10 @@ tr {
     font-family: "Roboto";
     font-weight: 500;
     font-size: 12px;
+    cursor: pointer;
     line-height: 16px;
     align-items: center;
-    text-align: center;
+    // text-align: center;
     text-transform: uppercase;
     margin-right: 20px;
     background: #ff6b01;
@@ -268,12 +270,14 @@ tr {
     border: none;
     @media screen and (min-width: 768px) {
         width: 125px;
-        padding: 14px 9px;
+        // padding: 14px 9px;
+        // height: auto;
     }
 
     @media screen and (min-width: 1280px) {
         width: 136px;
-        padding: 14px 10px;
+        // padding: 14px 10px;
+        // height: auto;
     }
 }
 .card-modal__button-queue {
@@ -283,6 +287,7 @@ tr {
     line-height: 16px;
     align-items: center;
     text-align: center;
+    cursor: pointer;
     text-transform: uppercase;
 
     background: #ff6b01;
@@ -293,10 +298,10 @@ tr {
     border: none;
     @media screen and (min-width: 768px) {
         width: 125px;
-        padding: 14px 9px;
+        // padding: 14px 9px;
     }
     @media screen and (min-width: 1280px) {
         width: 136px;
-        padding: 14px 10px;
+        // padding: 14px 10px;
     }
 }
