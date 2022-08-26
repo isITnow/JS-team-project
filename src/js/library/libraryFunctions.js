@@ -20,7 +20,7 @@ function onLibBtnClick(e) {
       const parsedWatched = JSON.parse(localStorage.getItem('watchedMovies'));
       renderGalleryMarkup(parsedWatched, 'data-watched');
     } else {
-      galleryList.innerHTML = 'ХЕР ВАМ!';
+      galleryList.innerHTML = 'EMPTY';
     }
   }
 
@@ -29,7 +29,7 @@ function onLibBtnClick(e) {
       const parsedQueue = JSON.parse(localStorage.getItem('queueMovies'));
       renderGalleryMarkup(parsedQueue, 'data-queue');
     } else {
-      galleryList.innerHTML = 'ХЕР ВАМ!';
+      galleryList.innerHTML = 'EMPTY!';
     }
   }
 }

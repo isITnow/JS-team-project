@@ -66,7 +66,6 @@ let currentMovie = null;
 let movieId;
 
 function onOpenCardModal(event) {
-  console.log(event.target.firstElementChild);
   event.preventDefault();
   refs.cardModal.classList.remove('is-hidden');
   window.addEventListener('keydown', onEscapeCloseModal);
@@ -114,6 +113,7 @@ function onModalBtnClick(evt) {
   if (evt.target.classList.contains('js-addToWatched')) {
     onAddToWatched(currentMovie, 'watchedMovies');
     setToLibrary(currentMovie, 'library');
+    evt.target.textContent = 'REMOVE FROM WATCHED';
     if (evt.target.textContent === 'REMOVE FROM WATCHED') {
       const arr = JSON.parse(localStorage.getItem('watchedMovies'));
       const currentIdx = arr.findIndex(item => item.id === movieId);
@@ -130,6 +130,7 @@ function onModalBtnClick(evt) {
   if (evt.target.classList.contains('js-addToQueue')) {
     onAddToQueue(currentMovie, 'queueMovies');
     setToLibrary(currentMovie, 'library');
+    evt.target.textContent = 'REMOVE FROM QUEUE';
     if (evt.target.textContent === 'REMOVE FROM QUEUE') {
       const arr = JSON.parse(localStorage.getItem('queueMovies'));
       const currentIdx = arr.findIndex(item => item.id === movieId);
