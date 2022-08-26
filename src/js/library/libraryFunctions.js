@@ -18,7 +18,6 @@ myBtns.forEach(btn => {
   btn.addEventListener('click', onClickMyBtn);
 });
 
-
 export function libraryMovieCreator(page = 1) {
   WATCHED_BTN.classList.add('js-activeBtn');
   QUEUE_BTN.classList.remove('js-activeBtn');
@@ -73,51 +72,53 @@ function onLibBtnClick(e) {
 }
 
 function onClickMyBtn(e) {
-  let page = Number(e.currentTarget.dataset.page)
-  libraryMovieCreator(page)
+  let page = Number(e.currentTarget.dataset.page);
+  libraryMovieCreator(page);
 }
 function onClickMyPagination(e) {
   if (e.target.nodeName !== 'LI') {
     return;
   }
-  let page = e.target.dataset.page
-  console.log(e.target.dataset.page)
-  libraryMovieCreator(page)
+  let page = e.target.dataset.page;
+  console.log(e.target.dataset.page);
+  libraryMovieCreator(page);
 }
 
-function getItemsByPage(page,total_pages,allItemsFromLocaleStorage) {
- let end = allItemsFromLocaleStorage.length < 9 ?  allItemsFromLocaleStorage.length : 9
- let start = 0
- if(page === total_pages && page !== 1) {
-    start = 9 * (page - 1)
-    end = allItemsFromLocaleStorage.length % 9 + start
-    console.log(end,allItemsFromLocaleStorage.length % 9, start)
- } else if(page > 1) {
-  start = 9 * (page - 1)
-  end = start + 9
- } 
-
-  let arr = []
-  
-    for(let i = start; i < end; i++){
-      arr.push(allItemsFromLocaleStorage[i])
-      }
-      console.log(start,end, allItemsFromLocaleStorage.length)
-      console.log(page, total_pages)
-  return arr
-
 function getItemsByPage(page, total_pages, allItemsFromLocaleStorage) {
-  console.log(allItemsFromLocaleStorage);
-  let end = 9;
+  let end =
+    allItemsFromLocaleStorage.length < 9 ? allItemsFromLocaleStorage.length : 9;
   let start = 0;
   if (page === total_pages && page !== 1) {
-    start = start + end;
-    end = (allItemsFromLocaleStorage.length % 9) + end;
+    start = 9 * (page - 1);
+    end = (allItemsFromLocaleStorage.length % 9) + start;
+    console.log(end, allItemsFromLocaleStorage.length % 9, start);
+  } else if (page > 1) {
+    start = 9 * (page - 1);
+    end = start + 9;
   }
+
   let arr = [];
-  console.log(start, end, allItemsFromLocaleStorage.length);
+
   for (let i = start; i < end; i++) {
     arr.push(allItemsFromLocaleStorage[i]);
   }
+  console.log(start, end, allItemsFromLocaleStorage.length);
+  console.log(page, total_pages);
   return arr;
+
+  function getItemsByPage(page, total_pages, allItemsFromLocaleStorage) {
+    console.log(allItemsFromLocaleStorage);
+    let end = 9;
+    let start = 0;
+    if (page === total_pages && page !== 1) {
+      start = start + end;
+      end = (allItemsFromLocaleStorage.length % 9) + end;
+    }
+    let arr = [];
+    console.log(start, end, allItemsFromLocaleStorage.length);
+    for (let i = start; i < end; i++) {
+      arr.push(allItemsFromLocaleStorage[i]);
+    }
+    return arr;
+  }
 }
