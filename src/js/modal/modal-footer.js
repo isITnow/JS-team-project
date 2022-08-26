@@ -1,8 +1,6 @@
-import { fetchByID } from '../api/fetch';
 import { renderMovieMarkup } from '../renderModal';
 import { onAddToWatched } from '../modal/modalBtnFunction';
 import { onAddToQueue } from '../modal/modalBtnFunction';
-import { setToLibrary } from '../modal/modalBtnFunction';
 import { modalBtnsStatusCheck } from '../modal/modalBtnFunction';
 
 // Логіка що працює на модалку команди;
@@ -59,7 +57,8 @@ refs.openCardModal.addEventListener('click', onOpenCardModal);
 refs.closeCardModal.addEventListener('click', onCloseCardModal);
 refs.backdrop.addEventListener('click', onBackdropClickCloseModal);
 
-////////MODAL OPEN//////////////////
+//////// MODAL OPEN //////////////////
+
 let currentMovie = null;
 let movieId;
 
@@ -74,7 +73,6 @@ function onOpenCardModal(event) {
     refs.cardModal.classList.remove('is-hidden');
     window.addEventListener('keydown', onEscapeCloseModal);
     window.addEventListener('click', onBackdropClickCloseModal);
-
     if (event.target.closest('[data-trending]')) {
       const arr = JSON.parse(localStorage.getItem('popularFilms'));
       currentMovie = arr.find(item => item.id === movieId);
@@ -95,11 +93,6 @@ function onOpenCardModal(event) {
       currentMovie = arr.find(item => item.id === movieId);
       renderMovieMarkup(currentMovie);
     }
-    if (event.target.closest('[data-library]')) {
-      const arr = JSON.parse(localStorage.getItem('library'));
-      currentMovie = arr.find(item => item.id === movieId);
-      renderMovieMarkup(currentMovie);
-    }
   }
   modalBtnsStatusCheck(currentMovie);
 
@@ -107,37 +100,50 @@ function onOpenCardModal(event) {
   modalBtns.addEventListener('click', onModalBtnClick);
 }
 
+///////////// ADD/REMOVE TO/FROM LIBRARY ////////////////////////////
+
 function onModalBtnClick(evt) {
   if (evt.target.classList.contains('js-addToWatched')) {
-    onAddToWatched(currentMovie, 'watchedMovies');
-    setToLibrary(currentMovie, 'library');
+    if (evt.target.textContent === 'ADD TO WATCHED') {
+      onAddToWatched(currentMovie, 'watchedMovies');
+      evt.target.textContent = 'REMOVE FROM WATCHED';
+      return;
+    }
+
     if (evt.target.textContent === 'REMOVE FROM WATCHED') {
       const arr = JSON.parse(localStorage.getItem('watchedMovies'));
       const currentIdx = arr.findIndex(item => item.id === movieId);
       arr.splice(currentIdx, 1);
+      if (!arr.length) {
+        localStorage.removeItem('watchedMovies');
+        evt.target.textContent = 'ADD TO WATCHED';
+        return;
+      }
       localStorage.setItem('watchedMovies', JSON.stringify(arr));
       evt.target.textContent = 'ADD TO WATCHED';
-
-      const arrLib = JSON.parse(localStorage.getItem('library'));
-      const currentIdxLib = arr.findIndex(item => item.id === movieId);
-      arrLib.splice(currentIdxLib, 1);
-      localStorage.setItem('library', JSON.stringify(arrLib));
+      return;
     }
   }
+
   if (evt.target.classList.contains('js-addToQueue')) {
-    onAddToQueue(currentMovie, 'queueMovies');
-    setToLibrary(currentMovie, 'library');
+    if (evt.target.textContent === 'ADD TO QUEUE') {
+      onAddToQueue(currentMovie, 'queueMovies');
+      evt.target.textContent = 'REMOVE FROM QUEUE';
+      return;
+    }
+
     if (evt.target.textContent === 'REMOVE FROM QUEUE') {
       const arr = JSON.parse(localStorage.getItem('queueMovies'));
       const currentIdx = arr.findIndex(item => item.id === movieId);
       arr.splice(currentIdx, 1);
+      if (!arr.length) {
+        localStorage.removeItem('queueMovies');
+        evt.target.textContent = 'ADD TO QUEUE';
+        return;
+      }
       localStorage.setItem('queueMovies', JSON.stringify(arr));
       evt.target.textContent = 'ADD TO QUEUE';
-
-      const arrLib = JSON.parse(localStorage.getItem('library'));
-      const currentIdxLib = arr.findIndex(item => item.id === movieId);
-      arrLib.splice(currentIdxLib, 1);
-      localStorage.setItem('library', JSON.stringify(arrLib));
+      return;
     }
   }
 }

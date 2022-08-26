@@ -1,27 +1,16 @@
-// import { addWatchedToLocalStorage } from '../library/localStorage';
-// import { addQueueToLocalStorage } from '../library/localStorage';
-
 export function onAddToWatched(data, storageKey) {
   setToLocalStorage(data, storageKey);
-  //   console.log('WATCHED', evt);
-  //   if (evt.target.textContent === 'ADD TO WATCHED') {
-  //     evt.target.textContent = 'REMOVE FROM WATCHED';
-  //   }
 }
 
 export function onAddToQueue(data, storageKey) {
   setToLocalStorage(data, storageKey);
-  // console.log('QUEUE', evt);
-  // if (evt.target.textContent === 'ADD TO QUEUE') {
-  //   evt.target.textContent = 'REMOVE FROM QUEUE';
-  // }
 }
 
 export function setToLibrary(data, storageKey) {
   setToLocalStorage(data, storageKey);
 }
 
-function setToLocalStorage(data, storageKey) {
+export function setToLocalStorage(data, storageKey) {
   if (!localStorage.getItem(storageKey)) {
     const arr = [];
     arr.push(data);
