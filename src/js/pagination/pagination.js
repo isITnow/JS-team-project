@@ -23,24 +23,24 @@ myBtns.forEach(btn => {
 function renderPagination(page, results, total_pages) {
   let html = '';
 
-  let [startPageNumber, endPageNumber] = getStartedAndPages(page);
+  let [startPageNumber, endPageNumber] = getStartedAndPages(page, total_pages);
 
   let lastel = total_pages - 3;
 
-  if (window.innerWidth >= 768 && page >= 5) {
+  if (window.innerWidth >= 768 && page >= 5 && lastel >0) {
     html += `<li class ="pagination__item" data-page="1">1</li>`;
     html += `<li class ="pagination__item">...</li>`;
   }
   for (let i = startPageNumber; i <= endPageNumber; i += 1) {
     html += `<li class ="pagination__item" data-page="${i}">${i}</li>`;
   }
-  if (window.innerWidth >= 768 && page >= 1) {
+  if (window.innerWidth >= 768 && page >= 1 && lastel >0) {
     html += `<li class ="pagination__item">...</li>`;
     html += `<li class ="pagination__item" data-page="${total_pages}">${total_pages}</li>`;
   }
-  if (window.innerWidth >= 768 && page >= lastel) {
+  if (window.innerWidth >= 768 && page >= lastel && lastel >0) {
     html = `
-    <li class ="pagination__item" data-page="1">1</li>
+    <li class ="pagination__item" data-page="${1}">${1}</li>
     <li class ="pagination__item">...</li>
     <li class ="pagination__item" data-page="${total_pages - 4}">${
       total_pages - 4
@@ -57,7 +57,9 @@ function renderPagination(page, results, total_pages) {
     <li class ="pagination__item" data-page="${total_pages}">${total_pages}</li>
     `;
   }
+
   if (page === total_pages) {
+   
     btnRight.disabled = true;
     btnRight.classList.add('disabled');
   } else {
@@ -75,7 +77,7 @@ function renderPagination(page, results, total_pages) {
 
 function onClickMyPagination(e) {
   e.preventDefault();
-  scrollToTop();
+  // scrollToTop();
   if (e.target.nodeName !== 'LI') {
     return;
   }
@@ -104,7 +106,7 @@ function onClickMyPagination(e) {
 }
 
 function onClickMyBtn(e) {
-  scrollToTop();
+  // scrollToTop();
   let page = e.currentTarget.dataset.page;
   query = myInput.value;
   if (query !== '') {
@@ -142,13 +144,15 @@ function makeActive(page) {
   }
 }
 
-function getStartedAndPages(page) {
+function getStartedAndPages(page, total_pages) {
+  
   if (window.innerWidth >= 320 && page < 3) {
+ 
     startPageNumber = 1;
-    endPageNumber = 5;
+    endPageNumber = total_pages < 5 ? total_pages : 5
   } else {
-    startPageNumber = page - 2;
-    endPageNumber = page + 2;
+    startPageNumber = total_pages < 5 ? 1: page - 2;
+    endPageNumber = total_pages < 5 ? page: page + 2;
   }
   return [startPageNumber, endPageNumber];
 }
