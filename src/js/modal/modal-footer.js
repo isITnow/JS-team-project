@@ -110,12 +110,12 @@ function onModalBtnClick(evt) {
   if (evt.target.classList.contains('js-addToWatched')) {
     onAddToWatched(currentMovie, 'watchedMovies');
     setToLibrary(currentMovie, 'library');
-    if (evt.target.textContent === 'Remove from watched') {
+    if (evt.target.textContent === 'REMOVE FROM WATCHED') {
       const arr = JSON.parse(localStorage.getItem('watchedMovies'));
       const currentIdx = arr.findIndex(item => item.id === movieId);
       arr.splice(currentIdx, 1);
       localStorage.setItem('watchedMovies', JSON.stringify(arr));
-      evt.target.textContent = 'Add to watched';
+      evt.target.textContent = 'ADD TO WATCHED';
 
       const arrLib = JSON.parse(localStorage.getItem('library'));
       const currentIdxLib = arr.findIndex(item => item.id === movieId);
@@ -126,6 +126,18 @@ function onModalBtnClick(evt) {
   if (evt.target.classList.contains('js-addToQueue')) {
     onAddToQueue(currentMovie, 'queueMovies');
     setToLibrary(currentMovie, 'library');
+    if (evt.target.textContent === 'REMOVE FROM QUEUE') {
+      const arr = JSON.parse(localStorage.getItem('queueMovies'));
+      const currentIdx = arr.findIndex(item => item.id === movieId);
+      arr.splice(currentIdx, 1);
+      localStorage.setItem('queueMovies', JSON.stringify(arr));
+      evt.target.textContent = 'ADD TO QUEUE';
+
+      const arrLib = JSON.parse(localStorage.getItem('library'));
+      const currentIdxLib = arr.findIndex(item => item.id === movieId);
+      arrLib.splice(currentIdxLib, 1);
+      localStorage.setItem('library', JSON.stringify(arrLib));
+    }
   }
 }
 

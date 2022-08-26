@@ -2,12 +2,19 @@
 // import { addQueueToLocalStorage } from '../library/localStorage';
 
 export function onAddToWatched(data, storageKey) {
-  console.log('CLICK');
   setToLocalStorage(data, storageKey);
+  //   console.log('WATCHED', evt);
+  //   if (evt.target.textContent === 'ADD TO WATCHED') {
+  //     evt.target.textContent = 'REMOVE FROM WATCHED';
+  //   }
 }
 
 export function onAddToQueue(data, storageKey) {
   setToLocalStorage(data, storageKey);
+  // console.log('QUEUE', evt);
+  // if (evt.target.textContent === 'ADD TO QUEUE') {
+  //   evt.target.textContent = 'REMOVE FROM QUEUE';
+  // }
 }
 
 export function setToLibrary(data, storageKey) {
@@ -34,14 +41,14 @@ export function modalBtnsStatusCheck(currentMovie) {
   if (localStorage.getItem('watchedMovies')) {
     if (watchedArr.some(item => item.id === currentMovie.id)) {
       const watchedBtn = document.querySelector('.js-addToWatched');
-      watchedBtn.textContent = 'Remove from watched';
+      watchedBtn.textContent = 'REMOVE FROM WATCHED';
     }
   }
 
   if (localStorage.getItem('queueMovies')) {
     if (queueArr.some(item => item.id === currentMovie.id)) {
       const queueBtn = document.querySelector('.js-addToQueue');
-      queueBtn.textContent = 'Remove from queue';
+      queueBtn.textContent = 'REMOVE FROM QUEUE';
     }
   }
 }
