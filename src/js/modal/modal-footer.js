@@ -66,12 +66,16 @@ let currentMovie = null;
 let movieId;
 
 function onOpenCardModal(event) {
+  console.log(event.target.firstElementChild);
   event.preventDefault();
   refs.cardModal.classList.remove('is-hidden');
   window.addEventListener('keydown', onEscapeCloseModal);
   window.addEventListener('click', onBackdropClickCloseModal);
   movieId = Number(event.target.closest('.gallery__item').id);
-  if (event.currentTarget.nodeName !== 'UL') {
+  if (
+    event.currentTarget.nodeName !== 'UL' &&
+    event.target.firstElementChild.classList.contains('gallery__item')
+  ) {
     return;
   }
   if (event.target.closest('[data-trending]')) {
