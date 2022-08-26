@@ -53,6 +53,7 @@ const refs = {
   cardModal: document.querySelector('[data-card-modal]'),
   modalContainer: document.querySelector('.modal__container'),
   backdrop: document.querySelector('[data-backdrop-card]'),
+  title: document.querySelector('title'),
 };
 
 refs.openCardModal.addEventListener('click', onOpenCardModal);
@@ -109,6 +110,7 @@ function onModalBtnClick(evt) {
     if (evt.target.textContent === 'ADD TO WATCHED') {
       onAddToWatched(currentMovie, 'watchedMovies');
       evt.target.textContent = 'REMOVE FROM WATCHED';
+      evt.target.classList.add('js-activeBtn');
       return;
     }
 
@@ -118,8 +120,11 @@ function onModalBtnClick(evt) {
       arr.splice(currentIdx, 1);
       if (!arr.length) {
         localStorage.removeItem('watchedMovies');
-        renderDefaulMarkup();
+        if (refs.title.textContent === 'My library') {
+          renderDefaulMarkup();
+        }
         evt.target.textContent = 'ADD TO WATCHED';
+        evt.target.classList.remove('js-activeBtn');
         return;
       }
       localStorage.setItem('watchedMovies', JSON.stringify(arr));
@@ -135,6 +140,7 @@ function onModalBtnClick(evt) {
     if (evt.target.textContent === 'ADD TO QUEUE') {
       onAddToQueue(currentMovie, 'queueMovies');
       evt.target.textContent = 'REMOVE FROM QUEUE';
+      evt.target.classList.add('js-activeBtn');
       return;
     }
 
@@ -144,8 +150,11 @@ function onModalBtnClick(evt) {
       arr.splice(currentIdx, 1);
       if (!arr.length) {
         localStorage.removeItem('queueMovies');
-        renderDefaulMarkup();
+        if (refs.title.textContent === 'My library') {
+          renderDefaulMarkup();
+        }
         evt.target.textContent = 'ADD TO QUEUE';
+        evt.target.classList.remove('js-activeBtn');
         return;
       }
       localStorage.setItem('queueMovies', JSON.stringify(arr));

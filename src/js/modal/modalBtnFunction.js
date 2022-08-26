@@ -31,6 +31,7 @@ export function modalBtnsStatusCheck(currentMovie) {
     if (watchedArr.some(item => item.id === currentMovie.id)) {
       const watchedBtn = document.querySelector('.js-addToWatched');
       watchedBtn.textContent = 'REMOVE FROM WATCHED';
+      watchedBtn.classList.add('js-activeBtn');
     }
   }
 
@@ -38,6 +39,7 @@ export function modalBtnsStatusCheck(currentMovie) {
     if (queueArr.some(item => item.id === currentMovie.id)) {
       const queueBtn = document.querySelector('.js-addToQueue');
       queueBtn.textContent = 'REMOVE FROM QUEUE';
+      queueBtn.classList.add('js-activeBtn');
     }
   }
 }
