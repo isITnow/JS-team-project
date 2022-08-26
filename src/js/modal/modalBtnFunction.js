@@ -1,4 +1,5 @@
 export function onAddToWatched(data, storageKey) {
+  console.log(data);
   setToLocalStorage(data, storageKey);
   console.log('W CLICK');
   //   console.log('WATCHED', evt);
@@ -8,6 +9,7 @@ export function onAddToWatched(data, storageKey) {
 }
 
 export function onAddToQueue(data, storageKey) {
+  console.log(data);
   setToLocalStorage(data, storageKey);
   console.log('Q CLICK');
   // console.log('QUEUE', evt);
