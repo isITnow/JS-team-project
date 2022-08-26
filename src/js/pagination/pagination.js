@@ -20,8 +20,6 @@ myBtns.forEach(btn => {
   btn.addEventListener('click', onClickMyBtn);
 });
 
-// fetchTrending(1).then(({page, results}) => renderPagination(page, results))
-
 function renderPagination(page, results, total_pages) {
   let html = '';
 
@@ -30,24 +28,15 @@ function renderPagination(page, results, total_pages) {
   let lastel = total_pages - 3;
 
   if (window.innerWidth >= 768 && page >= 5) {
-    html += `
-    <li class ="pagination__item" data-page="1">1</li>`;
-    html += `
-    <li class ="pagination__item">...</li>`;
+    html += `<li class ="pagination__item" data-page="1">1</li>`;
+    html += `<li class ="pagination__item">...</li>`;
   }
   for (let i = startPageNumber; i <= endPageNumber; i += 1) {
-    html += `
-      <li class ="pagination__item" data-page="${i}" >
-        ${i}
-      </li>  
-      
-      `;
+    html += `<li class ="pagination__item" data-page="${i}">${i}</li>`;
   }
   if (window.innerWidth >= 768 && page >= 1) {
-    html += `
-    <li class ="pagination__item">...</li>`;
-    html += `
-    <li class ="pagination__item" data-page="${total_pages}">${total_pages}</li>`;
+    html += `<li class ="pagination__item">...</li>`;
+    html += `<li class ="pagination__item" data-page="${total_pages}">${total_pages}</li>`;
   }
   if (window.innerWidth >= 768 && page >= lastel) {
     html = `
@@ -94,25 +83,22 @@ function onClickMyPagination(e) {
   query = myInput.value;
   if (query !== '') {
     fetсhByQuery(query, page)
-      .then(({ page, results, total_pages }) => {
-        renderGalleryMarkup(page, results, total_pages, 'data-query');
-        localStorage.setItem('queryFilms', JSON.stringify(results));
-        return { page, results, total_pages };
+      .then((data) => {
+        renderGalleryMarkup(data.results, 'data-query');
+        localStorage.setItem('queryFilms', JSON.stringify(data.results));
+        return data 
       })
-      .then(({ page, results, total_pages }) =>
-        renderPagination(page, results, total_pages)
-      );
+      .then((data) => renderPagination(data.page, data.results, data.total_pages));
+      
     return;
   }
   fetchTrending(page)
-    .then(({ page, results, total_pages }) => {
-      renderGalleryMarkup(page, results, total_pages, 'data-trending');
-      localStorage.setItem('popularFilms', JSON.stringify(results));
-      return { page, results, total_pages };
+    .then((data) => {
+      renderGalleryMarkup(data.results, 'data-trending');
+      localStorage.setItem('popularFilms', JSON.stringify(data.results));
+      return data
     })
-    .then(({ page, results, total_pages }) =>
-      renderPagination(page, results, total_pages)
-    );
+    .then((data) => renderPagination(data.page, data.results, data.total_pages));
 
   makeActive(page);
 }
@@ -123,25 +109,23 @@ function onClickMyBtn(e) {
   query = myInput.value;
   if (query !== '') {
     fetсhByQuery(query, page)
-      .then(({ page, results, total_pages }) => {
-        renderGalleryMarkup(page, results, total_pages, 'data-query');
-        localStorage.setItem('queryFilms', JSON.stringify(results));
-        return { page, results, total_pages };
+      .then((data) => {
+        renderGalleryMarkup(data.results, 'data-query');
+        localStorage.setItem('queryFilms', JSON.stringify(data.results));
+        return data 
       })
-      .then(({ page, results, total_pages }) =>
-        renderPagination(page, results, total_pages)
-      );
+      .then((data) => renderPagination(data.page, data.results, data.total_pages));
+
     return;
   }
   fetchTrending(page)
-    .then(({ page, results, total_pages }) => {
-      renderGalleryMarkup(page, results, total_pages, 'data-trending');
-      localStorage.setItem('popularFilms', JSON.stringify(results));
-      return { page, results, total_pages };
-    })
-    .then(({ page, results, total_pages }) =>
-      renderPagination(page, results, total_pages)
-    );
+  .then((data) => {
+    renderGalleryMarkup(data.results, 'data-trending');
+    localStorage.setItem('popularFilms', JSON.stringify(data.results));
+    return data
+  })
+  .then((data) => renderPagination(data.page, data.results, data.total_pages));
+
   makeActive(page);
 }
 

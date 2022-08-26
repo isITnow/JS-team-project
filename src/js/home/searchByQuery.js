@@ -20,8 +20,8 @@ function onSearchSubmit(evt) {
     return;
   }
   fetсhByQuery(query, page)
-    .then(({ page, results, total_pages }) => {
-      if (!results.length) {
+    .then(( data ) => {
+      if (!data.results.length) {
         warningEl.classList.remove('visually-hidden');
         setTimeout(() => {
           warningEl.classList.add('visually-hidden');
@@ -30,11 +30,11 @@ function onSearchSubmit(evt) {
         return;
       }
       paginationEl.classList.remove('visually-hidden');
-      renderGalleryMarkup(page, results, total_pages, 'data-query');
-      localStorage.setItem('queryFilms', JSON.stringify(results));
-      return { page, results, total_pages };
+      renderGalleryMarkup(data.results, 'data-query');
+      localStorage.setItem('queryFilms', JSON.stringify(data.results));
+      return  data 
     })
-    .then(({ page, results, total_pages }) =>
-      renderPagination(page, results, total_pages)
-    );
+    .then((data) =>
+    renderPagination(data.page, data.results, data.total_pages)
+  )
 }
