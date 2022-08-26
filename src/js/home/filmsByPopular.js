@@ -19,19 +19,15 @@ function checkGenresLocalStorage() {
 checkGenresLocalStorage();
 
 fetchTrending(page)
-  .then((data) => {
+  .then(data => {
     loaderToggle();
     renderGalleryMarkup(data.results, 'data-trending');
     localStorage.setItem('popularFilms', JSON.stringify(data.results));
-    return  data
+    return data;
   })
-  .then((data) =>
-    renderPagination(data.page, data.results, data.total_pages)
-  )
+  .then(data => renderPagination(data.page, data.results, data.total_pages))
   .finally(() =>
     setTimeout(() => {
       hideLoader();
     }, 500)
   );
-
-// добавить дату в лс

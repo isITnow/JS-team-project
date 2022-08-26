@@ -1,8 +1,6 @@
-import { fetchByID } from '../api/fetch';
 import { renderMovieMarkup } from '../renderModal';
 import { onAddToWatched } from '../modal/modalBtnFunction';
 import { onAddToQueue } from '../modal/modalBtnFunction';
-import { setToLibrary } from '../modal/modalBtnFunction';
 import { modalBtnsStatusCheck } from '../modal/modalBtnFunction';
 
 // Логіка що працює на модалку команди;
@@ -58,10 +56,9 @@ const refs = {
 refs.openCardModal.addEventListener('click', onOpenCardModal);
 refs.closeCardModal.addEventListener('click', onCloseCardModal);
 refs.backdrop.addEventListener('click', onBackdropClickCloseModal);
-// refs.btnAddToWatched.addEventListener('click', onAddToWatched);
-// refs.btnAddToQueue.addEventListener('click', onAddToQueue);
 
-////////MODAL OPEN//////////////////
+//////// MODAL OPEN //////////////////
+
 let currentMovie = null;
 let movieId;
 
@@ -94,17 +91,14 @@ function onOpenCardModal(event) {
       currentMovie = arr.find(item => item.id === movieId);
       renderMovieMarkup(currentMovie);
     }
-    // if (event.target.closest('[data-library]')) {
-    //   const arr = JSON.parse(localStorage.getItem('library'));
-    //   currentMovie = arr.find(item => item.id === movieId);
-    //   renderMovieMarkup(currentMovie);
-    // }
   }
   modalBtnsStatusCheck(currentMovie);
 
   const modalBtns = document.querySelector('.card-modal__buttons');
   modalBtns.addEventListener('click', onModalBtnClick);
 }
+
+///////////// ADD/REMOVE TO/FROM LIBRARY ////////////////////////////
 
 function onModalBtnClick(evt) {
   if (evt.target.classList.contains('js-addToWatched')) {
@@ -173,17 +167,3 @@ function onBackdropClickCloseModal(event) {
     onCloseCardModal();
   }
 }
-
-// function onAddToWatched(event) {
-//   if (event.currentTarget === event.target) {
-//     console.log('ok1');
-//     event.target.textContent = 'REMOVE';
-//   }
-// }
-
-// function onAddToQueue(event) {
-//   if (event.currentTarget === event.target) {
-//     console.log('ok2');
-//     event.target.textContent = 'REMOVE';
-//   }
-// }

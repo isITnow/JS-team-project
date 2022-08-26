@@ -1,21 +1,9 @@
 export function onAddToWatched(data, storageKey) {
-  console.log(data);
   setToLocalStorage(data, storageKey);
-  console.log('W CLICK');
-  //   console.log('WATCHED', evt);
-  //   if (evt.target.textContent === 'ADD TO WATCHED') {
-  //     evt.target.textContent = 'REMOVE FROM WATCHED';
-  //   }
 }
 
 export function onAddToQueue(data, storageKey) {
-  console.log(data);
   setToLocalStorage(data, storageKey);
-  console.log('Q CLICK');
-  // console.log('QUEUE', evt);
-  // if (evt.target.textContent === 'ADD TO QUEUE') {
-  //   evt.target.textContent = 'REMOVE FROM QUEUE';
-  // }
 }
 
 export function setToLibrary(data, storageKey) {
