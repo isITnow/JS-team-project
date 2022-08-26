@@ -41,37 +41,3 @@ export function modalBtnsStatusCheck(currentMovie) {
     }
   }
 }
-
-// export function onAddToWatched(data) {
-//   console.log('Click');
-
-//   console.log(data);
-//   if (!localStorage.getItem('watchedMovies')) {
-//     const watchedArr = [];
-//     watchedArr.push(data);
-//     console.log(watchedArr);
-//     localStorage.setItem('watchedMovies', JSON.stringify(watchedArr));
-//     return;
-//   }
-//   const arr = JSON.parse(localStorage.getItem('watchedMovies'));
-//   console.log(arr);
-//   arr.push(data);
-//   localStorage.setItem('watchedMovies', JSON.stringify(arr));
-// }
-
-// export function onAddToQueue(data) {
-//   console.log('Click');
-
-//   console.log(data);
-//   if (!localStorage.getItem('queueMovies')) {
-//     const queueArr = [];
-//     queueArr.push(data);
-//     console.log(queueArr);
-//     localStorage.setItem('queueMovies', JSON.stringify(queueArr));
-//     return;
-//   }
-//   const arr = JSON.parse(localStorage.getItem('queueMovies'));
-//   console.log(arr);
-//   arr.push(data);
-//   localStorage.setItem('queueMovies', JSON.stringify(arr));
-// }
