@@ -58,52 +58,49 @@ const refs = {
 refs.openCardModal.addEventListener('click', onOpenCardModal);
 refs.closeCardModal.addEventListener('click', onCloseCardModal);
 refs.backdrop.addEventListener('click', onBackdropClickCloseModal);
-// refs.btnAddToWatched.addEventListener('click', onAddToWatched);
-// refs.btnAddToQueue.addEventListener('click', onAddToQueue);
 
 ////////MODAL OPEN//////////////////
 let currentMovie = null;
 let movieId;
 
 function onOpenCardModal(event) {
-  console.log(event.target.firstElementChild);
-  event.preventDefault();
-  refs.cardModal.classList.remove('is-hidden');
-  window.addEventListener('keydown', onEscapeCloseModal);
-  window.addEventListener('click', onBackdropClickCloseModal);
-  movieId = Number(event.target.closest('.gallery__item').id);
-  if (
-    event.currentTarget.nodeName !== 'UL' &&
-    event.target.firstElementChild.classList.contains('gallery__item')
-  ) {
+  console.log(event.target);
+  if (!event.target.classList.contains('gallery__image')) {
     return;
   }
-  if (event.target.closest('[data-trending]')) {
-    const arr = JSON.parse(localStorage.getItem('popularFilms'));
-    currentMovie = arr.find(item => item.id === movieId);
-    renderMovieMarkup(currentMovie);
-  }
-  if (event.target.closest('[data-query]')) {
-    const arr = JSON.parse(localStorage.getItem('queryFilms'));
-    currentMovie = arr.find(item => item.id === movieId);
-    renderMovieMarkup(currentMovie);
-  }
-  if (event.target.closest('[data-watched]')) {
-    const arr = JSON.parse(localStorage.getItem('watchedMovies'));
-    currentMovie = arr.find(item => item.id === movieId);
-    renderMovieMarkup(currentMovie);
-  }
-  if (event.target.closest('[data-queue]')) {
-    const arr = JSON.parse(localStorage.getItem('queueMovies'));
-    currentMovie = arr.find(item => item.id === movieId);
-    renderMovieMarkup(currentMovie);
-  }
-  if (event.target.closest('[data-library]')) {
-    const arr = JSON.parse(localStorage.getItem('library'));
-    currentMovie = arr.find(item => item.id === movieId);
-    renderMovieMarkup(currentMovie);
-  }
+  movieId = Number(event.target.closest('.gallery__item').id);
+  console.log(movieId);
+  if (event.currentTarget.nodeName === 'UL') {
+    refs.cardModal.classList.remove('is-hidden');
+    window.addEventListener('keydown', onEscapeCloseModal);
+    window.addEventListener('click', onBackdropClickCloseModal);
 
+    if (event.target.closest('[data-trending]')) {
+      const arr = JSON.parse(localStorage.getItem('popularFilms'));
+      currentMovie = arr.find(item => item.id === movieId);
+      renderMovieMarkup(currentMovie);
+    }
+    if (event.target.closest('[data-query]')) {
+      const arr = JSON.parse(localStorage.getItem('queryFilms'));
+      currentMovie = arr.find(item => item.id === movieId);
+      renderMovieMarkup(currentMovie);
+    }
+    if (event.target.closest('[data-watched]')) {
+      const arr = JSON.parse(localStorage.getItem('watchedMovies'));
+      currentMovie = arr.find(item => item.id === movieId);
+      renderMovieMarkup(currentMovie);
+    }
+    if (event.target.closest('[data-queue]')) {
+      const arr = JSON.parse(localStorage.getItem('queueMovies'));
+      currentMovie = arr.find(item => item.id === movieId);
+      renderMovieMarkup(currentMovie);
+    }
+    if (event.target.closest('[data-library]')) {
+      const arr = JSON.parse(localStorage.getItem('library'));
+      currentMovie = arr.find(item => item.id === movieId);
+      renderMovieMarkup(currentMovie);
+    }
+  }
   modalBtnsStatusCheck(currentMovie);
 
   const modalBtns = document.querySelector('.card-modal__buttons');
@@ -166,17 +163,3 @@ function onBackdropClickCloseModal(event) {
     onCloseCardModal();
   }
 }
-
-// function onAddToWatched(event) {
-//   if (event.currentTarget === event.target) {
-//     console.log('ok1');
-//     event.target.textContent = 'REMOVE';
-//   }
-// }
-
-// function onAddToQueue(event) {
-//   if (event.currentTarget === event.target) {
-//     console.log('ok2');
-//     event.target.textContent = 'REMOVE';
-//   }
-// }
