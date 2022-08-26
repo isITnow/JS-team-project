@@ -1,11 +1,6 @@
-//  *{
-//     outline: 1px solid teal;
-//  }
-
 table {
     table-layout: fixed;
     width: 100%;
-   
 }
 
 tr {
@@ -14,38 +9,120 @@ tr {
     border-color: inherit;
 }
 
+.backdrop-main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    visibility: visible;
+    pointer-events: painted;
+    // opacity: 1;
+    overflow-y: scroll;
+    z-index: 2;
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1), opacity 250ms, visibility 250ms;
+}
+
+.backdrop-main.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.backdrop__modal-main {
+    position: absolute;
+    top: 72%;
+    left: 50%;
+    padding: 48px 20px 40px;
+    margin: 0 auto;
+    width: 95%;
+    min-width: 280px;
+    height: auto;
+    background-color: white;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media screen and (min-width: 768px) {
+    .backdrop__modal-main {
+        max-width: 704px;
+        // height: 550px;
+        top: 50%;
+        padding: 40px 72px 40px 36px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .backdrop__modal-main {
+        min-width: 808px;
+        // height: 558px;
+        top: 50%;
+        padding: 40px 12px;
+    }
+}
+
+.backdrop.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
 .modal__container {
-    max-height: 100%;
-    display: flex;
+    // max-height: 100%;
+    // display: flex;
+    @media screen and (min-width: 768px) {
+        display: flex;
+    }
 }
 
 // 1div
 .card-modal__item {
     max-height: 100%;
-    display: flex;
-    overflow-y: scroll;
+
+    @media screen and (min-width: 768px) {
+        display: flex;
+    }
 }
 
 // div-img
 .card-modal__image-wrap {
-    margin-top: auto;
-    max-height: 100%;
-    margin-bottom: 0;
+    // margin-top: auto;
+    // max-height: 100%;
+    // margin-bottom: 0;
+    margin-bottom: 20px;
 }
-@media screen and (max-width: 767px) {
+@media screen and (min-width: 768px) {
     .card-modal__image-wrap {
-      max-width: 704px;
-      height: 940px;
-      top: 50%;
-      margin-bottom: 20px;
+        // max-width: 704px;
+        // height: 940px;
+        // top: 50%;
+        // margin-bottom: 20px;
+        max-width: 264px;
+        max-height: 375px;
     }
-  }
+}
+
+@media screen and (min-width: 1280px) {
+    .card-modal__image-wrap {
+        min-width: 375px;
+        min-height: 478px;
+        margin-right: 16px;
+    }
+}
 // img
 .card-modal__image {
-    max-height: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    width: 375px;
+    // max-height: 100%;
+    // margin-left: auto;
+    // margin-right: auto;
+    // width: 375px;
+    // border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 5px;
 }
 
@@ -56,21 +133,36 @@ tr {
 }
 
 .card-modal__title {
-    font-size: 30px;
-    line-height: 1.16;
-    display: block;
-    font-size: 1.5em;
-    text-transform: uppercase;
-    margin-bottom: 20px;
+    // font-size: 30px;
+    // line-height: 1.16;
+    // display: block;
+    // font-size: 1.5em;
+
+    // margin-bottom: 20px;
     font-weight: bold;
     color: #000000;
+    text-transform: uppercase;
+    padding-bottom: 20px;
+    font-size: 20px;
+
+    @media screen and (min-width: 1280px) {
+        font-size: 30px;
+        line-height: 1.16;
+    }
 }
 
 .card-modal__wrapper {
-   max-height: 100%;
-    margin-left: 20px;
-    margin-right: 16px;
- max-width: 450px;
+    @media screen and (min-width: 768px) {
+        max-height: 100%;
+        margin-left: 68px;
+        max-width: 264px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        max-height: 100%;
+        margin-left: 16px;
+        max-width: 391px;
+    }
 }
 
 .card-modal__film-info {
@@ -84,18 +176,20 @@ tr {
     vertical-align: middle;
     border-color: inherit;
 }
-.card-modal__overwiew-title{
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 500;
-font-size: 12px;
-line-height: 16px;
-/* identical to box height, or 133% */
-align-items: center;
-text-transform: uppercase;
+
+.card-modal__overwiew-title {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    align-items: center;
+    text-transform: uppercase;
+    color: #000000;
+    margin-bottom: 8px;
 }
 .card-modal__overview {
-    font-family: 'Roboto';
+    font-family: "Roboto";
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
@@ -109,7 +203,7 @@ text-transform: uppercase;
 .card-modal__origin-title-result,
 .card-modal__genres-result,
 .card-modal__rating-result {
-    font-family: 'Roboto';
+    font-family: "Roboto";
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
@@ -119,7 +213,7 @@ text-transform: uppercase;
 
 .card-modal__rating-result-span {
     background-color: #ff6b08;
-    color: #FFFFFF;
+    color: #ffffff;
     border-radius: 5px;
     padding-right: 5px;
     padding-left: 5px;
@@ -131,44 +225,78 @@ text-transform: uppercase;
     line-height: 16px;
 }
 
-
 .card-modal__genres,
 .card-modal__origin-title,
 .card-modal__rating,
 .card-modal__popularity {
     width: 100px;
-    font-family: 'Roboto';
+    font-family: "Roboto";
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
     line-height: 16px;
-    color: #8C8C8C;
+    color: #8c8c8c;
 }
 
+.card-modal__origin-title-result {
+    text-transform: uppercase;
+}
 .card-modal__buttons {
     visibility: visible;
     display: flex;
-
-margin-top: 20px;
+    margin-top: 20px;
+    justify-content: center;
+    @media screen and (min-width: 1280px) {
+        justify-content: flex-start;
+    }
 }
-.card-modal__button-item{
 
-}
-.card-modal__button-queue,
 .card-modal__button-add {
-font-family: 'Roboto';
-font-weight: 500;
-font-size: 12px;
-line-height: 16px;
-align-items: center;
-text-align: center;
-text-transform: uppercase;
-    margin-right: 15px;
-    background: #FF6B01;
-    color: #FFFFFF;
+    font-family: "Roboto";
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    margin-right: 20px;
+    background: #ff6b01;
+    color: #ffffff;
     border-radius: 5px;
-    width: 136px;
+    width: 110px;
     height: 44px;
     border: none;
-    
+    @media screen and (min-width: 768px) {
+        width: 125px;
+        padding: 14px 9px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        width: 136px;
+        padding: 14px 10px;
+    }
+}
+.card-modal__button-queue {
+    font-family: "Roboto";
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+
+    background: #ff6b01;
+    color: #ffffff;
+    border-radius: 5px;
+    width: 110px;
+    height: 44px;
+    border: none;
+    @media screen and (min-width: 768px) {
+        width: 125px;
+        padding: 14px 9px;
+    }
+    @media screen and (min-width: 1280px) {
+        width: 136px;
+        padding: 14px 10px;
+    }
 }
