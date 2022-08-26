@@ -3,6 +3,7 @@ import { renderMovieMarkup } from '../renderModal';
 import { onAddToWatched } from '../modal/modalBtnFunction';
 import { onAddToQueue } from '../modal/modalBtnFunction';
 import { setToLibrary } from '../modal/modalBtnFunction';
+import { modalBtnsStatusCheck } from '../modal/modalBtnFunction';
 
 // Логіка що працює на модалку команди;
 
@@ -74,15 +75,32 @@ function onOpenCardModal(event) {
     return;
   }
   if (event.target.closest('[data-trending]')) {
-    const trendingArr = JSON.parse(localStorage.getItem('popularFilms'));
-    currentMovie = trendingArr.find(item => item.id === movieId);
+    const arr = JSON.parse(localStorage.getItem('popularFilms'));
+    currentMovie = arr.find(item => item.id === movieId);
     renderMovieMarkup(currentMovie);
   }
   if (event.target.closest('[data-query]')) {
-    const querygArr = JSON.parse(localStorage.getItem('queryFilms'));
-    currentMovie = querygArr.find(item => item.id === movieId);
+    const arr = JSON.parse(localStorage.getItem('queryFilms'));
+    currentMovie = arr.find(item => item.id === movieId);
     renderMovieMarkup(currentMovie);
   }
+  if (event.target.closest('[data-watched]')) {
+    const arr = JSON.parse(localStorage.getItem('watchedMovies'));
+    currentMovie = arr.find(item => item.id === movieId);
+    renderMovieMarkup(currentMovie);
+  }
+  if (event.target.closest('[data-queue]')) {
+    const arr = JSON.parse(localStorage.getItem('queueMovies'));
+    currentMovie = arr.find(item => item.id === movieId);
+    renderMovieMarkup(currentMovie);
+  }
+  if (event.target.closest('[data-library]')) {
+    const arr = JSON.parse(localStorage.getItem('library'));
+    currentMovie = arr.find(item => item.id === movieId);
+    renderMovieMarkup(currentMovie);
+  }
+
+  modalBtnsStatusCheck(currentMovie);
 
   const modalBtns = document.querySelector('.card-modal__buttons');
   modalBtns.addEventListener('click', onModalBtnClick);
@@ -92,10 +110,34 @@ function onModalBtnClick(evt) {
   if (evt.target.classList.contains('js-addToWatched')) {
     onAddToWatched(currentMovie, 'watchedMovies');
     setToLibrary(currentMovie, 'library');
+    if (evt.target.textContent === 'REMOVE FROM WATCHED') {
+      const arr = JSON.parse(localStorage.getItem('watchedMovies'));
+      const currentIdx = arr.findIndex(item => item.id === movieId);
+      arr.splice(currentIdx, 1);
+      localStorage.setItem('watchedMovies', JSON.stringify(arr));
+      evt.target.textContent = 'ADD TO WATCHED';
+
+      const arrLib = JSON.parse(localStorage.getItem('library'));
+      const currentIdxLib = arr.findIndex(item => item.id === movieId);
+      arrLib.splice(currentIdxLib, 1);
+      localStorage.setItem('library', JSON.stringify(arrLib));
+    }
   }
   if (evt.target.classList.contains('js-addToQueue')) {
     onAddToQueue(currentMovie, 'queueMovies');
     setToLibrary(currentMovie, 'library');
+    if (evt.target.textContent === 'REMOVE FROM QUEUE') {
+      const arr = JSON.parse(localStorage.getItem('queueMovies'));
+      const currentIdx = arr.findIndex(item => item.id === movieId);
+      arr.splice(currentIdx, 1);
+      localStorage.setItem('queueMovies', JSON.stringify(arr));
+      evt.target.textContent = 'ADD TO QUEUE';
+
+      const arrLib = JSON.parse(localStorage.getItem('library'));
+      const currentIdxLib = arr.findIndex(item => item.id === movieId);
+      arrLib.splice(currentIdxLib, 1);
+      localStorage.setItem('library', JSON.stringify(arrLib));
+    }
   }
 }
 

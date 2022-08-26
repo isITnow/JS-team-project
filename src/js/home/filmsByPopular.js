@@ -19,14 +19,14 @@ function checkGenresLocalStorage() {
 checkGenresLocalStorage();
 
 fetchTrending(page)
-  .then(({ page, results, total_pages }) => {
+  .then((data) => {
     loaderToggle();
-    renderGalleryMarkup(page, results, total_pages, 'data-trending');
-    localStorage.setItem('popularFilms', JSON.stringify(results));
-    return { page, results, total_pages };
+    renderGalleryMarkup(data.results, 'data-trending');
+    localStorage.setItem('popularFilms', JSON.stringify(data.results));
+    return  data
   })
-  .then(({ page, results, total_pages }) =>
-    renderPagination(page, results, total_pages)
+  .then((data) =>
+    renderPagination(data.page, data.results, data.total_pages)
   )
   .finally(() =>
     setTimeout(() => {
