@@ -97,11 +97,11 @@ function onOpenCardModal(event) {
     currentMovie = arr.find(item => item.id === movieId);
     renderMovieMarkup(currentMovie);
   }
-  if (event.target.closest('[data-library]')) {
-    const arr = JSON.parse(localStorage.getItem('library'));
-    currentMovie = arr.find(item => item.id === movieId);
-    renderMovieMarkup(currentMovie);
-  }
+  // if (event.target.closest('[data-library]')) {
+  //   const arr = JSON.parse(localStorage.getItem('library'));
+  //   currentMovie = arr.find(item => item.id === movieId);
+  //   renderMovieMarkup(currentMovie);
+  // }
 
   modalBtnsStatusCheck(currentMovie);
 
@@ -112,8 +112,8 @@ function onOpenCardModal(event) {
 function onModalBtnClick(evt) {
   if (evt.target.classList.contains('js-addToWatched')) {
     onAddToWatched(currentMovie, 'watchedMovies');
-    setToLibrary(currentMovie, 'library');
-    evt.target.textContent = 'REMOVE FROM WATCHED';
+    // setToLibrary(currentMovie, 'library');
+    // evt.target.textContent = 'REMOVE FROM WATCHED';
     if (evt.target.textContent === 'REMOVE FROM WATCHED') {
       const arr = JSON.parse(localStorage.getItem('watchedMovies'));
       const currentIdx = arr.findIndex(item => item.id === movieId);
@@ -121,15 +121,15 @@ function onModalBtnClick(evt) {
       localStorage.setItem('watchedMovies', JSON.stringify(arr));
       evt.target.textContent = 'ADD TO WATCHED';
 
-      const arrLib = JSON.parse(localStorage.getItem('library'));
-      const currentIdxLib = arr.findIndex(item => item.id === movieId);
-      arrLib.splice(currentIdxLib, 1);
-      localStorage.setItem('library', JSON.stringify(arrLib));
+      // const arrLib = JSON.parse(localStorage.getItem('library'));
+      // const currentIdxLib = arr.findIndex(item => item.id === movieId);
+      // arrLib.splice(currentIdxLib, 1);
+      // localStorage.setItem('library', JSON.stringify(arrLib));
     }
   }
   if (evt.target.classList.contains('js-addToQueue')) {
     onAddToQueue(currentMovie, 'queueMovies');
-    setToLibrary(currentMovie, 'library');
+    // setToLibrary(currentMovie, 'library');
     evt.target.textContent = 'REMOVE FROM QUEUE';
     if (evt.target.textContent === 'REMOVE FROM QUEUE') {
       const arr = JSON.parse(localStorage.getItem('queueMovies'));
@@ -138,10 +138,11 @@ function onModalBtnClick(evt) {
       localStorage.setItem('queueMovies', JSON.stringify(arr));
       evt.target.textContent = 'ADD TO QUEUE';
 
-      const arrLib = JSON.parse(localStorage.getItem('library'));
-      const currentIdxLib = arr.findIndex(item => item.id === movieId);
-      arrLib.splice(currentIdxLib, 1);
-      localStorage.setItem('library', JSON.stringify(arrLib));
+      //   const arrLib = JSON.parse(localStorage.getItem('library'));
+      //   const currentIdxLib = arr.findIndex(item => item.id === movieId);
+      //   arrLib.splice(currentIdxLib, 1);
+      //   localStorage.setItem('library', JSON.stringify(arrLib));
+      // }
     }
   }
 }
