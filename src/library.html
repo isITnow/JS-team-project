@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My library</title>
     <link
+      rel="icon"
+      type="image/png"
+      sizes="72x72"
+      href="./images/icons8-документальный-72.png"
+    />
+    <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css"
     />
@@ -21,15 +27,18 @@
     />
   </head>
   <body>
-    <include src="./partials/header_library.html"></include>
-    <main>
-      <include src="./partials/spinner.html"></include>
-      <include src="./partials/gallery.html"></include>
-      <!-- <include src="./partials/pagination.html"></include> -->
-    </main>
-    <include src="./partials/scroll-to-top.html"></include>
-    <include src="./partials/footer.html"></include>
-    <include src="./partials/modal_footer.html"></include>
+    <div class="body-flex">
+      <include src="./partials/header_library.html"></include>
+      <main>
+        <include src="./partials/spinner.html"></include>
+        <include src="./partials/gallery.html"></include>
+        <!-- <include src="./partials/pagination.html"></include> -->
+      </main>
+      <include src="./partials/scroll-to-top.html"></include>
+      <include src="./partials/footer.html"></include>
+      <include src="./partials/modal_footer.html"></include>
+    </div>
+
     <script type="module" src="./library.js"></script>
   </body>
 </html>

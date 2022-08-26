@@ -9,6 +9,14 @@ main {
 body {
   font-family: "Roboto", sans-serif;
   overflow-x: hidden;
+
+  margin: 0;
+  // display: flex;
+}
+.body-flex {
+  height: 100vh;
+  flex-direction: column;
+  display: flex;
 }
 
 h1,

@@ -98,13 +98,6 @@
   }
 }
 
-// .container {
-//   margin-left: auto;
-//   margin-right: auto;
-//   width: 100%;
-//   padding-left: 20px;
-//   padding-right: 20px;
-// }
 .wrapper {
   padding-top: 15px;
   padding-bottom: 15px;
@@ -139,20 +132,7 @@
 .popcorn-color {
   color: #ff6b08;
 }
-// .command__list {
-//   display: flex;
-//   flex-direction: column;
 
-//   align-items: center;
-
-//   @media screen and (min-width: 768px) {
-//     display: flex;
-//     justify-content: space-between;
-//     flex-wrap: nowrap;
-//     flex-direction: row;
-//     align-items: stretch;
-//   }
-// }
 .command__list {
   display: flex;
   flex-wrap: wrap;
@@ -189,9 +169,6 @@
   padding-bottom: 10px;
   text-align: center;
   background-color: white;
-  @media screen and (min-width: 768px) {
-    // text-align: end;
-  }
 }
 
 .command__image {
