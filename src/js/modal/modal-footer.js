@@ -2,6 +2,7 @@ import { renderMovieMarkup } from '../renderModal';
 import { onAddToWatched } from '../modal/modalBtnFunction';
 import { onAddToQueue } from '../modal/modalBtnFunction';
 import { modalBtnsStatusCheck } from '../modal/modalBtnFunction';
+import { renderGalleryMarkup } from '../home/renderGalleryMarkup';
 
 // Логіка що працює на модалку команди;
 
@@ -119,9 +120,12 @@ function onModalBtnClick(evt) {
       }
       localStorage.setItem('watchedMovies', JSON.stringify(arr));
       evt.target.textContent = 'ADD TO WATCHED';
+      renderGalleryMarkup(arr, 'data-watched');
       return;
     }
   }
+
+  ////////////////////// QUEUE BTN //////////////////////////////////////
 
   if (evt.target.classList.contains('js-addToQueue')) {
     if (evt.target.textContent === 'ADD TO QUEUE') {
@@ -141,6 +145,7 @@ function onModalBtnClick(evt) {
       }
       localStorage.setItem('queueMovies', JSON.stringify(arr));
       evt.target.textContent = 'ADD TO QUEUE';
+      renderGalleryMarkup(arr, 'data-queue');
       return;
     }
   }
