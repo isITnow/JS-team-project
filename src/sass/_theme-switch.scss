@@ -28,10 +28,6 @@ body.dark-theme {
         background-size: cover;
     }
 
-    // & .command__item {
-    //     background-color: black;
-    // }
-
     & .command__role {
         color: #fff;
     }
@@ -43,11 +39,50 @@ body.dark-theme {
     & .wrapper__title {
         color: #fff;
     }
+
+    & .image-no-films {
+        box-shadow: 8px 10px rgba(206, 27, 27, 0.442), -1em 0 0.4em rgba(183, 102, 16, 0.667);
+    }
+
+    & .backdrop__modal-main {
+        background: linear-gradient(to right, #000000, #642b1b);
+        box-shadow: 0px 2px 8px 8px rgba(114, 62, 13, 0.859);
+    }
+    & .card-modal__title {
+        color: #fff;
+    }
+
+    & .card-modal__overwiew-title {
+        color: #fff;
+    }
+
+    & .card-modal__overview {
+        color: #fff;
+    }
+
+    & .card-modal__rating-result-span,
+    .card-modal__rating-multiply,
+    .card-modal__popularity-result,
+    .card-modal__origin-title-result,
+    .card-modal__genres-result,
+    .card-modal__rating-result {
+        color: #fff;
+    }
+
+    & .card-modal__button-add {
+        color: #fff;
+        border: solid 1px #fff;
+    }
+
+    & .card-modal__button-queue {
+        color: #fff;
+        border: solid 1px #fff;
+    }
 }
 
 .theme-container {
     margin: 0 auto;
-    width: 320px;
+    max-width: 70px;
     padding: 0 20px;
 
     @media screen and (min-width: 768px) and (max-width: 1279px) {
@@ -65,12 +100,17 @@ body.dark-theme {
     position: absolute;
     display: flex;
     justify-content: flex-end;
-    padding: 16px 50px;
-    right: -30;
+    padding: 16px 0 16px 0;
+    left: 180px;
     top: 170px;
 
     @media screen and (min-width: 768px) {
-        right: 0;
+        left: 630px;
+        top: 150px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        left: 1130px;
         top: 150px;
     }
 }
@@ -135,16 +175,16 @@ body.dark-theme {
     transform: translateX(3px);
 }
 
-.theme-switch__input:checked+.theme-switch__label {
+.theme-switch__input:checked + .theme-switch__label {
     background-color: #ff6b08;
 }
 
-.theme-switch__input:checked~.theme-switch__mark {
+.theme-switch__input:checked ~ .theme-switch__mark {
     transform: translateX(17px);
 }
 
-.theme-switch__input:focus+.theme-switch__label,
-.theme-switch__input:active+.theme-switch__label {
+.theme-switch__input:focus + .theme-switch__label,
+.theme-switch__input:active + .theme-switch__label {
     box-shadow: 0 0 0 3px #ff6b08;
 }
 

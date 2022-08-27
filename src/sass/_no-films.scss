@@ -1,0 +1,28 @@
+.item-no-films {
+    display: flex;
+    padding: 0 0 20px 0;
+}
+
+.image-no-films {
+    border-radius: 15px;
+    @media screen and(min-width: 768px) {
+        width: 550px;
+    }
+    @media screen and(min-width: 1280px) {
+        width: 700px;
+    }
+}
+
+.text-no-films {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+
+    color: #ff6b08;
+    @media screen and(min-width: 768px) {
+        font-size: 30px;
+    }
+}

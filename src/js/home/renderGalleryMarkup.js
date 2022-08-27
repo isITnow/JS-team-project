@@ -50,16 +50,16 @@ export function renderGalleryMarkup(data, dataAttribute) {
 }
 
 export function renderDefaulMarkup() {
-  galleryItem.innerHTML = `<li class="item">
+  galleryItem.innerHTML = `<li class="item-no-films">
         <img
-          class="image"
+          class="image-no-films"
           src="https://cases.media/image/wide/54ce0f4a-2dbd-4745-acf9-cc9a8c349cfd.jpg"
           alt="Kina ne bude"
-          width="280"
-          height="150"
+          min-width="280"
+          min-height="150"
         />
       </li>
-      <li class="item">
-        <p class="text">Шо сидиш? Іди шукай кіно!</p>
+      <li class="item-no-films">
+        <p class="text-no-films">Що сидиш? Іди шукай кіно! Або вивчи українську, щоб це прочитати :)</p>
       </li>`;
 }
