@@ -29,7 +29,7 @@ export function modalBtnsStatusCheck(currentMovie) {
   const queueArr = JSON.parse(localStorage.getItem('queueMovies'));
   if (localStorage.getItem('watchedMovies')) {
     if (watchedArr.some(item => item.id === currentMovie.id)) {
-      const watchedBtn = document.querySelector('.js-addToWatched .');
+      const watchedBtn = document.querySelector('.js-addToWatched');
       watchedBtn.textContent = 'REMOVE FROM WATCHED';
       watchedBtn.classList.add('js-activeBtn');
     }
