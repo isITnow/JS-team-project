@@ -111,6 +111,10 @@ function onModalBtnClick(evt) {
       onAddToWatched(currentMovie, 'watchedMovies');
       evt.target.textContent = 'REMOVE FROM WATCHED';
       evt.target.classList.add('js-activeBtn');
+      if (refs.title.textContent === 'My library') {
+        const arr = JSON.parse(localStorage.getItem('watchedMovies'));
+        renderGalleryMarkup(arr, 'data-watched');
+      }
       return;
     }
 
@@ -144,6 +148,10 @@ function onModalBtnClick(evt) {
       onAddToQueue(currentMovie, 'queueMovies');
       evt.target.textContent = 'REMOVE FROM QUEUE';
       evt.target.classList.add('js-activeBtn');
+      if (refs.title.textContent === 'My library') {
+        const arr = JSON.parse(localStorage.getItem('queueMovies'));
+        renderGalleryMarkup(arr, 'data-queue');
+      }
       return;
     }
 
