@@ -13,6 +13,8 @@ const btnsLib = document.querySelector('.buttons-list');
 
 paginationList.addEventListener('click', onClickMyPagination);
 btnsLib.addEventListener('click', onLibBtnClick);
+WATCHED_BTN.addEventListener('click', onClickToggle);
+QUEUE_BTN.addEventListener('click', onClickToggle);
 
 myBtns.forEach(btn => {
   btn.addEventListener('click', onClickMyBtn);
@@ -48,12 +50,6 @@ function onLibBtnClick(e) {
     } else {
       renderDefaulMarkup();
     }
-
-    /////// watchedBtn class toggle ///////////
-    if (!e.target.classList.contains('js-activeBtn')) {
-      e.target.classList.add('js-activeBtn');
-      QUEUE_BTN.classList.remove('js-activeBtn');
-    }
   }
 
   if (e.target.classList.contains('js-queueBtn')) {
@@ -63,6 +59,14 @@ function onLibBtnClick(e) {
     } else {
       renderDefaulMarkup();
     }
+  }
+}
+
+function onClickToggle(e) {
+  /////// watchedBtn class toggle ///////////
+  if (!e.target.classList.contains('js-activeBtn')) {
+    e.target.classList.add('js-activeBtn');
+    QUEUE_BTN.classList.remove('js-activeBtn');
   }
   /////// queueBtn class toggle ///////////
   if (!e.target.classList.contains('js-activeBtn')) {
@@ -105,4 +109,20 @@ function getItemsByPage(page, total_pages, allItemsFromLocaleStorage) {
   console.log(start, end, allItemsFromLocaleStorage.length);
   console.log(page, total_pages);
   return arr;
+
+  function getItemsByPage(page, total_pages, allItemsFromLocaleStorage) {
+    console.log(allItemsFromLocaleStorage);
+    let end = 9;
+    let start = 0;
+    if (page === total_pages && page !== 1) {
+      start = start + end;
+      end = (allItemsFromLocaleStorage.length % 9) + end;
+    }
+    let arr = [];
+    console.log(start, end, allItemsFromLocaleStorage.length);
+    for (let i = start; i < end; i++) {
+      arr.push(allItemsFromLocaleStorage[i]);
+    }
+    return arr;
+  }
 }
