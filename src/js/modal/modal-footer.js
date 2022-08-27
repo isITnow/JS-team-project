@@ -129,6 +129,7 @@ function onModalBtnClick(evt) {
       }
       localStorage.setItem('watchedMovies', JSON.stringify(arr));
       evt.target.textContent = 'ADD TO WATCHED';
+      evt.target.classList.remove('js-activeBtn');
       if (refs.title.textContent === 'My library') {
         renderGalleryMarkup(arr, 'data-watched');
       }
@@ -161,6 +162,7 @@ function onModalBtnClick(evt) {
       }
       localStorage.setItem('queueMovies', JSON.stringify(arr));
       evt.target.textContent = 'ADD TO QUEUE';
+      evt.target.classList.remove('js-activeBtn');
       if (refs.title.textContent === 'My library') {
         renderGalleryMarkup(arr, 'data-queue');
       }
