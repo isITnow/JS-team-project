@@ -54,6 +54,8 @@ const refs = {
   modalContainer: document.querySelector('.modal__container'),
   backdrop: document.querySelector('[data-backdrop-card]'),
   title: document.querySelector('title'),
+  libWatchedBtn: document.querySelector('.js-watchedBtn'),
+  libQueueBtn: document.querySelector('.js-queueBtn'),
 };
 
 refs.openCardModal.addEventListener('click', onOpenCardModal);
@@ -111,12 +113,17 @@ function onModalBtnClick(evt) {
       onAddToWatched(currentMovie, 'watchedMovies');
       evt.target.textContent = 'REMOVE FROM WATCHED';
       evt.target.classList.add('js-activeBtn');
-      if (refs.title.textContent === 'My library') {
+      if (
+        refs.title.textContent === 'My library' &&
+        refs.libWatchedBtn.classList.contains('js-activeBtn')
+      ) {
         const arr = JSON.parse(localStorage.getItem('watchedMovies'));
         renderGalleryMarkup(arr, 'data-watched');
       }
       return;
     }
+
+    //// REMOVE FROM WATCHED ////
 
     if (evt.target.textContent === 'REMOVE FROM WATCHED') {
       const arr = JSON.parse(localStorage.getItem('watchedMovies'));
@@ -124,7 +131,10 @@ function onModalBtnClick(evt) {
       arr.splice(currentIdx, 1);
       if (!arr.length) {
         localStorage.removeItem('watchedMovies');
-        if (refs.title.textContent === 'My library') {
+        if (
+          refs.title.textContent === 'My library' &&
+          refs.libWatchedBtn.classList.contains('js-activeBtn')
+        ) {
           renderDefaulMarkup();
         }
         evt.target.textContent = 'ADD TO WATCHED';
@@ -134,7 +144,10 @@ function onModalBtnClick(evt) {
       localStorage.setItem('watchedMovies', JSON.stringify(arr));
       evt.target.textContent = 'ADD TO WATCHED';
       evt.target.classList.remove('js-activeBtn');
-      if (refs.title.textContent === 'My library') {
+      if (
+        refs.title.textContent === 'My library' &&
+        refs.libWatchedBtn.classList.contains('js-activeBtn')
+      ) {
         renderGalleryMarkup(arr, 'data-watched');
       }
       return;
@@ -148,12 +161,17 @@ function onModalBtnClick(evt) {
       onAddToQueue(currentMovie, 'queueMovies');
       evt.target.textContent = 'REMOVE FROM QUEUE';
       evt.target.classList.add('js-activeBtn');
-      if (refs.title.textContent === 'My library') {
+      if (
+        refs.title.textContent === 'My library' &&
+        refs.libQueueBtn.classList.contains('js-activeBtn')
+      ) {
         const arr = JSON.parse(localStorage.getItem('queueMovies'));
         renderGalleryMarkup(arr, 'data-queue');
       }
       return;
     }
+
+    /// REMOVE FROM QUEUE ///
 
     if (evt.target.textContent === 'REMOVE FROM QUEUE') {
       const arr = JSON.parse(localStorage.getItem('queueMovies'));
@@ -161,7 +179,10 @@ function onModalBtnClick(evt) {
       arr.splice(currentIdx, 1);
       if (!arr.length) {
         localStorage.removeItem('queueMovies');
-        if (refs.title.textContent === 'My library') {
+        if (
+          refs.title.textContent === 'My library' &&
+          refs.libQueueBtn.classList.contains('js-activeBtn')
+        ) {
           renderDefaulMarkup();
         }
         evt.target.textContent = 'ADD TO QUEUE';
@@ -171,7 +192,10 @@ function onModalBtnClick(evt) {
       localStorage.setItem('queueMovies', JSON.stringify(arr));
       evt.target.textContent = 'ADD TO QUEUE';
       evt.target.classList.remove('js-activeBtn');
-      if (refs.title.textContent === 'My library') {
+      if (
+        refs.title.textContent === 'My library' &&
+        refs.libQueueBtn.classList.contains('js-activeBtn')
+      ) {
         renderGalleryMarkup(arr, 'data-queue');
       }
       return;
