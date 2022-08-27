@@ -13,8 +13,6 @@ const btnsLib = document.querySelector('.buttons-list');
 
 paginationList.addEventListener('click', onClickMyPagination);
 btnsLib.addEventListener('click', onLibBtnClick);
-WATCHED_BTN.addEventListener('click', onClickToggle);
-QUEUE_BTN.addEventListener('click', onClickToggle);
 
 myBtns.forEach(btn => {
   btn.addEventListener('click', onClickMyBtn);
@@ -44,11 +42,17 @@ export function libraryMovieCreator(page = 1) {
 
 function onLibBtnClick(e) {
   if (e.target.classList.contains('js-watchedBtn')) {
+    console.log('WATCHED', e.target);
     if (localStorage.getItem('watchedMovies')) {
       const parsedWatched = JSON.parse(localStorage.getItem('watchedMovies'));
       renderGalleryMarkup(parsedWatched, 'data-watched');
     } else {
       renderDefaulMarkup();
+    }
+    /////// watchedBtn class toggle ///////////
+    if (!e.target.classList.contains('js-activeBtn')) {
+      e.target.classList.add('js-activeBtn');
+      QUEUE_BTN.classList.remove('js-activeBtn');
     }
   }
 
@@ -59,19 +63,11 @@ function onLibBtnClick(e) {
     } else {
       renderDefaulMarkup();
     }
-  }
-}
-
-function onClickToggle(e) {
-  /////// watchedBtn class toggle ///////////
-  if (!e.target.classList.contains('js-activeBtn')) {
-    e.target.classList.add('js-activeBtn');
-    QUEUE_BTN.classList.remove('js-activeBtn');
-  }
-  /////// queueBtn class toggle ///////////
-  if (!e.target.classList.contains('js-activeBtn')) {
-    e.target.classList.add('js-activeBtn');
-    WATCHED_BTN.classList.remove('js-activeBtn');
+    /////// queueBtn class toggle ///////////
+    if (!e.target.classList.contains('js-activeBtn')) {
+      e.target.classList.add('js-activeBtn');
+      WATCHED_BTN.classList.remove('js-activeBtn');
+    }
   }
 }
 
