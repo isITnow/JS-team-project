@@ -129,7 +129,9 @@ function onModalBtnClick(evt) {
       }
       localStorage.setItem('watchedMovies', JSON.stringify(arr));
       evt.target.textContent = 'ADD TO WATCHED';
-      renderGalleryMarkup(arr, 'data-watched');
+      if (refs.title.textContent === 'My library') {
+        renderGalleryMarkup(arr, 'data-watched');
+      }
       return;
     }
   }
@@ -159,7 +161,9 @@ function onModalBtnClick(evt) {
       }
       localStorage.setItem('queueMovies', JSON.stringify(arr));
       evt.target.textContent = 'ADD TO QUEUE';
-      renderGalleryMarkup(arr, 'data-queue');
+      if (refs.title.textContent === 'My library') {
+        renderGalleryMarkup(arr, 'data-queue');
+      }
       return;
     }
   }
