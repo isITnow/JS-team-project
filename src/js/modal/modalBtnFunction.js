@@ -1,18 +1,14 @@
-// export { onAddToWatched, onAddToQueue, modalBtnsStatusCheck };
+export { onAddToWatched, onAddToQueue, modalBtnsStatusCheck };
 
-export function onAddToWatched(data, storageKey) {
+function onAddToWatched(data, storageKey) {
   setToLocalStorage(data, storageKey);
 }
 
-export function onAddToQueue(data, storageKey) {
+function onAddToQueue(data, storageKey) {
   setToLocalStorage(data, storageKey);
 }
 
-export function setToLibrary(data, storageKey) {
-  setToLocalStorage(data, storageKey);
-}
-
-export function setToLocalStorage(data, storageKey) {
+function setToLocalStorage(data, storageKey) {
   if (!localStorage.getItem(storageKey)) {
     const arr = [];
     arr.push(data);
@@ -26,7 +22,7 @@ export function setToLocalStorage(data, storageKey) {
   }
 }
 
-export function modalBtnsStatusCheck(currentMovie) {
+function modalBtnsStatusCheck(currentMovie) {
   const watchedArr = JSON.parse(localStorage.getItem('watchedMovies'));
   const queueArr = JSON.parse(localStorage.getItem('queueMovies'));
   if (localStorage.getItem('watchedMovies')) {
