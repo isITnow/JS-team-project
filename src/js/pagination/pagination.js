@@ -1,7 +1,7 @@
 export { renderPagination };
 import { fetchTrending } from '../api/fetch';
 import { renderGalleryMarkup } from '../home/renderGalleryMarkup';
-// import { renderQueryMarkup } from '../home/renderGalleryMarkup';
+import { renderQueryMarkup } from '../home/renderGalleryMarkup';
 import { fetсhByQuery } from '../api/fetch';
 
 const paginationList = document.querySelector('.pagination__list');
@@ -88,8 +88,6 @@ function onClickMyPagination(e) {
     return;
   }
   let page = e.target.dataset.page;
-
-  console.log(page);
 
   if (!myInput) {
     console.log('will return');

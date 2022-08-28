@@ -170,3 +170,19 @@ function getItemsByPage(page, total_pages, allItemsFromLocaleStorage) {
   //   return arr;
   // }
 }
+
+// function getItemsByPage(page, total_pages, allItemsFromLocaleStorage) {
+//   console.log(allItemsFromLocaleStorage);
+//   let end = 9;
+//   let start = 0;
+//   if (page === total_pages && page !== 1) {
+//     start = start + end;
+//     end = (allItemsFromLocaleStorage.length % 9) + end;
+//   }
+//   let arr = [];
+//   console.log(start, end, allItemsFromLocaleStorage.length);
+//   for (let i = start; i < end; i++) {
+//     arr.push(allItemsFromLocaleStorage[i]);
+//   }
+//   return arr;
+// }
