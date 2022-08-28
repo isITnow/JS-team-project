@@ -38,7 +38,7 @@ export function libraryMovieCreator(page = 1, listName = 'watchedMovies') {
   const allItemsFromLocaleStorage = JSON.parse(localStorage.getItem(listName));
 
   let total_pages = Math.ceil(allItemsFromLocaleStorage.length / 9);
-  console.log(typeof total_pages);
+
   let itemsFromLocaleStorage = getItemsByPage(
     page,
     total_pages,
@@ -79,7 +79,6 @@ function onLibBtnClick(e) {
       QUEUE_BTN.classList.remove('js-activeBtn');
     }
 
-    console.log('WATCHED', e.target);
     if (localStorage.getItem('watchedMovies')) {
       const { itemsFromLocaleStorage, total_pages } =
         getItemsToShowAndPaginationInfo();
@@ -137,52 +136,9 @@ function getItemsByPage(page, total_pages, allItemsFromLocaleStorage) {
   if (page === total_pages && page !== 1) {
     start = 9 * (page - 1);
     end = (allItemsFromLocaleStorage.length % 9) + start;
-    console.log(end, allItemsFromLocaleStorage.length % 9, start);
   } else if (page > 1) {
     start = 9 * (page - 1);
     end = start + 9;
   }
-
-  // let arr = [];
-
-  // for (let i = start; i < end; i++) {
-  //   arr.push(allItemsFromLocaleStorage[i]);
-  // }
-  // console.log(start, end, allItemsFromLocaleStorage.length);
-  // console.log(page, total_pages);
-  // return arr;
-
   return allItemsFromLocaleStorage.splice((page - 1) * 9, 9);
-
-  // function getItemsByPage(page, total_pages, allItemsFromLocaleStorage) {
-  //   console.log(allItemsFromLocaleStorage);
-  //   let end = 9;
-  //   let start = 0;
-  //   if (page === total_pages && page !== 1) {
-  //     start = start + end;
-  //     end = (allItemsFromLocaleStorage.length % 9) + end;
-  //   }
-  //   let arr = [];
-  //   console.log(start, end, allItemsFromLocaleStorage.length);
-  //   for (let i = start; i < end; i++) {
-  //     arr.push(allItemsFromLocaleStorage[i]);
-  //   }
-  //   return arr;
-  // }
 }
-
-// function getItemsByPage(page, total_pages, allItemsFromLocaleStorage) {
-//   console.log(allItemsFromLocaleStorage);
-//   let end = 9;
-//   let start = 0;
-//   if (page === total_pages && page !== 1) {
-//     start = start + end;
-//     end = (allItemsFromLocaleStorage.length % 9) + end;
-//   }
-//   let arr = [];
-//   console.log(start, end, allItemsFromLocaleStorage.length);
-//   for (let i = start; i < end; i++) {
-//     arr.push(allItemsFromLocaleStorage[i]);
-//   }
-//   return arr;
-// }

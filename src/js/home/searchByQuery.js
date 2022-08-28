@@ -35,8 +35,5 @@ function onSearchSubmit(evt) {
     if (data.page) {
       renderPagination(data.page, data.results, data.total_pages);
     }
-
-    // return data;
   });
-  // .then(data => renderPagination(data.page, data.results, data.total_pages));
 }

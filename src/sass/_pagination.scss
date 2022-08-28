@@ -6,27 +6,32 @@
         padding-bottom: 60px;
     }
 }
+
 .pagination__container {
     margin: 0 auto;
-    // padding: 0 20px;
+    padding-top: 40px;
     width: 320px;
     display: flex;
     text-align: center;
     justify-content: center;
+
     @media screen and (min-width: 768px) {
         width: 768px;
-        padding: 0 32px;
+        padding-top: 60px;
     }
+
     @media screen and (min-width: 1280px) {
         width: 1280px;
     }
 }
+
 .pagination__list {
     text-align: center;
     display: flex;
     justify-content: center;
     max-width: 300px;
 }
+
 .pagination__item {
     width: 40px;
     height: 40px;
@@ -38,23 +43,28 @@
     align-items: center;
     border-radius: 5px;
     transition: 250ms;
+
     &:hover {
         color: white;
         background-color: $accent-color;
     }
+
     &--active {
         color: white;
         background-color: $accent-color;
     }
+
     &--left,
     &--right {
         transition: 250ms;
         background-color: $footer-bcg-color;
     }
 }
+
 .hide {
     display: none;
 }
+
 .pagination__btn {
     width: 40px;
     height: 40px;
@@ -68,20 +78,24 @@
     justify-content: center;
     align-items: center;
     transition: 250ms;
+
     &:hover {
         fill: white;
         background-color: $accent-color;
     }
 }
+
 .pagination__icon {
     width: 25px;
     height: 25px;
     transition: 250ms;
 }
+
 .disabled {
     transition: 250ms;
     fill: rgb(134, 126, 126);
     background-color: whitesmoke;
+
     &:hover {
         fill: rgb(134, 126, 126);
         background-color: whitesmoke;
