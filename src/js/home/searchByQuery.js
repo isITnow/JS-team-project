@@ -19,20 +19,24 @@ function onSearchSubmit(evt) {
     }, 5000);
     return;
   }
-  fetсhByQuery(query, page)
-    .then(data => {
-      if (!data.results.length) {
-        warningEl.classList.remove('visually-hidden');
-        setTimeout(() => {
-          warningEl.classList.add('visually-hidden');
-        }, 5000);
-        paginationEl.classList.add('visually-hidden');
-        return;
-      }
-      paginationEl.classList.remove('visually-hidden');
-      renderGalleryMarkup(data.results, 'data-query');
-      localStorage.setItem('queryFilms', JSON.stringify(data.results));
-      return data;
-    })
-    .then(data => renderPagination(data.page, data.results, data.total_pages));
+  fetсhByQuery(query, page).then(data => {
+    if (!data.results.length) {
+      warningEl.classList.remove('visually-hidden');
+      setTimeout(() => {
+        warningEl.classList.add('visually-hidden');
+      }, 5000);
+      paginationEl.classList.add('visually-hidden');
+      return;
+    }
+    paginationEl.classList.remove('visually-hidden');
+    renderGalleryMarkup(data.results, 'data-query');
+    localStorage.setItem('queryFilms', JSON.stringify(data.results));
+
+    if (data.page) {
+      renderPagination(data.page, data.results, data.total_pages);
+    }
+
+    // return data;
+  });
+  // .then(data => renderPagination(data.page, data.results, data.total_pages));
 }

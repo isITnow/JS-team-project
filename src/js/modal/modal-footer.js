@@ -60,6 +60,7 @@ const refs = {
   title: document.querySelector('title'),
   libWatchedBtn: document.querySelector('.js-watchedBtn'),
   libQueueBtn: document.querySelector('.js-queueBtn'),
+  paginationList: document.querySelector('.pagination__container'),
 };
 
 refs.openCardModal.addEventListener('click', onOpenCardModal);
@@ -76,6 +77,9 @@ function onOpenCardModal(event) {
     return;
   }
   movieId = Number(event.target.closest('.gallery__item').id);
+
+  console.log(movieId);
+
   if (event.currentTarget.nodeName === 'UL') {
     refs.cardModal.classList.remove('is-hidden');
     window.addEventListener('keydown', onEscapeCloseModal);
@@ -138,6 +142,7 @@ function onModalBtnClick(evt) {
           refs.libWatchedBtn.classList.contains('js-activeBtn')
         ) {
           renderDefaulMarkup();
+          refs.paginationList.classList.add('visually-hidden');
         }
         evt.target.textContent = 'ADD TO WATCHED';
         evt.target.classList.remove('js-activeBtn');
@@ -186,6 +191,7 @@ function onModalBtnClick(evt) {
           refs.libQueueBtn.classList.contains('js-activeBtn')
         ) {
           renderDefaulMarkup();
+          refs.paginationList.classList.add('visually-hidden');
         }
         evt.target.textContent = 'ADD TO QUEUE';
         evt.target.classList.remove('js-activeBtn');

@@ -48,6 +48,7 @@ function renderGalleryMarkup(data, dataAttribute) {
     ''
   );
   galleryItem.innerHTML = markup;
+
   return { data, dataAttribute };
 }
 

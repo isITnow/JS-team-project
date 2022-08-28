@@ -82,12 +82,15 @@ function renderPagination(page, results, total_pages) {
 
 function onClickMyPagination(e) {
   e.preventDefault();
+
   scrollToTop();
   if (e.target.nodeName !== 'LI') {
     return;
   }
   let page = e.target.dataset.page;
+
   if (!myInput) {
+    console.log('will return');
     return;
   }
   query = myInput.value;
@@ -116,10 +119,10 @@ function onClickMyPagination(e) {
 }
 
 function onClickMyBtn(e) {
+  scrollToTop();
   if (!myInput) {
     return;
   }
-  scrollToTop();
   let page = e.currentTarget.dataset.page;
   query = myInput.value;
   if (query !== '') {
@@ -147,10 +150,14 @@ function onClickMyBtn(e) {
 }
 
 function makeActive(page) {
+  console.log('page ' + page);
+
   const myActiveLink = document.querySelector(
     '.pagination__item.pagination__item--active'
   );
   const myLink = document.querySelector(`[data-page="${page}"]`);
+
+  if (!myLink) return;
 
   myLink.classList.add('pagination__item--active');
 
