@@ -48,6 +48,7 @@ body.dark-theme {
         background: linear-gradient(to right, #000000, #642b1b);
         box-shadow: 0px 2px 8px 8px rgba(114, 62, 13, 0.859);
     }
+
     & .card-modal__title {
         color: #fff;
     }
@@ -109,8 +110,23 @@ body.dark-theme {
         top: 150px;
     }
 
+    @media screen and (min-width: 850px) {
+        left: 700px;
+        top: 150px;
+    }
+
+    @media screen and (min-width: 1000px) {
+        left: 800px;
+        top: 150px;
+    }
+
     @media screen and (min-width: 1280px) {
         left: 1130px;
+        top: 150px;
+    }
+
+    @media screen and (min-width: 1900px) {
+        left: 1450px;
         top: 150px;
     }
 }
@@ -175,16 +191,16 @@ body.dark-theme {
     transform: translateX(3px);
 }
 
-.theme-switch__input:checked + .theme-switch__label {
+.theme-switch__input:checked+.theme-switch__label {
     background-color: #ff6b08;
 }
 
-.theme-switch__input:checked ~ .theme-switch__mark {
+.theme-switch__input:checked~.theme-switch__mark {
     transform: translateX(17px);
 }
 
-.theme-switch__input:focus + .theme-switch__label,
-.theme-switch__input:active + .theme-switch__label {
+.theme-switch__input:focus+.theme-switch__label,
+.theme-switch__input:active+.theme-switch__label {
     box-shadow: 0 0 0 3px #ff6b08;
 }
 
