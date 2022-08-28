@@ -1,6 +1,8 @@
 const galleryItem = document.querySelector('.gallery__list');
 
-export function renderGalleryMarkup(data, dataAttribute) {
+export { renderGalleryMarkup, renderDefaulMarkup };
+
+function renderGalleryMarkup(data, dataAttribute) {
   const markup = data.reduce(
     (
       acc,
@@ -49,7 +51,7 @@ export function renderGalleryMarkup(data, dataAttribute) {
   return { data, dataAttribute };
 }
 
-export function renderDefaulMarkup() {
+function renderDefaulMarkup() {
   galleryItem.innerHTML = `<li class="item-no-films">
         <img
           class="image-no-films"

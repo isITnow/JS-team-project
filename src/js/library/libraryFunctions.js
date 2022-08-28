@@ -1,5 +1,7 @@
-import { renderGalleryMarkup } from '../home/renderGalleryMarkup';
-import { renderDefaulMarkup } from '../home/renderGalleryMarkup';
+import {
+  renderGalleryMarkup,
+  renderDefaulMarkup,
+} from '../home/renderGalleryMarkup';
 
 import { renderMovieMarkup } from '../renderModal';
 import '../pagination/pagination';
