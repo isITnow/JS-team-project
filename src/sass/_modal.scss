@@ -120,7 +120,7 @@ tr {
 
 .card-modal__title {
     font-weight: bold;
-    color: #000000;
+    color: $black-text-color;
     text-transform: uppercase;
     padding-bottom: 20px;
     font-size: 20px;
@@ -165,7 +165,7 @@ tr {
     line-height: 16px;
     align-items: center;
     text-transform: uppercase;
-    color: #000000;
+    color: $black-text-color;
     margin-bottom: 8px;
 }
 
@@ -175,7 +175,7 @@ tr {
     font-weight: 500;
     font-size: 12px;
     line-height: 20px;
-    color: #000000;
+    color: $black-text-color;
     max-height: 200px;
     overflow-y: scroll;
 }
@@ -191,12 +191,12 @@ tr {
     font-weight: 500;
     font-size: 12px;
     line-height: 14px;
-    color: #000000;
+    color: $black-text-color;
 }
 
 .card-modal__rating-result-span {
-    background-color: #ff6b08;
-    color: #ffffff;
+    background-color: $accent-color;
+    color: $white-text-color;
     border-radius: 5px;
     padding-right: 5px;
     padding-left: 5px;
@@ -218,7 +218,7 @@ tr {
     font-weight: 500;
     font-size: 12px;
     line-height: 16px;
-    color: #8c8c8c;
+    color: $accent-gray-color;
 }
 
 .card-modal__origin-title-result {
@@ -246,8 +246,8 @@ tr {
     text-transform: uppercase;
     margin-right: 20px;
     background: inherit;
-    color: #000000;
-    border: solid 1px #000000;
+    color: $black-text-color;
+    border: solid 1px $black-text-color;
     border-radius: 5px;
     width: 110px;
     height: 44px;
@@ -256,21 +256,17 @@ tr {
     &:focus {
         transform: scale(1.1);
         box-shadow: (0px 8px 43px rgba(255, 107, 1, 0.6));
-        background-color: #ff6b08;
+        background-color: $accent-color;
         border: none;
-        color: #ffffff;
+        color: $white-text-color;
     }
 
     @media screen and (min-width: 768px) {
         width: 125px;
-        // padding: 14px 9px;
-        // height: auto;
     }
 
     @media screen and (min-width: 1280px) {
         width: 136px;
-        // padding: 14px 10px;
-        // height: auto;
     }
 }
 
@@ -285,28 +281,26 @@ tr {
     text-transform: uppercase;
 
     background: inherit;
-    color: black;
+    color: $black-text-color;
     border-radius: 5px;
     width: 110px;
     height: 44px;
-    border: solid 1px #000000;
+    border: solid 1px $black-text-color;
 
     &:hover,
     &:focus {
-        background-color: #ff6b08;
+        background-color: $accent-color;
         border: none;
-        color: #ffffff;
+        color: $white-text-color;
         transform: scale(1.1);
         box-shadow: (0px 8px 43px rgba(255, 107, 1, 0.6));
     }
 
     @media screen and (min-width: 768px) {
         width: 125px;
-        // padding: 14px 9px;
     }
 
     @media screen and (min-width: 1280px) {
         width: 136px;
-        // padding: 14px 10px;
     }
 }

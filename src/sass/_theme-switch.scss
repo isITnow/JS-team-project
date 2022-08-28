@@ -1,22 +1,22 @@
 body.light-theme {
-    background-color: #fff;
-    color: #000000;
+    background-color: $white-text-color;
+    color: $black-text-color;
 }
 
 body.dark-theme {
-    background: linear-gradient(to right, #000000, #642b1b);
-    color: #fff;
+    background: linear-gradient(to right, $black-text-color, $linear-gradient);
+    color: $white-text-color;
 
     & .gallery__title {
-        color: white;
+        color: $white-text-color;
     }
 
     & .page-footer {
-        background: linear-gradient(to right, #000000, #642b1b);
+        background: linear-gradient(to right, $black-text-color, $linear-gradient);
     }
 
     & .page-footer__text {
-        color: #fff;
+        color: $white-text-color;
     }
 
     & .page-footer__link {
@@ -29,15 +29,15 @@ body.dark-theme {
     }
 
     & .command__role {
-        color: #fff;
+        color: $white-text-color;
     }
 
     & .inner__info {
-        background-color: #000000;
+        background-color: $black-text-color;
     }
 
     & .wrapper__title {
-        color: #fff;
+        color: $white-text-color;
     }
 
     & .image-no-films {
@@ -50,15 +50,15 @@ body.dark-theme {
     }
 
     & .card-modal__title {
-        color: #fff;
+        color: $white-text-color;
     }
 
     & .card-modal__overwiew-title {
-        color: #fff;
+        color: $white-text-color;
     }
 
     & .card-modal__overview {
-        color: #fff;
+        color: $white-text-color;
     }
 
     & .card-modal__rating-result-span,
@@ -67,17 +67,17 @@ body.dark-theme {
     .card-modal__origin-title-result,
     .card-modal__genres-result,
     .card-modal__rating-result {
-        color: #fff;
+        color: $white-text-color;
     }
 
     & .card-modal__button-add {
-        color: #fff;
-        border: solid 1px #fff;
+        color: $white-text-color;
+        border: solid 1px $white-text-color;
     }
 
     & .card-modal__button-queue {
-        color: #fff;
-        border: solid 1px #fff;
+        color: $white-text-color;
+        border: solid 1px $white-text-color;
     }
 }
 
@@ -181,7 +181,7 @@ body.dark-theme {
 
 .theme-switch__mark {
     position: relative;
-    background-color: #fff;
+    background-color: $white-text-color;
     width: 18px;
     height: 18px;
     border-radius: 50%;
@@ -191,17 +191,17 @@ body.dark-theme {
     transform: translateX(3px);
 }
 
-.theme-switch__input:checked+.theme-switch__label {
-    background-color: #ff6b08;
+.theme-switch__input:checked + .theme-switch__label {
+    background-color: $accent-color;
 }
 
-.theme-switch__input:checked~.theme-switch__mark {
+.theme-switch__input:checked ~ .theme-switch__mark {
     transform: translateX(17px);
 }
 
-.theme-switch__input:focus+.theme-switch__label,
-.theme-switch__input:active+.theme-switch__label {
-    box-shadow: 0 0 0 3px #ff6b08;
+.theme-switch__input:focus + .theme-switch__label,
+.theme-switch__input:active + .theme-switch__label {
+    box-shadow: 0 0 0 3px $accent-color;
 }
 
 .dark-theme {
