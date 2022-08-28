@@ -78,8 +78,6 @@ function onOpenCardModal(event) {
   }
   movieId = Number(event.target.closest('.gallery__item').id);
 
-  console.log(movieId);
-
   if (event.currentTarget.nodeName === 'UL') {
     refs.cardModal.classList.remove('is-hidden');
     window.addEventListener('keydown', onEscapeCloseModal);

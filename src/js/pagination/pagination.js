@@ -90,7 +90,6 @@ function onClickMyPagination(e) {
   let page = e.target.dataset.page;
 
   if (!myInput) {
-    console.log('will return');
     return;
   }
   query = myInput.value;
@@ -150,8 +149,6 @@ function onClickMyBtn(e) {
 }
 
 function makeActive(page) {
-  console.log('page ' + page);
-
   const myActiveLink = document.querySelector(
     '.pagination__item.pagination__item--active'
   );
