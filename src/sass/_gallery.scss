@@ -129,7 +129,7 @@
         font-size: inherit;
         line-height: inherit;
         text-transform: uppercase;
-        color: #000000;
+        color: $black-text-color;
     }
 
     &__genres {
@@ -137,7 +137,7 @@
         justify-content: flex-start;
         font-size: inherit;
         line-height: inherit;
-        color: #ff6b08;
+        color: $accent-color;
     }
 
     &__genr {

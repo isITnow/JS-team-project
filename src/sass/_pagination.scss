@@ -8,7 +8,7 @@
 }
 .pagination__container {
     margin: 0 auto;
-    padding: 0 20px;
+    // padding: 0 20px;
     width: 320px;
     display: flex;
     text-align: center;
@@ -49,7 +49,7 @@
     &--left,
     &--right {
         transition: 250ms;
-        background-color: #f7f7f7;
+        background-color: $footer-bcg-color;
     }
 }
 .hide {

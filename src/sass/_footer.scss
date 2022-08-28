@@ -1,5 +1,5 @@
 .page-footer {
-  background-color: rgba(247, 247, 247, 1);
+  background-color: $footer-bcg-color;
   min-height: 100px;
   display: flex;
   align-items: center;
@@ -51,6 +51,6 @@
   &__link {
     text-decoration: underline;
     color: $footer-text-color;
-    text-decoration-color: #ff6b08;
+    text-decoration-color: $accent-color;
   }
 }
