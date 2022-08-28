@@ -4,6 +4,11 @@ import { onAddToQueue } from '../modal/modalBtnFunction';
 import { modalBtnsStatusCheck } from '../modal/modalBtnFunction';
 import { renderGalleryMarkup } from '../home/renderGalleryMarkup';
 import { renderDefaulMarkup } from '../home/renderGalleryMarkup';
+// import {
+//   onAddToWatched,
+//   onAddToQueue,
+//   modalBtnsStatusCheck,
+// } from '../modal/modalBtnFunction';
 
 // Логіка що працює на модалку команди;
 

@@ -13,6 +13,7 @@ body {
   margin: 0;
   // display: flex;
 }
+
 .body-flex {
   height: 100vh;
   flex-direction: column;
@@ -63,4 +64,8 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
+}
+
+button {
+  cursor: pointer;
 }

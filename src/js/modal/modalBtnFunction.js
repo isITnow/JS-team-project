@@ -1,3 +1,5 @@
+// export { onAddToWatched, onAddToQueue, modalBtnsStatusCheck };
+
 export function onAddToWatched(data, storageKey) {
   setToLocalStorage(data, storageKey);
 }
