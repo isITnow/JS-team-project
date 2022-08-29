@@ -1,8 +1,7 @@
-import { fetchTrending } from '../api/fetch';
-import { fetchGenres } from '../api/fetch';
+import { fetchTrending, fetchGenres } from '../api/fetch';
 import { renderGalleryMarkup } from './renderGalleryMarkup';
 import { renderPagination } from '../pagination/pagination';
-import { loaderToggle, hideLoader } from '../spinner';
+import { loaderToggle, hideLoader } from '../plugins/spinner';
 
 let page = 1;
 loaderToggle();
@@ -23,9 +22,9 @@ fetchTrending(page)
     loaderToggle();
     renderGalleryMarkup(data.results, 'data-trending');
     localStorage.setItem('popularFilms', JSON.stringify(data.results));
+    renderPagination(data.page, data.results, data.total_pages);
     return data;
   })
-  .then(data => renderPagination(data.page, data.results, data.total_pages))
   .finally(() =>
     setTimeout(() => {
       hideLoader();

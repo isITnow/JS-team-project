@@ -2,17 +2,15 @@ import {
   renderGalleryMarkup,
   renderDefaulMarkup,
 } from '../home/renderGalleryMarkup';
-
-import { renderMovieMarkup } from '../renderModal';
 import '../pagination/pagination';
 import { renderPagination } from '../pagination/pagination';
-const galleryList = document.querySelector('.gallery__list');
+
 const myBtns = document.querySelectorAll('.pagination__btn');
 const WATCHED_BTN = document.querySelector('.js-watchedBtn');
 const QUEUE_BTN = document.querySelector('.js-queueBtn');
-const paginationList = document.querySelector('.pagination__container');
+const paginationEl = document.querySelector('.pagination__container');
 const btnsLib = document.querySelector('.buttons-list');
-paginationList.addEventListener('click', onClickMyPagination);
+paginationEl.addEventListener('click', onClickMyPagination);
 btnsLib.addEventListener('click', onLibBtnClick);
 
 WATCHED_BTN.classList.add('js-activeBtn');
@@ -31,7 +29,7 @@ export function getListName() {
 export function libraryMovieCreator(page = 1, listName = 'watchedMovies') {
   if (!localStorage.getItem(listName)) {
     renderDefaulMarkup();
-    paginationList.classList.add('visually-hidden');
+    paginationEl.classList.add('visually-hidden');
     return;
   }
 
@@ -82,12 +80,12 @@ function onLibBtnClick(e) {
     if (localStorage.getItem('watchedMovies')) {
       const { itemsFromLocaleStorage, total_pages } =
         getItemsToShowAndPaginationInfo();
-      paginationList.classList.remove('visually-hidden');
+      paginationEl.classList.remove('visually-hidden');
       renderGalleryMarkup(itemsFromLocaleStorage, 'data-watched');
       renderPagination(1, itemsFromLocaleStorage, total_pages);
     } else {
       renderDefaulMarkup();
-      paginationList.classList.add('visually-hidden');
+      paginationEl.classList.add('visually-hidden');
     }
   }
 
@@ -101,12 +99,12 @@ function onLibBtnClick(e) {
     if (localStorage.getItem('queueMovies')) {
       const { itemsFromLocaleStorage, total_pages } =
         getItemsToShowAndPaginationInfo();
-      paginationList.classList.remove('visually-hidden');
+      paginationEl.classList.remove('visually-hidden');
       renderGalleryMarkup(itemsFromLocaleStorage, 'data-queue');
       renderPagination(1, itemsFromLocaleStorage, total_pages);
     } else {
       renderDefaulMarkup();
-      paginationList.classList.add('visually-hidden');
+      paginationEl.classList.add('visually-hidden');
     }
   }
 }

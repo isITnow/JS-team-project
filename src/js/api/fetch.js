@@ -1,8 +1,10 @@
-import { loaderToggle, hideLoader } from '../spinner';
+import { loaderToggle, hideLoader } from '../plugins/spinner';
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = 'api_key=d70849b39c7b399ded2dffef6ee1baa4';
 
-export function fetchTrending(page) {
+export { fetchTrending, fetсhByQuery, fetchGenres };
+
+function fetchTrending(page) {
   loaderToggle();
   return fetch(`${BASE_URL}/trending/movie/day?&${API_KEY}&page=${page}`)
     .then(resp => {
@@ -11,7 +13,7 @@ export function fetchTrending(page) {
       }
       return resp.json();
     })
-    .catch(error => console.log(error))
+    .catch(error => console.log('Ivalid request', error))
     .finally(() =>
       setTimeout(() => {
         hideLoader();
@@ -19,7 +21,7 @@ export function fetchTrending(page) {
     );
 }
 
-export function fetchGenres() {
+function fetchGenres() {
   return fetch(`${BASE_URL}/genre/movie/list?${API_KEY}&language=en-US`)
     .then(resp => {
       if (!resp.ok) {
@@ -27,10 +29,10 @@ export function fetchGenres() {
       }
       return resp.json();
     })
-    .catch(error => console.log(error));
+    .catch(error => console.log('Ivalid request', error));
 }
 
-export function fetсhByQuery(query, page) {
+function fetсhByQuery(query, page) {
   loaderToggle();
   return fetch(
     `${BASE_URL}/search/movie?${API_KEY}&language=en-US&page=${page}&include_adult=false&query=${query}`
@@ -41,7 +43,7 @@ export function fetсhByQuery(query, page) {
       }
       return resp.json();
     })
-    .catch(error => console.log(error))
+    .catch(error => console.log('Ivalid request', error))
     .finally(() =>
       setTimeout(() => {
         hideLoader();

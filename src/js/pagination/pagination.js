@@ -1,8 +1,6 @@
 export { renderPagination };
-import { fetchTrending } from '../api/fetch';
 import { renderGalleryMarkup } from '../home/renderGalleryMarkup';
-import { renderQueryMarkup } from '../home/renderGalleryMarkup';
-import { fetсhByQuery } from '../api/fetch';
+import { fetchTrending, fetсhByQuery } from '../api/fetch';
 
 const paginationList = document.querySelector('.pagination__list');
 const btnLeft = document.querySelector('.pagination__btn--left');
@@ -82,9 +80,11 @@ function renderPagination(page, results, total_pages) {
 
 function onClickMyPagination(e) {
   e.preventDefault();
-
   scrollToTop();
   if (e.target.nodeName !== 'LI') {
+    return;
+  }
+  if (e.target.textContent === '...') {
     return;
   }
   let page = e.target.dataset.page;
@@ -106,13 +106,16 @@ function onClickMyPagination(e) {
 
     return;
   }
-  fetchTrending(page)
-    .then(data => {
-      renderGalleryMarkup(data.results, 'data-trending');
-      localStorage.setItem('popularFilms', JSON.stringify(data.results));
-      return data;
-    })
-    .then(data => renderPagination(data.page, data.results, data.total_pages));
+
+  fetchTrending(page).then(data => {
+    if (!data) {
+      return;
+    }
+    renderGalleryMarkup(data.results, 'data-trending');
+    localStorage.setItem('popularFilms', JSON.stringify(data.results));
+    renderPagination(data.page, data.results, data.total_pages);
+    return data;
+  });
 
   makeActive(page);
 }
@@ -137,13 +140,15 @@ function onClickMyBtn(e) {
 
     return;
   }
-  fetchTrending(page)
-    .then(data => {
-      renderGalleryMarkup(data.results, 'data-trending');
-      localStorage.setItem('popularFilms', JSON.stringify(data.results));
-      return data;
-    })
-    .then(data => renderPagination(data.page, data.results, data.total_pages));
+  fetchTrending(page).then(data => {
+    if (!data) {
+      return;
+    }
+    renderGalleryMarkup(data.results, 'data-trending');
+    localStorage.setItem('popularFilms', JSON.stringify(data.results));
+    renderPagination(data.page, data.results, data.total_pages);
+    return data;
+  });
 
   makeActive(page);
 }
