@@ -1,4 +1,4 @@
-import { renderMovieMarkup } from '../renderModal';
+import { renderMovieMarkup } from './renderModal';
 import {
   renderGalleryMarkup,
   renderDefaulMarkup,
@@ -60,7 +60,7 @@ const refs = {
   title: document.querySelector('title'),
   libWatchedBtn: document.querySelector('.js-watchedBtn'),
   libQueueBtn: document.querySelector('.js-queueBtn'),
-  paginationList: document.querySelector('.pagination__container'),
+  paginationEl: document.querySelector('.pagination__container'),
 };
 
 refs.openCardModal.addEventListener('click', onOpenCardModal);
@@ -140,7 +140,7 @@ function onModalBtnClick(evt) {
           refs.libWatchedBtn.classList.contains('js-activeBtn')
         ) {
           renderDefaulMarkup();
-          refs.paginationList.classList.add('visually-hidden');
+          refs.paginationEl.classList.add('visually-hidden');
         }
         evt.target.textContent = 'ADD TO WATCHED';
         evt.target.classList.remove('js-activeBtn');
@@ -189,7 +189,7 @@ function onModalBtnClick(evt) {
           refs.libQueueBtn.classList.contains('js-activeBtn')
         ) {
           renderDefaulMarkup();
-          refs.paginationList.classList.add('visually-hidden');
+          refs.paginationEl.classList.add('visually-hidden');
         }
         evt.target.textContent = 'ADD TO QUEUE';
         evt.target.classList.remove('js-activeBtn');

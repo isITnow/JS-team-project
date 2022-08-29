@@ -5,4 +5,4 @@ import './js/pagination/pagination';
 import './js/plugins/scroll-to-top';
 import './js/plugins/theme-switch';
 import './js/library/local-storage-theme';
-import './js/spinner';
+import './js/plugins/spinner';
